@@ -17,11 +17,14 @@ endif
 Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
 Plug 'preservim/nerdtree'
 Plug 'mattn/emmet-vim'
-Plug 'othree/yajs.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xavierd/clang_complete'
 Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
+Plug 'pangloss/vim-javascript'
+Plug 'cocopon/iceberg.vim'
+Plug 'crusoexia/vim-monokai'
+Plug 'moll/vim-node'
 
 call plug#end()
 
@@ -49,6 +52,6 @@ set shiftwidth=4
 set expandtab
 set number
 set numberwidth=4
-
-colo lucid 
+ 
 syntax on
+colorscheme iceberg
