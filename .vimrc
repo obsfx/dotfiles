@@ -20,6 +20,8 @@ Plug 'mattn/emmet-vim'
 Plug 'othree/yajs.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xavierd/clang_complete'
+Plug 'leafgarland/typescript-vim'
+Plug 'Quramy/tsuquyomi'
 
 call plug#end()
 
@@ -34,7 +36,7 @@ autocmd FileType html,css EmmetInstall
 
 let g:deoplete#enable_at_startup = 1
 
-let g:clang_library_path='/usr/lib/llvm-9/lib'
+let g:clang_library_path='/usr/lib/llvm-9/lib/libclang-9.so.1'
 
 set nocompatible
 filetype off
