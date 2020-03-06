@@ -19,16 +19,25 @@ Plug 'preservim/nerdtree'
 Plug 'mattn/emmet-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'xavierd/clang_complete'
-Plug 'leafgarland/typescript-vim'
 Plug 'Quramy/tsuquyomi'
-Plug 'pangloss/vim-javascript'
 Plug 'cocopon/iceberg.vim'
-Plug 'crusoexia/vim-monokai'
 Plug 'moll/vim-node'
+Plug 'pangloss/vim-javascript'
+"Plug 'leafgarland/typescript-vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'HerringtonDarkholme/yats.vim'
 
 call plug#end()
 
+set encoding=UTF-8
+set nocompatible
+filetype off
+
+colo lucid
 syntax enable
+syntax on
+set t_Co=256
 
 if (has("termguicolors"))
     set termguicolors
@@ -41,8 +50,9 @@ let g:deoplete#enable_at_startup = 1
 
 let g:clang_library_path='/usr/lib/llvm-9/lib/libclang-9.so.1'
 
-set nocompatible
-filetype off
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
@@ -53,5 +63,5 @@ set expandtab
 set number
 set numberwidth=4
  
-syntax on
-colorscheme iceberg
+
+"colorscheme lucid
