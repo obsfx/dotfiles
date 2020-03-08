@@ -57,6 +57,8 @@ let g:NERDTreePatternMatchHighlightFullName = 1
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
+autocmd CompleteDone * pclose
+
 set tabstop=4
 set shiftwidth=4
 set expandtab
