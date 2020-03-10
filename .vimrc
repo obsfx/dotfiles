@@ -27,6 +27,10 @@ Plug 'pangloss/vim-javascript'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'davidhalter/jedi-vim'
 
 call plug#end()
 
@@ -53,6 +57,8 @@ let g:clang_library_path='/usr/lib/llvm-9/lib/libclang-9.so.1'
 let g:NERDTreeFileExtensionHighlightFullName = 1
 let g:NERDTreeExactMatchHighlightFullName = 1
 let g:NERDTreePatternMatchHighlightFullName = 1
+
+let python_highlight_all=1
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
