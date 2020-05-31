@@ -41,6 +41,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 
+Plug 'ryanoasis/vim-devicons'
+
 Plug 'jacoborus/tender.vim'
 
 call plug#end()
