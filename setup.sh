@@ -10,7 +10,6 @@ sudo apt install clangd-9
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 
 sudo pip3 install pynvim
-sudo pip3 install -U jedi-language-server
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
