@@ -4,72 +4,64 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
-
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'ternjs/tern_for_vim', { 'do' : 'npm install' }
-Plug 'preservim/nerdtree'
-Plug 'mattn/emmet-vim'
-Plug 'jiangmiao/auto-pairs'
-Plug 'xavierd/clang_complete'
-Plug 'Quramy/tsuquyomi'
-Plug 'cocopon/iceberg.vim'
-Plug 'moll/vim-node'
-Plug 'pangloss/vim-javascript'
-"Plug 'leafgarland/typescript-vim'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'nvie/vim-flake8'
-Plug 'davidhalter/jedi-vim'
-
-call plug#end()
-
-set encoding=UTF-8
-set nocompatible
-filetype off
-
-colo lucid
-syntax enable
-syntax on
-set t_Co=256
-
-if (has("termguicolors"))
-    set termguicolors
-endif
-
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
-let g:deoplete#enable_at_startup = 1
-
-let g:clang_library_path='/usr/lib/llvm-9/lib/libclang-9.so.1'
-
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-
-let python_highlight_all=1
-
-filetype plugin on
-set omnifunc=syntaxcomplete#Complete
-
-autocmd CompleteDone * pclose
-
+set hidden
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=300
+set shortmess+=c
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set number
 set numberwidth=4
- 
+set encoding=UTF-8
+set nocompatible
+set t_Co=256
+set cmdheight=2
 
-"colorscheme lucid
+filetype off
+
+syntax enable
+syntax on
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+autocmd CompleteDone * pclose
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'preservim/nerdtree'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'vim-utils/vim-man'
+Plug 'mbbill/undotree'
+
+Plug 'jacoborus/tender.vim'
+
+call plug#end()
+
+colorscheme tender
+
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_auto_sameids = 1
