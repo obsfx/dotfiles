@@ -25,4 +25,6 @@ sudo chsh -s $(which zsh) $(whoami)
 
 curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.vimrc" > ~/.vimrc
 
+vim +PlugInstall
+
 vim -c 'CocInstall -sync coc-json coc-html coc-tsserver coc-clangd coc-highlight coc-markdownlint coc-python coc-git|q'
