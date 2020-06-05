@@ -47,10 +47,14 @@ Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+Plug 'lifepillar/vim-gruvbox8'
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
+let g:gruvbox_italics = 0
+
 "colorscheme tender
-colorscheme gruvbox
+colorscheme gruvbox8_hard
+
