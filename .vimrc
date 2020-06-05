@@ -8,6 +8,7 @@ set nowrap
 set sidescroll=1
 set hidden
 set nobackup
+set noswapfile
 set nowritebackup
 set cmdheight=2
 set updatetime=300
@@ -22,6 +23,8 @@ set nocompatible
 set t_Co=256
 set cmdheight=2
 set background=dark
+set undodir=~/.vim/undodir
+set undofile
 
 filetype off
 
