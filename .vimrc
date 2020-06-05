@@ -4,6 +4,8 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+set nowrap
+set sidescroll=1
 set hidden
 set nobackup
 set nowritebackup
@@ -19,6 +21,7 @@ set encoding=UTF-8
 set nocompatible
 set t_Co=256
 set cmdheight=2
+set background=dark
 
 filetype off
 
@@ -33,21 +36,21 @@ autocmd CompleteDone * pclose
 
 call plug#begin('~/.vim/plugged')
 
-Plug 'preservim/nerdtree'
 Plug 'jiangmiao/auto-pairs'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-Plug 'ryanoasis/vim-devicons'
-
+Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
-colorscheme tender
+"colorscheme tender
+colorscheme gruvbox
 
 let g:NERDTreeShowHidden=1
 let g:NERDTreeFileExtensionHighlightFullName = 1
@@ -68,3 +71,8 @@ let g:go_highlight_generate_tags = 1
 let g:go_highlight_format_strings = 1
 let g:go_highlight_variable_declarations = 1
 let g:go_auto_sameids = 1
+
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_guide_size = 1
+
+"let g:indentLine_char_list = ['|', '¦', '┆', '┊']
