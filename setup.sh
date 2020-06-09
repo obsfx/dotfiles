@@ -1,9 +1,11 @@
 sudo apt update
 sudo apt upgrade
 
+sudo apt install curl
+sudo apt install wget
 sudo apt install git
 sudo apt install python3-pip
-sudo apt install vim
+sudo apt install neovim
 sudo apt install zsh
 
 sudo apt install clangd-9
@@ -16,10 +18,12 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo chsh -s $(which zsh) $(whoami)
 
-curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.vimrc" > ~/.vimrc
+mkdir ~/.config/nvim -p
+
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/init.vim" > ~/.config/nvim/init.vim
 
 mkdir ~/.vim/undodir -p
 
-vim +PlugInstall
+echo ':PlugInstall'
 
-vim -c 'CocInstall -sync coc-json coc-html coc-tsserver coc-clangd coc-highlight coc-markdownlint coc-python coc-git|q'
+echo ':CocInstall coc-css coc-json coc-html coc-tsserver coc-clangd coc-highlight coc-markdownlint coc-python coc-git|q'
