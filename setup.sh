@@ -4,6 +4,10 @@ sudo apt upgrade
 sudo apt install curl
 sudo apt install wget
 sudo apt install git
+
+git config --global user.email "balandiomer@gmail.com"
+git config --global user.name "obsfx"
+
 sudo apt install python3-pip
 sudo apt install neovim
 sudo apt install zsh
