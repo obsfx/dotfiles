@@ -7,6 +7,8 @@ sudo apt install git
 
 git config --global user.email "balandiomer@gmail.com"
 git config --global user.name "obsfx"
+git config --global user.signingkey 7709B9F9CCB9413A
+git config --global commit.gpgsign true
 
 sudo apt install python3-pip
 sudo apt install neovim
@@ -17,7 +19,7 @@ sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 
 sudo pip3 install pynvim
 
-"curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo chsh -s $(which zsh) $(whoami)
