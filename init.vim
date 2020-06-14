@@ -11,7 +11,8 @@
 "   ctrl f / b scroll down up
 "   a append text right to cursor
 "   A add text end of line
-
+"   shfit + i / a move begining / ending of line 
+"   ctrl + p / n / y move and select in popup windows without arrow keys
 
 set guicursor=
 set nowrap
@@ -56,6 +57,7 @@ Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/indentLine'
 
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-gruvbox8'
@@ -69,6 +71,19 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
 
+let g:indentLine_leadingSpaceEnabled = 1 
+let g:indentLine_leadingSpaceChar = '.'
+let g:indentLine_char = '│'
+
 "colorscheme tender
 colorscheme gruvbox8_hard
 
+"no more arrow keys
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
