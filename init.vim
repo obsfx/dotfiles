@@ -13,6 +13,11 @@
 "   A add text end of line
 "   shfit + i / a move begining / ending of line 
 "   ctrl + p / n / y move and select in popup windows without arrow keys
+"   vertical split ctrl+w v
+"   horizontal split ctrl+w s
+"   ctrl+w +   ctrl+w - resize the height of current window
+"   ctrl+w >   ctrl+w > resize the width of current window
+"   To resize all windows to equal dimensions based on their splits, you can use Ctrl-w =.
 
 set guicursor=
 set nowrap
