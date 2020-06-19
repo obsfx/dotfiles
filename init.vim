@@ -58,25 +58,34 @@ Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
+Plug 'mattn/emmet-vim'
 
 Plug 'itchyny/lightline.vim'
 Plug 'lifepillar/vim-gruvbox8'
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
+Plug 'wadackel/vim-dogrun'
+Plug 'owickstrom/vim-colors-paramount'
 
 call plug#end()
 
 let g:gruvbox_italics = 0
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+        \ 'colorscheme': 'dogrun',
       \ }
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_char = '│'
 
+let g:user_emmet_leader_key='<C-Z>'
+
 "colorscheme tender
-colorscheme gruvbox8_hard
+"colorscheme gruvbox8_hard
+colorscheme paramount
+
+highlight Function gui=bold
+highlight Identifier gui=bold
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
