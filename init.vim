@@ -1,10 +1,11 @@
 "   shift + v + < or > mutliline back tab / insert tab
-"   w and b moving around words
+"   w, b and e moving around words
 "   yy yank a line (copy)
 "   p paste that one line below
 "   dd delete line
 "   u undo
 "   ctrl r redo
+"   gd go to local definition
 "   e move to end of last char of cursor
 "   rp paste over over again
 "   /something search
@@ -101,3 +102,8 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+
+" ctrl + e jump end of the line
+nmap <C-e> $
+" ctrl + a jump begining of the line
+nmap <C-a> 0
