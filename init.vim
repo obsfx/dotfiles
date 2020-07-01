@@ -17,8 +17,9 @@
 "   vertical split ctrl+w v
 "   horizontal split ctrl+w s
 "   ctrl+w +   ctrl+w - resize the height of current window
-"   ctrl+w >   ctrl+w > resize the width of current window
+"   ctrl+w >   ctrl+w < resize the width of current window
 "   To resize all windows to equal dimensions based on their splits, you can use Ctrl-w =.
+"   n and N move around the search results
 
 set guicursor=
 set nowrap
@@ -107,3 +108,7 @@ noremap   <Right>  <NOP>
 nmap <C-e> $
 " ctrl + a jump begining of the line
 nmap <C-a> 0
+" ctrl + x :Explore
+nmap <C-x> :Explore<Enter>
+" ctrl +s :GFiles
+nmap <C-s> :GFiles<Enter>
