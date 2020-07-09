@@ -43,6 +43,7 @@ set cmdheight=2
 set background=dark
 set undodir=~/.vim/undodir
 set undofile
+set noshowmode
 
 filetype off
 
