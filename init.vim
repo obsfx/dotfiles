@@ -50,6 +50,10 @@ filetype off
 syntax enable
 syntax on
 
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
 if (has("termguicolors"))
     set termguicolors
 endif
@@ -67,19 +71,29 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'mattn/emmet-vim'
+Plug 'OmniSharp/omnisharp-vim'
 
+" ***** themes, visual customizations
 Plug 'itchyny/lightline.vim'
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'morhetz/gruvbox'
-Plug 'jacoborus/tender.vim'
-Plug 'wadackel/vim-dogrun'
 Plug 'owickstrom/vim-colors-paramount'
+Plug 'pbrisbin/vim-colors-off'
+Plug 'huyvohcmc/atlas.vim'
+Plug 'jacoborus/tender.vim'
+
+Plug 'arcticicestudio/nord-vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'noahfrederick/vim-hemisu'
+Plug 'guns/jellyx.vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'ajh17/Spacegray.vim'
+Plug 'andreypopp/vim-colors-plain'
+Plug 'Lokaltog/vim-monotone'
 
 call plug#end()
 
 let g:gruvbox_italics = 0
 let g:lightline = {
-        \ 'colorscheme': 'dogrun',
+        \ 'colorscheme': 'atlas',
       \ }
 
 let g:indentLine_leadingSpaceEnabled = 1 
@@ -88,12 +102,31 @@ let g:indentLine_char = '│'
 
 let g:user_emmet_leader_key='<C-Z>'
 
-"colorscheme tender
-"colorscheme gruvbox8_hard
-colorscheme paramount
+let g:coc_global_extensions = [
+    \ 'coc-css',
+    \ 'coc-json',
+    \ 'coc-html',
+    \ 'coc-tsserver',
+    \ 'coc-clangd',
+    \ 'coc-highlight',
+    \ 'coc-markdownlint',
+    \ 'coc-python',
+    \ 'coc-git'
+    \ ]
 
-highlight Function gui=bold
-highlight Identifier gui=bold
+" ***** themes that i loved
+" colorscheme off
+" colorscheme paramount
+" colorscheme tender
+" colorscheme Spacegray
+colorscheme jellybeans
+" colorscheme hybrid
+" colorsheme monotone
+" colorscheme jellyx
+
+
+"highlight Function gui=bold
+"highlight Identifier gui=bold
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
@@ -110,6 +143,6 @@ nmap <C-e> $
 " ctrl + a jump begining of the line
 nmap <C-a> 0
 " ctrl + x :Explore
-nmap <C-x> :Explore<Enter>
+nmap <C-x> :Explore<CR>
 " ctrl +s :GFiles
-nmap <C-s> :GFiles<Enter>
+nmap <C-s> :GFiles<CR>
