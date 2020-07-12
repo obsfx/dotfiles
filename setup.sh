@@ -7,8 +7,6 @@ sudo apt install git
 
 git config --global user.email "balandiomer@gmail.com"
 git config --global user.name "obsfx"
-git config --global user.signingkey 7709B9F9CCB9413A
-git config --global commit.gpgsign true
 
 sudo apt install python3-pip
 sudo apt install neovim
