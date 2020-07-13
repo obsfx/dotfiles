@@ -45,18 +45,16 @@ set undodir=~/.vim/undodir
 set undofile
 set noshowmode
 
+" neovim + tmux true color
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+
 filetype off
 
 syntax enable
 syntax on
-
-if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-if (has("termguicolors"))
-    set termguicolors
-endif
 
 autocmd CompleteDone * pclose
 
@@ -100,6 +98,7 @@ let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_char = '│'
 
+" write tag + ctrl + z + ,
 let g:user_emmet_leader_key='<C-Z>'
 
 let g:coc_global_extensions = [
@@ -123,7 +122,6 @@ colorscheme jellybeans
 " colorscheme hybrid
 " colorsheme monotone
 " colorscheme jellyx
-
 
 "highlight Function gui=bold
 "highlight Identifier gui=bold
