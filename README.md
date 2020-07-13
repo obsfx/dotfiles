@@ -1,3 +1,3 @@
 # dotfiles
 
-![preview](https://raw.githubusercontent.com/obsfx/dotfiles/screen.png)
+![preview](https://raw.githubusercontent.com/obsfx/dotfiles/master/screen.png)
