@@ -1,0 +1,30 @@
+window.ssd headerbar.titlebar {
+    color: #999;
+    padding: 3px 6px;
+    min-height: 0;
+    background: #222;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+window.ssd headerbar.titlebar button.titlebutton {
+    color: #999;
+    padding: 0px;
+    min-height: 0;
+    min-width: 0;
+    background: none;
+    outline: none;
+    border: none;
+    text-shadow: none;
+    -gtk-icon-shadow: none;
+    box-shadow: none;
+}
+
+window.ssd headerbar.titlebar button.titlebutton:hover {
+    color: #f1f1f1;
+    background-color: #3584e4;
+    border-radius: 4px;
+}

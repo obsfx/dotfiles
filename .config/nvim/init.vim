@@ -71,7 +71,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 
-" ***** themes, visual customizations
+"themes, visual customizations
 Plug 'itchyny/lightline.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'pbrisbin/vim-colors-off'
@@ -113,7 +113,7 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
-" ***** themes that i loved
+" themes that i loved
 " colorscheme off
 " colorscheme paramount
 " colorscheme tender
