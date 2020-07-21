@@ -2,7 +2,8 @@ window.ssd headerbar.titlebar {
     color: #999;
     padding: 3px 6px;
     min-height: 0;
-    background: #222;
+    background: rgb(20,20,20);
+    background: linear-gradient(0deg, rgba(20,20,20,1) 0%, rgba(24,24,24,1) 100%);
     border: none;
     outline: none;
     box-shadow: none;
@@ -25,6 +26,6 @@ window.ssd headerbar.titlebar button.titlebutton {
 
 window.ssd headerbar.titlebar button.titlebutton:hover {
     color: #f1f1f1;
-    background-color: #3584e4;
+    background-color: #444;
     border-radius: 4px;
 }
