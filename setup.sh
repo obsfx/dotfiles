@@ -29,6 +29,7 @@ curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.config/alacritty/
 
 sudo apt install tmux
 curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.tmux.conf" > ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
