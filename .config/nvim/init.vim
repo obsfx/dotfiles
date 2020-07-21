@@ -76,16 +76,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'owickstrom/vim-colors-paramount'
 Plug 'pbrisbin/vim-colors-off'
 Plug 'huyvohcmc/atlas.vim'
-Plug 'jacoborus/tender.vim'
-
-Plug 'arcticicestudio/nord-vim'
-Plug 'w0ng/vim-hybrid'
-Plug 'noahfrederick/vim-hemisu'
 Plug 'guns/jellyx.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'ajh17/Spacegray.vim'
-Plug 'andreypopp/vim-colors-plain'
-Plug 'Lokaltog/vim-monotone'
 
 call plug#end()
 
@@ -113,18 +105,7 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
-" themes that i loved
-" colorscheme off
-" colorscheme paramount
-" colorscheme tender
-" colorscheme Spacegray
 colorscheme jellybeans
-" colorscheme hybrid
-" colorsheme monotone
-" colorscheme jellyx
-
-"highlight Function gui=bold
-"highlight Identifier gui=bold
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
