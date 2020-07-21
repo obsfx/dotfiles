@@ -73,11 +73,13 @@ Plug 'OmniSharp/omnisharp-vim'
 
 "themes, visual customizations
 Plug 'itchyny/lightline.vim'
-Plug 'owickstrom/vim-colors-paramount'
-Plug 'pbrisbin/vim-colors-off'
 Plug 'huyvohcmc/atlas.vim'
-Plug 'guns/jellyx.vim'
 Plug 'nanotech/jellybeans.vim'
+Plug 'zaki/zazen'
+Plug 'ayu-theme/ayu-vim'
+Plug 'jakwings/vim-colors'
+Plug 'LuRsT/austere.vim'
+Plug 'pgdouyon/vim-yin-yang'
 
 call plug#end()
 
@@ -105,7 +107,8 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
-colorscheme jellybeans
+"colorscheme moody
+colorscheme austere
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
