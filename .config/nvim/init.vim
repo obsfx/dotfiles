@@ -76,10 +76,10 @@ Plug 'itchyny/lightline.vim'
 Plug 'huyvohcmc/atlas.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'zaki/zazen'
-Plug 'ayu-theme/ayu-vim'
-Plug 'jakwings/vim-colors'
-Plug 'LuRsT/austere.vim'
-Plug 'pgdouyon/vim-yin-yang'
+
+Plug 'deathlyfrantic/vim-distill'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'Lokaltog/vim-monotone'
 
 call plug#end()
 
@@ -107,8 +107,8 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
-"colorscheme moody
-colorscheme austere
+"colorscheme monotone
+colorscheme moonfly
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
