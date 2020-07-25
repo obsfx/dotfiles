@@ -74,16 +74,13 @@ Plug 'OmniSharp/omnisharp-vim'
 "themes, visual customizations
 Plug 'itchyny/lightline.vim'
 Plug 'huyvohcmc/atlas.vim'
+Plug 'cseelus/vim-colors-lucid'
+Plug 'ayu-theme/ayu-vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'zaki/zazen'
-
-Plug 'deathlyfrantic/vim-distill'
-Plug 'bluz71/vim-moonfly-colors'
-Plug 'Lokaltog/vim-monotone'
+Plug 'noahfrederick/vim-hemisu'
 
 call plug#end()
 
-let g:gruvbox_italics = 0
 let g:lightline = {
         \ 'colorscheme': 'atlas',
       \ }
@@ -107,8 +104,7 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
-"colorscheme monotone
-colorscheme moonfly
+colorscheme hemisu
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
