@@ -43,7 +43,6 @@ set cmdheight=2
 set background=dark
 set undodir=~/.vim/undodir
 set undofile
-set noshowmode
 
 " neovim + tmux true color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -65,25 +64,24 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'kien/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 
 "themes, visual customizations
-Plug 'itchyny/lightline.vim'
-Plug 'huyvohcmc/atlas.vim'
 Plug 'cseelus/vim-colors-lucid'
 Plug 'ayu-theme/ayu-vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'noahfrederick/vim-hemisu'
+Plug 'andreypopp/vim-colors-plain'
+Plug 'dikiaap/minimalist'
+Plug 'YorickPeterse/happy_hacking.vim'
+Plug 'desmap/slick'
 
 call plug#end()
 
-let g:lightline = {
-        \ 'colorscheme': 'atlas',
-      \ }
+colorscheme lucid
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
@@ -104,7 +102,7 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
-colorscheme hemisu
+let g:ctrlp_map = '<c-s>'
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
@@ -122,5 +120,3 @@ nmap <C-e> $
 nmap <C-a> 0
 " ctrl + x :Explore
 nmap <C-x> :Explore<CR>
-" ctrl +s :GFiles
-nmap <C-s> :GFiles<CR>
