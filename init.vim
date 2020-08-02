@@ -103,6 +103,8 @@ let g:coc_global_extensions = [
     \ ]
 
 let g:ctrlp_map = '<c-s>'
+" https://github.com/kien/ctrlp.vim/issues/174#issuecomment-49747252
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
