@@ -70,18 +70,13 @@ Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 
 "themes, visual customizations
-Plug 'cseelus/vim-colors-lucid'
-Plug 'ayu-theme/ayu-vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'noahfrederick/vim-hemisu'
 Plug 'andreypopp/vim-colors-plain'
-Plug 'dikiaap/minimalist'
-Plug 'YorickPeterse/happy_hacking.vim'
-Plug 'desmap/slick'
 
 call plug#end()
 
-colorscheme jellybeans
+colorscheme hemisu
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
