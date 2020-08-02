@@ -81,7 +81,7 @@ Plug 'desmap/slick'
 
 call plug#end()
 
-colorscheme lucid
+colorscheme jellybeans
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
