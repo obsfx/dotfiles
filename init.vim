@@ -38,11 +38,12 @@ set number
 set numberwidth=4
 set encoding=UTF-8
 set nocompatible
-set t_Co=256
 set cmdheight=2
 set background=dark
 set undodir=~/.vim/undodir
 set undofile
+set cursorline
+set noshowmode
 
 " neovim + tmux true color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -70,13 +71,29 @@ Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 
 "themes, visual customizations
+Plug 'itchyny/lightline.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'noahfrederick/vim-hemisu'
-Plug 'andreypopp/vim-colors-plain'
+Plug 'huyvohcmc/atlas.vim'
+Plug 'pbrisbin/vim-colors-off'
+Plug 'AlessandroYorba/Sierra'
+Plug 'srcery-colors/srcery-vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
 
 call plug#end()
 
-colorscheme hemisu
+let g:lightline = { 'colorscheme': 'srcery' }
+
+"let g:jellybeans_use_gui_italics = 0
+"colorscheme jellybeans
+
+"let g:sierra_Midnight = 1
+"colorscheme sierra 
+
+colorscheme srcery
+
+"let g:material_theme_style = 'ocean'
+"colorscheme material
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
@@ -92,7 +109,6 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-clangd',
     \ 'coc-highlight',
-    \ 'coc-markdownlint',
     \ 'coc-python',
     \ 'coc-git'
     \ ]
