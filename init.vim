@@ -71,18 +71,12 @@ Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 
 "themes, visual customizations
-Plug 'itchyny/lightline.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'noahfrederick/vim-hemisu'
-Plug 'huyvohcmc/atlas.vim'
-Plug 'pbrisbin/vim-colors-off'
 Plug 'AlessandroYorba/Sierra'
 Plug 'srcery-colors/srcery-vim'
-Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
+Plug 'co1ncidence/mountaineer'
 
 call plug#end()
-
-let g:lightline = { 'colorscheme': 'srcery' }
 
 "let g:jellybeans_use_gui_italics = 0
 "colorscheme jellybeans
@@ -90,10 +84,12 @@ let g:lightline = { 'colorscheme': 'srcery' }
 "let g:sierra_Midnight = 1
 "colorscheme sierra 
 
-colorscheme srcery
+"colorscheme srcery
 
 "let g:material_theme_style = 'ocean'
 "colorscheme material
+
+colorscheme mountaineer
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
@@ -126,6 +122,12 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+
+"disable suspend
+nnoremap  <c-z> <nop>
+
+"disable ctrl u in insert mode
+inoremap  <c-u> <nop>
 
 " ctrl + e jump end of the line
 nmap <C-e> $
