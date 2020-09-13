@@ -71,25 +71,26 @@ Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 
 "themes, visual customizations
+Plug 'itchyny/lightline.vim'
 Plug 'nanotech/jellybeans.vim'
-Plug 'AlessandroYorba/Sierra'
 Plug 'srcery-colors/srcery-vim'
-Plug 'co1ncidence/mountaineer'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
 
 call plug#end()
 
 "let g:jellybeans_use_gui_italics = 0
 "colorscheme jellybeans
 
-"let g:sierra_Midnight = 1
-"colorscheme sierra 
-
 "colorscheme srcery
 
-"let g:material_theme_style = 'ocean'
-"colorscheme material
+let g:lightline = { 'colorscheme': 'material_vim'  }
+let g:material_theme_style = 'ocean'
+colorscheme material
 
-colorscheme mountaineer
+"let g:lightline = { 'colorscheme': 'neodark'  }
+"let g:neodark#background = '#202020'
+"colorscheme neodark
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
