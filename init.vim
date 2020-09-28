@@ -69,6 +69,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
+Plug 'habamax/vim-godot'
 
 "themes, visual customizations
 Plug 'itchyny/lightline.vim'
