@@ -73,10 +73,21 @@ Plug 'habamax/vim-godot'
 
 "themes, visual customizations
 Plug 'itchyny/lightline.vim'
+Plug 'huyvohcmc/atlas.vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'srcery-colors/srcery-vim'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
+Plug 'sjl/badwolf'
+Plug 'bluz71/vim-moonfly-colors'
+Plug 'ajh17/Spacegray.vim'
+Plug 'arzg/vim-substrata'
+Plug 'co1ncidence/mountaineer.vim'
+Plug 'tek256/simple-dark'
+Plug 'eemed/sitruuna.vim'
+Plug 'dylanaraps/crayon'
+Plug 'vimoxide/vim-cinnabar'
+Plug 'co1ncidence/gunmetal.vim'
 
 call plug#end()
 
@@ -85,13 +96,16 @@ call plug#end()
 
 "colorscheme srcery
 
-let g:lightline = { 'colorscheme': 'material_vim'  }
-let g:material_theme_style = 'ocean'
-colorscheme material
+"let g:lightline = { 'colorscheme': 'material_vim'  }
+"let g:material_theme_style = 'ocean'
+"colorscheme material
 
 "let g:lightline = { 'colorscheme': 'neodark'  }
 "let g:neodark#background = '#202020'
 "colorscheme neodark
+
+let g:lightline = { 'colorscheme': 'atlas'  }
+colorscheme mountaineer
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
