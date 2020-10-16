@@ -105,7 +105,7 @@ call plug#end()
 "colorscheme neodark
 
 let g:lightline = { 'colorscheme': 'atlas'  }
-colorscheme mountaineer
+colorscheme badwolf
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
