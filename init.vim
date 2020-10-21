@@ -60,9 +60,18 @@ autocmd CompleteDone * pclose
 
 call plug#begin()
 
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'amadeus/vim-xml'
+Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'vim-python/python-syntax'
+Plug 'tbastos/vim-lua'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'sheerun/vim-polyglot'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
 Plug 'kien/ctrlp.vim'
