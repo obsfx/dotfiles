@@ -14,6 +14,10 @@ sudo apt install zsh
 sudo apt install clangd-9
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 
+# packages for compiling simple terminal
+sudo apt install libx11-dev
+sudo apt install libxft-dev
+
 sudo apt install neovim
 mkdir ~/.vim/undodir -p
 mkdir ~/.config/nvim -p
