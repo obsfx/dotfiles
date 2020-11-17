@@ -1,0 +1,10 @@
+https://askubuntu.com/questions/621964/colors-on-display-are-washed-out
+Try running the following command from a terminal while logged in:
+
+xrandr --output HDMI1 --set "Broadcast RGB" "Full"
+Your screen will probably flicker/turn off momentarily to apply the new settings.
+
+If that fixes your problem, you can add this command to your ~/.xprofile file so that it runs whenever you log in to the graphical environment:
+
+echo 'xrandr --output HDMI1 --set "Broadcast RGB" "Full"' >> ~/.xprofile
+Hope that helps! It took me months to discover this fix!
