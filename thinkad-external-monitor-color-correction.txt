@@ -8,3 +8,6 @@ If that fixes your problem, you can add this command to your ~/.xprofile file so
 
 echo 'xrandr --output HDMI1 --set "Broadcast RGB" "Full"' >> ~/.xprofile
 Hope that helps! It took me months to discover this fix!
+
+///// worked
+xrandr --output DP-2 --set "Broadcast RGB" "Full"
