@@ -30,12 +30,12 @@ set noswapfile
 set nowritebackup
 set updatetime=300
 set shortmess+=c
-set tabstop=4
+set tabstop=2
 set smarttab
-set shiftwidth=4
+set shiftwidth=2
 set expandtab
 set number
-set numberwidth=4
+set numberwidth=2
 set encoding=UTF-8
 set nocompatible
 set cmdheight=2
@@ -60,6 +60,7 @@ autocmd CompleteDone * pclose
 
 call plug#begin()
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'amadeus/vim-xml'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
@@ -69,49 +70,25 @@ Plug 'tbastos/vim-lua'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
-
-Plug 'jiangmiao/auto-pairs'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'vim-utils/vim-man'
-Plug 'mbbill/undotree'
-Plug 'kien/ctrlp.vim'
-Plug 'Yggdroot/indentLine'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'habamax/vim-godot'
 
+Plug 'jiangmiao/auto-pairs'
+Plug 'vim-utils/vim-man'
+Plug 'mbbill/undotree'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'Yggdroot/indentLine'
+
 "themes, visual customizations
 Plug 'itchyny/lightline.vim'
 Plug 'huyvohcmc/atlas.vim'
-Plug 'nanotech/jellybeans.vim'
-Plug 'srcery-colors/srcery-vim'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'kaicataldo/material.vim', { 'branch': 'main'  }
 Plug 'sjl/badwolf'
-Plug 'bluz71/vim-moonfly-colors'
-Plug 'ajh17/Spacegray.vim'
-Plug 'arzg/vim-substrata'
-Plug 'co1ncidence/mountaineer.vim'
-Plug 'tek256/simple-dark'
-Plug 'eemed/sitruuna.vim'
-Plug 'dylanaraps/crayon'
-Plug 'vimoxide/vim-cinnabar'
-Plug 'co1ncidence/gunmetal.vim'
 
 call plug#end()
-
-"let g:jellybeans_use_gui_italics = 0
-"colorscheme jellybeans
-
-"colorscheme srcery
-
-"let g:lightline = { 'colorscheme': 'material_vim'  }
-"let g:material_theme_style = 'ocean'
-"colorscheme material
-
-"let g:lightline = { 'colorscheme': 'neodark'  }
-"let g:neodark#background = '#202020'
-"colorscheme neodark
 
 let g:lightline = { 'colorscheme': 'atlas'  }
 colorscheme badwolf
@@ -125,7 +102,6 @@ let g:user_emmet_leader_key='<C-Z>'
 
 let g:coc_global_extensions = [
     \ 'coc-css',
-    \ 'coc-json',
     \ 'coc-html',
     \ 'coc-tsserver',
     \ 'coc-clangd',
@@ -133,10 +109,6 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-git'
     \ ]
-
-let g:ctrlp_map = '<c-s>'
-" https://github.com/kien/ctrlp.vim/issues/174#issuecomment-49747252
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
@@ -147,16 +119,15 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
-
 "disable suspend
 nnoremap  <c-z> <nop>
-
 "disable ctrl u in insert mode
 inoremap  <c-u> <nop>
-
 " ctrl + e jump end of the line
 nmap <C-e> $
 " ctrl + a jump begining of the line
 nmap <C-a> 0
-" ctrl + x :Explore
-nmap <C-x> :Explore<CR>
+" ctrl + s fzf :Files
+nmap <C-s> :Files<CR>
+"ctrl + x fzf :GFiles
+nmap <C-x> :GFiles<CR>

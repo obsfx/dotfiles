@@ -22,7 +22,7 @@ sudo apt install ttf-ancient-fonts-symbola
 sudo apt install neovim
 mkdir ~/.vim/undodir -p
 mkdir ~/.config/nvim -p
-curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/nvim/init.vim" > ~/.config/nvim/init.vim
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/init.vim" > ~/.config/nvim/init.vim
 sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 100
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -34,3 +34,13 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sudo chsh -s $(which zsh) $(whoami)
+
+# additional apps
+sudo apt install yacreader
+sudo apt install lm-sensors
+sudo apt install ppsspp
+sudo apt-get install font-manager
+
+# starship.rs
+curl -fsSL https://starship.rs/install.sh | bash
+"eval \"$(starship init zsh)\"" >> ~/.zshrc
