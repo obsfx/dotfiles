@@ -32,9 +32,6 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sudo chsh -s $(which zsh) $(whoami)
-
 # additional apps
 sudo apt install yacreader
 sudo apt install lm-sensors
@@ -42,5 +39,14 @@ sudo apt install ppsspp
 sudo apt-get install font-manager
 
 # starship.rs
-curl -fsSL https://starship.rs/install.sh | bash
-"eval \"$(starship init zsh)\"" >> ~/.zshrc
+#curl -fsSL https://starship.rs/install.sh | bash
+#"eval \"$(starship init zsh)\"" >> ~/.zshrc
+
+# alacritty
+sudo add-apt-repository ppa:mmstick76/alacritty
+sudo apt update
+sudo apt install alacritty
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.alacritty.yml" > ~/.alacritty.yml
+
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo chsh -s $(which zsh) $(whoami)
