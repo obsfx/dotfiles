@@ -75,6 +75,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'habamax/vim-godot'
+Plug 'vlime/vlime', {'rtp': 'vim/'}
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-utils/vim-man'

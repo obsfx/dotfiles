@@ -38,6 +38,15 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 # additional apps
 sudo apt-get install font-manager
 
+# common lisp
+sudo apt-get install sbcl
+curl -o /tmp/ql.lisp http://beta.quicklisp.org/quicklisp.lisp
+sbcl --no-sysinit --no-userinit --load /tmp/ql.lisp \
+  --eval '(quicklisp-quickstart:install :path "~/.quicklisp")' \
+  --eval '(ql:add-to-init-file)' \
+  --quit
+git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
+
 # alacritty
 sudo add-apt-repository ppa:mmstick76/alacritty
 sudo apt update
