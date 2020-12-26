@@ -2,7 +2,7 @@
  Name=Simple Terminal
  GenericName=Terminal
  Comment=Suckless terminal emulator for X
- Exec=st -t "Simple Terminal" -f "Iosevka SS12:pixelsize=16:antialias=true:autohint=true"
+ Exec=st -t "Simple Terminal" -f "Iosevka SS12:pixelsize=14:antialias=true:autohint=true"
  Icon=utilities-terminal
  Terminal=false
  Type=Application

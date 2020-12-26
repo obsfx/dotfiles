@@ -33,6 +33,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # gtk 
 curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/gtk.css" > ~/.config/gtk-3.0/gtk.css
 
+# st.desktop 
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/st.desktop" > /usr/share/applications/st.desktop
+
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
 # additional apps
