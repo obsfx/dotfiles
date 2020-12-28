@@ -6,5 +6,5 @@
 
 - **Editor:** Neovim
 - **Terminal Multiplexer:** tmux
-- **Terminal:** Simple Terminal / Alacritty
+- **Terminal:** Kitty
 - **Font:** Iosevka SS12
