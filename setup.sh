@@ -14,11 +14,6 @@ sudo apt install python3-pip
 sudo apt install clangd-9
 sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 
-# packages for compiling simple terminal
-sudo apt install libx11-dev
-sudo apt install libxft-dev
-sudo apt install ttf-ancient-fonts-symbola
-
 sudo apt install neovim
 mkdir ~/.vim/undodir -p
 mkdir ~/.config/nvim -p
@@ -34,7 +29,17 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/gtk.css" > ~/.config/gtk-3.0/gtk.css
 
 # st.desktop 
-curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/st.desktop" > /usr/share/applications/st.desktop
+# curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/st.desktop" > /usr/share/applications/st.desktop
+
+# packages for compiling simple terminal
+# sudo apt install libx11-dev
+# sudo apt install libxft-dev
+# sudo apt install ttf-ancient-fonts-symbola
+
+# kitty
+sudo apt install kitty
+mkdir ~/.config/kitty
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
@@ -51,10 +56,10 @@ sbcl --no-sysinit --no-userinit --load /tmp/ql.lisp \
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 
 # alacritty
-sudo add-apt-repository ppa:mmstick76/alacritty
-sudo apt update
-sudo apt install alacritty
-curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.alacritty.yml" > ~/.alacritty.yml
+# sudo add-apt-repository ppa:mmstick76/alacritty
+# sudo apt update
+# sudo apt install alacritty
+# curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.alacritty.yml" > ~/.alacritty.yml
 
 # starship.rs
 curl -fsSL https://starship.rs/install.sh | bash
