@@ -37,9 +37,9 @@ curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/gtk.css" > ~/.conf
 # sudo apt install ttf-ancient-fonts-symbola
 
 # kitty
-sudo apt install kitty
-mkdir ~/.config/kitty
-curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
+# sudo apt install kitty
+# mkdir ~/.config/kitty
+# curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
