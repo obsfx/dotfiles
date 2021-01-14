@@ -36,10 +36,10 @@ curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/gtk.css" > ~/.conf
 # sudo apt install libxft-dev
 # sudo apt install ttf-ancient-fonts-symbola
 
-# kitty
-# sudo apt install kitty
-# mkdir ~/.config/kitty
-# curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
+kitty
+sudo apt install kitty
+mkdir ~/.config/kitty
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
@@ -63,6 +63,9 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 
 # starship.rs
 curl -fsSL https://starship.rs/install.sh | bash
+
+# .zsh config
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.zshrc" > ~/.zshrc
 
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
