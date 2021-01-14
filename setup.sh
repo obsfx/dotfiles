@@ -36,7 +36,7 @@ curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/gtk.css" > ~/.conf
 # sudo apt install libxft-dev
 # sudo apt install ttf-ancient-fonts-symbola
 
-kitty
+# kitty
 sudo apt install kitty
 mkdir ~/.config/kitty
 curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
