@@ -6,5 +6,5 @@
 
 - **Editor:** Neovim
 - **Terminal Multiplexer:** tmux
-- **Terminal:** Suckless Terminal
+- **Terminal:** Kitty / Suckless Terminal
 - **Font:** Iosevka SS12
