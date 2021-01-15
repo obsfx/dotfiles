@@ -29,12 +29,13 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/gtk.css" > ~/.config/gtk-3.0/gtk.css
 
 # st.desktop 
-# curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/st.desktop" > /usr/share/applications/st.desktop
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/st.desktop" > /usr/share/applications/st.desktop
 
-# packages for compiling simple terminal
-# sudo apt install libx11-dev
-# sudo apt install libxft-dev
-# sudo apt install ttf-ancient-fonts-symbola
+# libs for st
+packages for compiling simple terminal
+sudo apt install libx11-dev
+sudo apt install libxft-dev
+sudo apt install ttf-ancient-fonts-symbola
 
 # kitty
 sudo apt install kitty
