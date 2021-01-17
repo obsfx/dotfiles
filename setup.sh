@@ -72,8 +72,8 @@ curl -o ~/.zshrc https://raw.githubusercontent.com/obsfx/dotfiles/master/.zshrc
 sudo apt install i3xrocks-focused-window-name
 sudo apt install regolith-desktop-standard 
 curl -o ~/.config/regolith/Xresources https://raw.githubusercontent.com/obsfx/dotfiles/master/.config/regolith/Xresources
-
-curl -o ~/.wallpapers/bg.jpg https://raw.githubusercontent.com/obsfx/dotfiles/master/.wallpapers/bg.jpg
+curl -o ~/.rofi https://raw.githubusercontent.com/obsfx/dotfiles/master/.rofi
+curl -o ~/.wallpapers/bg.jpg --create-dirs https://raw.githubusercontent.com/obsfx/dotfiles/master/.wallpapers/bg.jpg
 
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
