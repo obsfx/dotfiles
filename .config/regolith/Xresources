@@ -8,7 +8,40 @@ i3-wm.bar.font: pango:Iosevka SS12 12, Material Design Icons 12
 i3-wm.font:	pango:Iosevka SS12 12
 i3-wm.gaps.inner.size: 10
 i3-wm.window.border.size:	1
-
 i3xrocks.value.font: Iosevka SS12 10
-rofi.font: Iosevka SS12 12
+
+i3-wm.bar.background.color: #0A0A0A
+i3-wm.bar.workspace.active.background.color:  #B1E5F2
+i3-wm.bar.workspace.active.border.color:  #B1E5F2
+i3-wm.bar.workspace.active.text.color:  #0A0A0A
+
+i3-wm.bar.workspace.focused.background.color: #DAEDBD
+i3-wm.bar.workspace.focused.border.color: #DAEDBD
+i3-wm.bar.workspace.focused.text.color: #0A0A0A
+
+i3-wm.bar.workspace.inactive.background.color:  #0A0A0A
+i3-wm.bar.workspace.inactive.border.color:  #0A0A0A
+i3-wm.bar.workspace.inactive.text.color:  #FFFFFF
+
+i3-wm.workspace.01.name: 1:<span font_desc='Iosevka SS12 10'> 1 </span>
+i3-wm.workspace.02.name: 2:<span font_desc='Iosevka SS12 10'> 2 </span>
+i3-wm.workspace.03.name: 3:<span font_desc='Iosevka SS12 10'> 3 </span>
+i3-wm.workspace.04.name: 4:<span font_desc='Iosevka SS12 10'> 4 </span>
+i3-wm.workspace.05.name: 5:<span font_desc='Iosevka SS12 10'> 5 </span>
+i3-wm.workspace.06.name: 6:<span font_desc='Iosevka SS12 10'> 6 </span>
+i3-wm.workspace.07.name: 7:<span font_desc='Iosevka SS12 10'> 7 </span>
+i3-wm.workspace.08.name: 8:<span font_desc='Iosevka SS12 10'> 8 </span>
+i3-wm.workspace.09.name: 9:<span font_desc='Iosevka SS12 10'> 9 </span>
+i3-wm.workspace.10.name: 10:<span font_desc='Iosevka SS12 10'> 10 </span>
+i3-wm.workspace.11.name: 11:<span font_desc='Iosevka SS12 10'> 11 </span>
+i3-wm.workspace.12.name: 12:<span font_desc='Iosevka SS12 10'> 12 </span>
+i3-wm.workspace.13.name: 13:<span font_desc='Iosevka SS12 10'> 13 </span>
+i3-wm.workspace.14.name: 14:<span font_desc='Iosevka SS12 10'> 14 </span>
+i3-wm.workspace.15.name: 15:<span font_desc='Iosevka SS12 10'> 15 </span>
+i3-wm.workspace.16.name: 16:<span font_desc='Iosevka SS12 10'> 16 </span>
+i3-wm.workspace.17.name: 17:<span font_desc='Iosevka SS12 10'> 17 </span>
+i3-wm.workspace.18.name: 18:<span font_desc='Iosevka SS12 10'> 18 </span>
+i3-wm.workspace.19.name: 19:<span font_desc='Iosevka SS12 10'> 19 </span>
+
+rofi.font: Iosevka SS12 14
 rofi.icon-theme: Moka
