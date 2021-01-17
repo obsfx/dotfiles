@@ -1,11 +1,3 @@
-! Custom Typeface: Iosevka SS12
-! #define typeface_bar_glyph  Iosevka SS12 10
-! #define typeface_wm         pango:Iosevka SS12 12
-! #define typeface_bar        pango:Iosevka SS12 12, Material Design Icons 12
-! #define typeface_rofi       Iosevka SS12 12
-! #define typeface_terminal   Iosevka SS12:pixelsize=12:antialias=true:autohint=true
-! #define typeface_gnome_terminal Iosevka SS12 12
-
 gnome.gtk.theme: Yaru
 gnome.icon.theme: Moka
 gnome.wallpaper: ~/.wallpapers/bg.jpg
@@ -20,7 +12,3 @@ i3-wm.window.border.size:	1
 i3xrocks.value.font: Iosevka SS12 10
 rofi.font: Iosevka SS12 12
 rofi.icon-theme: Moka
-
-! sudo apt install i3xrocks-focused-window-name
-! sudo apt install regolith-desktop-standard
-! sudo apt install pavucontrol
