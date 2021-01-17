@@ -44,4 +44,5 @@ i3-wm.workspace.18.name: 18:<span font_desc='Iosevka SS12 10'> 18 </span>
 i3-wm.workspace.19.name: 19:<span font_desc='Iosevka SS12 10'> 19 </span>
 
 rofi.font: Iosevka SS12 14
+rofi.theme: ~/.rofi
 rofi.icon-theme: Moka
