@@ -1,4 +1,4 @@
-ludo apt update
+sudo apt update
 sudo apt upgrade
 
 sudo apt install curl
@@ -28,7 +28,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 curl -o ~/.config/gtk-3.0/gtk.css https://raw.githubusercontent.com/obsfx/dotfiles/master/.config/gtk-3.0/gtk.css
 
 # st.desktop 
-sudo curl -o /usr/share/applications/st.desktop https://raw.githubusercontent.com/obsfx/dotfiles/master/st.desktop
+sudo curl -o /usr/share/applications/st.desktop https://raw.githubusercontent.com/obsfx/dotfiles/master/usr/share/applications/st.desktop
 
 # libs for st
 # packages for compiling simple terminal
