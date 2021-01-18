@@ -35,6 +35,7 @@ sudo curl -o /usr/share/applications/st.desktop https://raw.githubusercontent.co
 sudo apt install libx11-dev
 sudo apt install libxft-dev
 sudo apt install ttf-ancient-fonts-symbola
+sudo apt install unifont
 
 # kitty
 # sudo apt install kitty
