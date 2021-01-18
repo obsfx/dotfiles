@@ -1,4 +1,3 @@
-"   shift + v + < or > mutliline back tab / insert tab
 "   w, b and e moving around words
 "   yy yank a line (copy)
 "   p paste that one line below
@@ -43,13 +42,14 @@ set background=dark
 set undodir=~/.vim/undodir
 set undofile
 set cursorline
-set noshowmode
+"set noshowmode
 
 " neovim + tmux true color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set termguicolors
+"set termguicolors
+set t_Co=256 
 
 filetype off
 
@@ -85,22 +85,25 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'Yggdroot/indentLine'
 
-"themes, visual customizations
-Plug 'itchyny/lightline.vim'
-Plug 'huyvohcmc/atlas.vim'
+" themes, visual customizations
+"Plug 'itchyny/lightline.vim'
+"Plug 'huyvohcmc/atlas.vim'
 Plug 'sjl/badwolf'
 
 call plug#end()
 
-let g:lightline = { 'colorscheme': 'atlas'  }
+"let g:lightline = { 'colorscheme': 'atlas'  }
 colorscheme badwolf
+
+" custom status line
+hi StatusLine ctermbg=234 ctermfg=242
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_char = '│'
 
 " write tag + ctrl + z + ,
-let g:user_emmet_leader_key='<C-Z>'
+let g:user_emmet_leader_key='<C-z>'
 
 let g:coc_global_extensions = [
     \ 'coc-css',
@@ -112,6 +115,8 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
+"no more esc key
+inoremap  <Esc>     <NOP>
 "no more arrow keys
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -122,9 +127,9 @@ noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 " disable suspend
-nnoremap  <c-z> <nop>
+nnoremap  <C-z> <nop>
 " disable ctrl u in insert mode
-inoremap  <c-u> <nop>
+inoremap  <C-u> <nop>
 " ctrl + e jump end of the line
 nnoremap <C-e> $
 vnoremap <C-e> $
@@ -136,6 +141,9 @@ nnoremap <C-s> :Files<CR>
 " ctrl + x fzf :GFiles
 nnoremap <C-x> :GFiles<CR>
 
+" suspend ctrl + c warning
+nnoremap <C-c> <silent> <C-c>
+
 " ack.vim --- {{{
 
 " Use ripgrep for searching ⚡️
@@ -143,7 +151,7 @@ nnoremap <C-x> :GFiles<CR>
 " --vimgrep -> Needed to parse the rg response properly for ack.vim
 " --type-not sql -> Avoid huge sql file dumps as it slows down the search
 " --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
-let g:ackprg = 'rg --vimgrep --type-not sql --smart-case'
+let g:ackprg = 'rg --vimgrep --type-not sql -g="!*-lock.json" --smart-case'
 
 " Auto close the Quickfix list after pressing '<enter>' on a list item
 let g:ack_autoclose = 1
