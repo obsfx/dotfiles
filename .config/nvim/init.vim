@@ -115,8 +115,6 @@ let g:coc_global_extensions = [
     \ 'coc-git'
     \ ]
 
-"no more esc key
-inoremap  <Esc>     <NOP>
 "no more arrow keys
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
@@ -140,9 +138,6 @@ vnoremap <C-a> 0
 nnoremap <C-s> :Files<CR>
 " ctrl + x fzf :GFiles
 nnoremap <C-x> :GFiles<CR>
-
-" suspend ctrl + c warning
-nnoremap <C-c> <silent> <C-c>
 
 " ack.vim --- {{{
 
