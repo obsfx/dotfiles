@@ -95,8 +95,12 @@ call plug#end()
 "let g:lightline = { 'colorscheme': 'atlas'  }
 colorscheme badwolf
 
-" custom status line
-hi StatusLine ctermbg=234 ctermfg=242
+" status line
+hi StatusLine ctermbg=15 ctermfg=16
+" background color
+hi Normal ctermbg=232
+" line numbers
+hi LineNr ctermbg=232
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
@@ -130,7 +134,7 @@ nnoremap  <C-z> <nop>
 inoremap  <C-u> <nop>
 " ctrl + e jump end of the line
 nnoremap <C-e> $
-vnoremap <C-e> $
+vnoremap <C-e> $h
 " ctrl + a jump begining of the line
 nnoremap <C-a> 0
 vnoremap <C-a> 0
