@@ -42,6 +42,8 @@ set background=dark
 set undodir=~/.vim/undodir
 set undofile
 set cursorline
+set scrolloff=4
+set signcolumn=yes
 "set noshowmode
 
 " neovim + tmux true color
@@ -85,14 +87,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'Yggdroot/indentLine'
 
-" themes, visual customizations
-"Plug 'itchyny/lightline.vim'
-"Plug 'huyvohcmc/atlas.vim'
 Plug 'sjl/badwolf'
 
 call plug#end()
 
-"let g:lightline = { 'colorscheme': 'atlas'  }
 colorscheme badwolf
 
 " status line
@@ -101,6 +99,8 @@ hi StatusLine ctermbg=15 ctermfg=16
 hi Normal ctermbg=232
 " line numbers
 hi LineNr ctermbg=232
+" signcolumn 
+hi SignColumn ctermbg=232
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
