@@ -11,7 +11,7 @@
 "   ctrl f / b scroll down up
 "   a append text right to cursor
 "   A add text end of line
-"   shfit + i / a move begining / ending of line 
+"   shfit + i / a move begining / ending of line
 "   ctrl + p / n / y move and select in popup windows without arrow keys
 "   vertical split ctrl+w v
 "   horizontal split ctrl+w s
@@ -51,7 +51,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "set termguicolors
-set t_Co=256 
+set t_Co=256
 
 filetype off
 
@@ -99,7 +99,7 @@ hi LineNr ctermbg=232
 hi SignColumn ctermbg=232
 hi EndOfBuffer ctermbg=232
 
-let g:indentLine_leadingSpaceEnabled = 1 
+let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_char = '│'
 
@@ -144,6 +144,9 @@ vnoremap  <C-a> 0
 nnoremap  <C-s> :Files<CR>
 " ctrl + x fzf :GFiles
 nnoremap  <C-x> :GFiles<CR>
+
+" remove trailing whitespaces on save
+autocmd BufWritePre * %s/\s\+$//e
 
 " ack.vim --- {{{
 
