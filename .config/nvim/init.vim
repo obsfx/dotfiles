@@ -91,16 +91,13 @@ Plug 'sjl/badwolf'
 
 call plug#end()
 
+" theme
 colorscheme badwolf
-
-" status line
 hi StatusLine ctermbg=15 ctermfg=16
-" background color
 hi Normal ctermbg=232
-" line numbers
 hi LineNr ctermbg=232
-" signcolumn 
 hi SignColumn ctermbg=232
+hi EndOfBuffer ctermbg=232
 
 let g:indentLine_leadingSpaceEnabled = 1 
 let g:indentLine_leadingSpaceChar = '.'
@@ -128,20 +125,25 @@ noremap   <Up>     <NOP>
 noremap   <Down>   <NOP>
 noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
+" line moving
+nnoremap  <A-k> :m .-2<CR>==
+nnoremap  <A-j> :m .+1<CR>==
+vnoremap  <A-j> :m '>+1<CR>gv=gv
+vnoremap  <A-k> :m '<-2<CR>gv=gv
 " disable suspend
-nnoremap  <C-z> <nop>
+nnoremap  <C-z> <NOP>
 " disable ctrl u in insert mode
-inoremap  <C-u> <nop>
+inoremap  <C-u> <NOP>
 " ctrl + e jump end of the line
-nnoremap <C-e> $
-vnoremap <C-e> $h
+nnoremap  <C-e> $
+vnoremap  <C-e> $h
 " ctrl + a jump begining of the line
-nnoremap <C-a> 0
-vnoremap <C-a> 0
+nnoremap  <C-a> 0
+vnoremap  <C-a> 0
 " ctrl + s fzf :Files
-nnoremap <C-s> :Files<CR>
+nnoremap  <C-s> :Files<CR>
 " ctrl + x fzf :GFiles
-nnoremap <C-x> :GFiles<CR>
+nnoremap  <C-x> :GFiles<CR>
 
 " ack.vim --- {{{
 
