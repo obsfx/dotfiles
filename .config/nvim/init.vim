@@ -58,11 +58,13 @@ filetype off
 syntax enable
 syntax on
 
-autocmd CompleteDone * pclose
 
 call plug#begin()
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'graphql', 'markdown', 'yaml', 'html'] }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'amadeus/vim-xml'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
@@ -146,26 +148,27 @@ nnoremap  <C-s> :Files<CR>
 nnoremap  <C-x> :GFiles<CR>
 
 " remove trailing whitespaces on save
-autocmd BufWritePre * %s/\s\+$//e
+function! RemoveTrailingWhitespaces()
+  let saved_cursor_pos = getpos(".")
+  %s/\s\+$//e
+  call setpos(".", saved_cursor_pos)
+endfunction
+autocmd BufWritePre * call RemoveTrailingWhitespaces()
 
-" ack.vim --- {{{
+autocmd CompleteDone * pclose
 
-" Use ripgrep for searching ⚡️
+" Use ripgrep for searching
 " Options include:
-" --vimgrep -> Needed to parse the rg response properly for ack.vim
-" --type-not sql -> Avoid huge sql file dumps as it slows down the search
-" --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
+"   --vimgrep -> Needed to parse the rg response properly for ack.vim
+"   --type-not sql -> Avoid huge sql file dumps as it slows down the search
+"   -g="!*-lock.json" -> Exclude *-lock.json files
+"   --smart-case -> Search case insensitive if all lowercase pattern, Search case sensitively otherwise
 let g:ackprg = 'rg --vimgrep --type-not sql -g="!*-lock.json" --smart-case'
-
 " Auto close the Quickfix list after pressing '<enter>' on a list item
 let g:ack_autoclose = 1
-
 " Any empty ack search will search for the work the cursor is on
 let g:ack_use_cword_for_empty_search = 1
-
 " Don't jump to first match
 cnoreabbrev Ack Ack!
-
 " Maps <leader>/ so we're ready to type the search keyword
 nnoremap <Leader>/ :Ack!<Space>
-" }}}
