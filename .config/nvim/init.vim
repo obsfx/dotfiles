@@ -153,9 +153,14 @@ function! RemoveTrailingWhitespaces()
   %s/\s\+$//e
   call setpos(".", saved_cursor_pos)
 endfunction
-autocmd BufWritePre * call RemoveTrailingWhitespaces()
 
-autocmd CompleteDone * pclose
+augroup rm_trailing_ws
+  autocmd BufWritePre * call RemoveTrailingWhitespaces()
+augroup end
+
+augroup cls_on_complete_done
+  autocmd CompleteDone * pclose
+augroup end
 
 " Use ripgrep for searching
 " Options include:
