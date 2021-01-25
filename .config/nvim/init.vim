@@ -66,6 +66,7 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'graphql', 'markdown', 'yaml', 'html'] }
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'tpope/vim-fugitive'
 Plug 'amadeus/vim-xml'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
 Plug 'cakebaker/scss-syntax.vim'
