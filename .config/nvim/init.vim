@@ -146,6 +146,11 @@ vnoremap  <C-a> 0
 nnoremap  <C-s> :Files<CR>
 " ctrl + x fzf :GFiles
 nnoremap  <C-x> :GFiles<CR>
+" indentation
+nnoremap  <Tab> >>
+nnoremap  <BS> <<
+vnoremap  <Tab> >gv
+vnoremap  <BS> <gv
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
