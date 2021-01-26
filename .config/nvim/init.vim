@@ -202,7 +202,7 @@ function! GitBranch()
 endfunction
 
 function GitModified()
-  return system("git diff --stat | tail -n1")
+  return system("git status --porcelain")
 endfunction
 
 function! StatuslineGit()
