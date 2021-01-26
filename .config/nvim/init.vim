@@ -201,9 +201,14 @@ function! GitBranch()
   return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
 endfunction
 
+function GitModified()
+  return system("git diff --stat | tail -n1")
+endfunction
+
 function! StatuslineGit()
   let branchname = GitBranch()
-  return strlen(branchname) > 0 ? ' '.branchname.' ' : ''
+  let modified = GitModified() != '' ? ' *' : ''
+  return strlen(branchname) > 0 ? ' '.branchname.' '.modified : ''
 endfunction
 
 function! StatusLineFileType()
