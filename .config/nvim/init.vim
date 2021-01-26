@@ -207,8 +207,8 @@ endfunction
 
 function! StatuslineGit()
   let branchname = GitBranch()
-  let modified = GitModified() != '' ? ' *' : ''
-  return strlen(branchname) > 0 ? ' '.branchname.' '.modified : ''
+  let modified = GitModified() != '' ? '*' : ''
+  return strlen(branchname) > 0 ? ' '.branchname.modified.' ' : ''
 endfunction
 
 function! StatusLineFileType()
@@ -224,7 +224,7 @@ hi StatusLineFileTypeC    ctermbg=234 ctermfg=189 cterm=bold
 set statusline=
 set statusline+=\ %f                              " filepath with maxlen
 set statusline+=%#StatusLineModifiedC#            " modified indicator custom color
-set statusline+=%{&modified?'@':''}               " modified indicator
+set statusline+=%{&modified?'*':''}               " modified indicator
 set statusline+=%*                                " switch back to statusline highlight
 
 set statusline+=%=                                " switch to right side
