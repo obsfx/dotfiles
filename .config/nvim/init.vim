@@ -203,29 +203,34 @@ endfunction
 
 function! StatuslineGit()
   let branchname = GitBranch()
-  return strlen(branchname) > 0?' '.branchname:''
+  return strlen(branchname) > 0 ? ' '.branchname.' ' : ''
+endfunction
+
+function! StatusLineFileType()
+  let filet = expand('%:e') != '' ? expand('%:e') : 'noname'
+  return '  '.filet
 endfunction
 
 hi StatusLineModifiedC    ctermbg=234 ctermfg=157 cterm=bold
 hi StatusLineGitInfo      ctermbg=234 ctermfg=244
-hi StatusLineGitBranchC   ctermbg=234 ctermfg=87 cterm=bold
+hi StatusLineGitBranchC   ctermbg=234 ctermfg=157 cterm=bold
 hi StatusLineFileTypeC    ctermbg=234 ctermfg=189 cterm=bold
 
 set statusline=
-set statusline+=\ %f                            " filepath with maxlen
-set statusline+=%#StatusLineModifiedC#          " modified indicator custom color
-set statusline+=%{&modified?'*':''}             " modified indicator
-set statusline+=%*                              " switch back to statusline highlight
+set statusline+=\ %f                              " filepath with maxlen
+set statusline+=%#StatusLineModifiedC#            " modified indicator custom color
+set statusline+=%{&modified?'@':''}               " modified indicator
+set statusline+=%*                                " switch back to statusline highlight
 
-set statusline+=%=                              " switch to right side
+set statusline+=%=                                " switch to right side
 
-set statusline+=%#StatusLineGitInfo#            " custom info section color
-set statusline+=%l:%c\ %p%%                     " row:col perc
-set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}] " encoding
-set statusline+=%*                              " switch back to statusline highlight
-set statusline+=%#StatusLineGitBranchC#         " git branch custom color
-set statusline+=\%{StatuslineGit()}             " git branch
-set statusline+=%*                              " switch back to statusline highlight
-set statusline+=\%#StatusLineFileTypeC#         " filetype custom color
-set statusline+=\ %{strlen(&ft)?&ft:''}         " filetype
-set statusline+=\ %*                            " switch back to statusline highlight
+set statusline+=%#StatusLineGitInfo#              " custom info section color
+set statusline+=%l:%c\ %p%%                       " row:col perc
+set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]   " encoding
+set statusline+=%*                                " switch back to statusline highlight
+set statusline+=%#StatusLineGitBranchC#           " git branch custom color
+set statusline+=\%{StatuslineGit()}               " git branch
+set statusline+=%*                                " switch back to statusline highlight
+set statusline+=\%#StatusLineFileTypeC#           " filetype custom color
+set statusline+=\%{StatusLineFileType()}          " filetype
+set statusline+=\ %*                              " switch back to statusline highlight
