@@ -44,20 +44,20 @@ set undofile
 set cursorline
 set scrolloff=4
 set signcolumn=yes
+set autoread
 "set noshowmode
 
 " neovim + tmux true color
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 "set termguicolors
-set t_Co=256
+"set t_Co=256
 
 filetype off
 
 syntax enable
 syntax on
-
 
 call plug#begin()
 
@@ -66,7 +66,6 @@ Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
   \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'graphql', 'markdown', 'yaml', 'html'] }
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'amadeus/vim-xml'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
 Plug 'cakebaker/scss-syntax.vim'
@@ -82,6 +81,8 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'habamax/vim-godot'
 Plug 'vlime/vlime', {'rtp': 'vim/'}
 
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-utils/vim-man'
 Plug 'mbbill/undotree'
@@ -96,7 +97,8 @@ call plug#end()
 
 " theme
 colorscheme badwolf
-hi StatusLine ctermbg=15 ctermfg=16
+hi StatusLine ctermbg=234 ctermfg=252 cterm=NONE
+hi StatusLineNC ctermbg=234 ctermfg=240 cterm=NONE
 hi Normal ctermbg=232
 hi LineNr ctermbg=232
 hi SignColumn ctermbg=232
@@ -168,6 +170,10 @@ augroup cls_on_complete_done
   autocmd CompleteDone * pclose
 augroup end
 
+augroup resize_equally
+  autocmd VimResized * wincmd =
+augroup end
+
 " Use ripgrep for searching
 " Options include:
 "   --vimgrep -> Needed to parse the rg response properly for ack.vim
@@ -183,3 +189,43 @@ let g:ack_use_cword_for_empty_search = 1
 cnoreabbrev Ack Ack!
 " Maps <leader>/ so we're ready to type the search keyword
 nnoremap <Leader>/ :Ack!<Space>
+
+" status line
+" resources
+"   https://shapeshed.com/vim-statuslines/
+"   https://gist.github.com/meskarune/57b613907ebd1df67eb7bdb83c6e6641
+"   http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
+"   https://github.com/fatih/dotfiles/blob/master/vimrc
+"   https://learnvimscriptthehardway.stevelosh.com/chapters/17.html
+function! GitBranch()
+  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+  let branchname = GitBranch()
+  return strlen(branchname) > 0?' '.branchname:''
+endfunction
+
+hi StatusLineModifiedC    ctermbg=234 ctermfg=157 cterm=bold
+hi StatusLineGitInfo      ctermbg=234 ctermfg=244
+hi StatusLineGitBranchC   ctermbg=234 ctermfg=87 cterm=bold
+hi StatusLineFileTypeC    ctermbg=234 ctermfg=189 cterm=bold
+
+set statusline=
+set statusline+=\ %f                            " filepath with maxlen
+set statusline+=%#StatusLineModifiedC#          " modified indicator custom color
+set statusline+=%{&modified?'*':''}             " modified indicator
+set statusline+=%*                              " switch back to statusline highlight
+
+set statusline+=%=                              " switch to right side
+
+set statusline+=%#StatusLineGitInfo#            " custom info section color
+set statusline+=%l:%c\ %p%%                     " row:col perc
+set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}] " encoding
+set statusline+=%*                              " switch back to statusline highlight
+set statusline+=%#StatusLineGitBranchC#         " git branch custom color
+set statusline+=\%{StatuslineGit()}             " git branch
+set statusline+=%*                              " switch back to statusline highlight
+set statusline+=\%#StatusLineFileTypeC#         " filetype custom color
+set statusline+=\ %{strlen(&ft)?&ft:''}         " filetype
+set statusline+=\ %*                            " switch back to statusline highlight
