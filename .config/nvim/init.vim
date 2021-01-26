@@ -97,8 +97,6 @@ call plug#end()
 
 " theme
 colorscheme badwolf
-hi StatusLine ctermbg=234 ctermfg=252 cterm=NONE
-hi StatusLineNC ctermbg=234 ctermfg=240 cterm=NONE
 hi Normal ctermbg=232
 hi LineNr ctermbg=232
 hi SignColumn ctermbg=232
@@ -197,45 +195,19 @@ nnoremap <Leader>/ :Ack!<Space>
 "   http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
 "   https://github.com/fatih/dotfiles/blob/master/vimrc
 "   https://learnvimscriptthehardway.stevelosh.com/chapters/17.html
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
 
-function GitModified()
-  return system("git status --porcelain")
-endfunction
-
-function! StatuslineGit()
-  let branchname = GitBranch()
-  let modified = GitModified() != '' ? '*' : ''
-  return strlen(branchname) > 0 ? ' '.branchname.modified.' ' : ''
-endfunction
-
-function! StatusLineFileType()
-  let filet = expand('%:e') != '' ? expand('%:e') : 'noname'
-  return '  '.filet
-endfunction
-
-hi StatusLineModifiedC    ctermbg=234 ctermfg=157 cterm=bold
-hi StatusLineGitInfo      ctermbg=234 ctermfg=244
-hi StatusLineGitBranchC   ctermbg=234 ctermfg=157 cterm=bold
-hi StatusLineFileTypeC    ctermbg=234 ctermfg=189 cterm=bold
+hi StatusLine ctermbg=232 ctermfg=195 cterm=NONE
+hi StatusLineNC ctermbg=232 ctermfg=239 cterm=NONE
+hi StatusLineFormatEncoding ctermbg=232 ctermfg=240
 
 set statusline=
-set statusline+=\ %f                              " filepath with maxlen
-set statusline+=%#StatusLineModifiedC#            " modified indicator custom color
-set statusline+=%{&modified?'*':''}               " modified indicator
-set statusline+=%*                                " switch back to statusline highlight
-
-set statusline+=%=                                " switch to right side
-
-set statusline+=%#StatusLineGitInfo#              " custom info section color
-set statusline+=%l:%c\ %p%%                       " row:col perc
-set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]   " encoding
-set statusline+=%*                                " switch back to statusline highlight
-set statusline+=%#StatusLineGitBranchC#           " git branch custom color
-set statusline+=\%{StatuslineGit()}               " git branch
-set statusline+=%*                                " switch back to statusline highlight
-set statusline+=\%#StatusLineFileTypeC#           " filetype custom color
-set statusline+=\%{StatusLineFileType()}          " filetype
-set statusline+=\ %*                              " switch back to statusline highlight
+set statusline+=\ %f                                " filepath
+set statusline+=%{&modified?'*':''}                 " modified indicator
+set statusline+=%=                                  " switch to right side
+set statusline+=%#StatusLineFormatEncoding#
+set statusline+=\ %{&ff}                            " file format
+set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]     " encoding
+set statusline+=\ ~                                 " separator
+set statusline+=%*                                  " switch back to statusline highlight
+set statusline+=\ %l:%c\ %p%%                       " line:col perc
+set statusline+=%<\                                 " cut at end
