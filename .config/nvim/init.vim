@@ -196,15 +196,18 @@ nnoremap <Leader>/ :Ack!<Space>
 "   https://github.com/fatih/dotfiles/blob/master/vimrc
 "   https://learnvimscriptthehardway.stevelosh.com/chapters/17.html
 
-hi StatusLine ctermbg=232 ctermfg=195 cterm=NONE
-hi StatusLineNC ctermbg=232 ctermfg=239 cterm=NONE
-hi StatusLineFormatEncoding ctermbg=232 ctermfg=240
+let bg          = 250
+let fg          = 16
+let inactive_bg = 234
+let inactive_fg = 15
+
+exe(printf('hi StatusLine ctermbg=%d ctermfg=%d cterm=NONE', bg, fg))
+exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
 
 set statusline=
-set statusline+=\ %f                                " filepath
-set statusline+=%{&modified?'*':''}                 " modified indicator
+set statusline+=\ %{&modified?'●':'○'}              " modified indicator
+set statusline+=\ \ %F                              " filepath
 set statusline+=%=                                  " switch to right side
-set statusline+=%#StatusLineFormatEncoding#
 set statusline+=\ %{&ff}                            " file format
 set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]     " encoding
 set statusline+=\ ~                                 " separator
