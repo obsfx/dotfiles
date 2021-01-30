@@ -30,7 +30,7 @@ curl -o ~/.config/gtk-3.0/gtk.css https://raw.githubusercontent.com/obsfx/dotfil
 # st.desktop
 sudo curl -o /usr/share/applications/st.desktop https://raw.githubusercontent.com/obsfx/dotfiles/master/usr/share/applications/st.desktop
 
-# packages to compiling simple terminal
+# packages to compile simple terminal
 # sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/st 40
 sudo apt install libx11-dev
 sudo apt install libxft-dev
