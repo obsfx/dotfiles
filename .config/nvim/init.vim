@@ -206,11 +206,25 @@ exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inac
 
 set statusline=
 set statusline+=\ %{&modified?'●':'○'}              " modified indicator
-set statusline+=\ \ %F                              " filepath
+set statusline+=\ \ %f                              " filepath
 set statusline+=%=                                  " switch to right side
 set statusline+=\ %{&ff}                            " file format
 set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]     " encoding
 set statusline+=\ ~                                 " separator
-set statusline+=%*                                  " switch back to statusline highlight
 set statusline+=\ %l:%c\ %p%%                       " line:col perc
 set statusline+=%<\                                 " cut at end
+
+" vim file explorer
+" remove banner
+let g:netrw_banner = 0
+" disable file deleting & capslocked hjkl
+function! NetrwD_NOP(islocal) abort
+  return ''
+endfunction
+let g:Netrw_UserMaps = [
+  \ ['D', 'NetrwD_NOP'],
+  \ ['H', 'NetrwD_NOP'],
+  \ ['J', 'NetrwD_NOP'],
+  \ ['K', 'NetrwD_NOP'],
+  \ ['L', 'NetrwD_NOP'],
+  \ ]
