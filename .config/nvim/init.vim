@@ -156,6 +156,11 @@ nnoremap  <Tab> >>
 nnoremap  <BS> <<
 vnoremap  <Tab> >gv
 vnoremap  <BS> <gv
+" better split switching
+nnoremap  H <C-w>h
+nnoremap  J <C-w>j
+nnoremap  K <C-w>k
+nnoremap  L <C-w>l
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
