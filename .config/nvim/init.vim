@@ -101,6 +101,9 @@ hi Normal ctermbg=232
 hi LineNr ctermbg=232
 hi SignColumn ctermbg=232
 hi EndOfBuffer ctermbg=232
+hi TabLineFill ctermbg=234 ctermfg=15
+hi TabLine ctermbg=234 ctermfg=15
+hi TabLineSel ctermbg=250 ctermfg=16
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
@@ -161,6 +164,9 @@ nnoremap  H <C-w>h
 nnoremap  J <C-w>j
 nnoremap  K <C-w>k
 nnoremap  L <C-w>l
+" use system clipboard
+noremap <Leader>y "+y
+noremap <Leader>p "+p
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
