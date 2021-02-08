@@ -99,6 +99,10 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-git'
     \ ]
+" prettier
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_require_pragma = 0
+let g:prettier#quickfix_enabled  = 1
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
@@ -145,6 +149,8 @@ nnoremap  L <C-w>l
 " use system clipboard
 noremap <Leader>y "+y
 noremap <Leader>p "+p
+" paste last yanked thing
+noremap p "0p
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
