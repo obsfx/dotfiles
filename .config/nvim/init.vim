@@ -143,10 +143,6 @@ inoremap  <C-u> <NOP>
 " ctrl + e jump end of the line
 nnoremap  <C-e> $
 vnoremap  <C-e> $h
-" ctrl + c to exit insert mode
-inoremap  <C-c> <Esc>
-" disable quit warning
-nnoremap  <C-c> <silent> <Esc>
 " ctrl + a jump begining of the line
 nnoremap  <C-a> 0
 vnoremap  <C-a> 0
