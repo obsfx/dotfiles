@@ -1,25 +1,3 @@
-"   w, b and e moving around words
-"   yy yank a line (copy)
-"   p paste that one line below
-"   dd delete line
-"   u undo
-"   ctrl r redo
-"   gd go to local definition
-"   e move to end of last char of cursor
-"   rp paste over over again
-"   /something search
-"   ctrl f / b scroll down up
-"   a append text right to cursor
-"   A add text end of line
-"   shfit + i / a move begining / ending of line
-"   ctrl + p / n / y move and select in popup windows without arrow keys
-"   vertical split ctrl+w v
-"   horizontal split ctrl+w s
-"   ctrl+w +   ctrl+w - resize the height of current window
-"   ctrl+w >   ctrl+w < resize the width of current window
-"   To resize all windows to equal dimensions based on their splits, you can use Ctrl-w =.
-"   n and N move around the search results
-
 set guicursor=
 set nowrap
 set sidescroll=1
@@ -143,6 +121,10 @@ inoremap  <C-u> <NOP>
 " ctrl + e jump end of the line
 nnoremap  <C-e> $
 vnoremap  <C-e> $h
+" ctrl + c to exit insert mode
+inoremap  <C-c> <Esc>
+" disable quit warning
+nnoremap  <C-c> <silent> <Esc>
 " ctrl + a jump begining of the line
 nnoremap  <C-a> 0
 vnoremap  <C-a> 0
