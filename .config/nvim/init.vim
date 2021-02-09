@@ -53,7 +53,6 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'habamax/vim-godot'
@@ -83,6 +82,8 @@ hi TabLineFill ctermbg=234 ctermfg=15
 hi TabLine ctermbg=234 ctermfg=15
 hi TabLineSel ctermbg=250 ctermfg=16
 
+" set filetypes as typescriptreact
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_char = '│'
@@ -102,7 +103,7 @@ let g:coc_global_extensions = [
 " prettier
 let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_require_pragma = 0
-let g:prettier#quickfix_enabled  = 1
+let g:prettier#quickfix_enabled  = 0
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
@@ -150,7 +151,7 @@ nnoremap  L <C-w>l
 noremap <Leader>y "+y
 noremap <Leader>p "+p
 " paste last yanked thing
-noremap p "0p
+noremap P "0p
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
