@@ -82,8 +82,6 @@ hi TabLineFill ctermbg=234 ctermfg=15
 hi TabLine ctermbg=234 ctermfg=15
 hi TabLineSel ctermbg=250 ctermfg=16
 
-" set filetypes as typescriptreact
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
 let g:indentLine_char = '│'
