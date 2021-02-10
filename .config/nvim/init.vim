@@ -42,7 +42,7 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
-  \ 'for': ['javascript', 'typescript', 'css', 'scss', 'json', 'graphql', 'markdown', 'yaml', 'html'] }
+  \ 'for': ['javascript', 'javascriptreact', 'typescriptreact', 'typescript', 'css', 'scss', 'json', 'graphql', 'markdown', 'yaml', 'html'] }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'amadeus/vim-xml'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
@@ -98,10 +98,12 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-git'
     \ ]
+
 " prettier
 let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#quickfix_enabled  = 0
+let g:prettier#exec_cmd_async = 1
 
 "no more arrow keys
 inoremap  <Up>     <NOP>
@@ -124,10 +126,6 @@ inoremap  <C-u> <NOP>
 " ctrl + e jump end of the line
 nnoremap  <C-e> $
 vnoremap  <C-e> $h
-" ctrl + c to exit insert mode
-inoremap  <C-c> <Esc>
-" disable quit warning
-nnoremap  <C-c> <silent> <Esc>
 " ctrl + a jump begining of the line
 nnoremap  <C-a> 0
 vnoremap  <C-a> 0
@@ -140,11 +138,6 @@ nnoremap  <Tab> >>
 nnoremap  <BS> <<
 vnoremap  <Tab> >gv
 vnoremap  <BS> <gv
-" better split switching
-nnoremap  H <C-w>h
-nnoremap  J <C-w>j
-nnoremap  K <C-w>k
-nnoremap  L <C-w>l
 " use system clipboard
 noremap <Leader>y "+y
 noremap <Leader>p "+p
