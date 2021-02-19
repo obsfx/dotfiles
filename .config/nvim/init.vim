@@ -123,9 +123,18 @@ vnoremap  <A-k> :m '<-2<CR>gv=gv
 nnoremap  <C-z> <NOP>
 " disable ctrl u in insert mode
 inoremap  <C-u> <NOP>
-" ctrl + e jump end of the line
-nnoremap  <C-e> $
-vnoremap  <C-e> $h
+" Remap H and L (top, bottom of screen to left and right end of line)
+"  https://github.com/fatih/dotfiles/blob/master/vimrc
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L g_
+" jj to exit insert mode
+inoremap  jj <Esc>
+" no more esc
+inoremap  <Esc> <NOP>
+" no more ctrl-c
+inoremap  <C-c> <NOP>
 " ctrl + a jump begining of the line
 nnoremap  <C-a> 0
 vnoremap  <C-a> 0
