@@ -6,6 +6,7 @@ set nobackup
 set noswapfile
 set nowritebackup
 set updatetime=300
+set timeoutlen=500
 set shortmess+=c
 set tabstop=2
 set smarttab
@@ -24,7 +25,7 @@ set scrolloff=4
 set signcolumn=yes
 set autoread
 "set noshowmode
-
+"
 " neovim + tmux true color
 "let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 "let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -105,7 +106,10 @@ let g:prettier#autoformat_require_pragma = 0
 let g:prettier#quickfix_enabled  = 0
 let g:prettier#exec_cmd_async = 1
 
-"no more arrow keys
+" remap leader to space
+let mapleader = " "
+nnoremap <SPACE> <NOP>
+" no more arrow keys
 inoremap  <Up>     <NOP>
 inoremap  <Down>   <NOP>
 inoremap  <Left>   <NOP>
@@ -135,13 +139,12 @@ inoremap  jj <Esc>
 inoremap  <Esc> <NOP>
 " no more ctrl-c
 inoremap  <C-c> <NOP>
-" ctrl + a jump begining of the line
-nnoremap  <C-a> 0
-vnoremap  <C-a> 0
-" ctrl + s fzf :Files
-nnoremap  <C-s> :Files<CR>
-" ctrl + x fzf :GFiles
-nnoremap  <C-x> :GFiles<CR>
+" leader + s fzf :Files
+nnoremap  <Leader>s :Files<CR>
+" leader + x fzf :GFiles
+nnoremap  <Leader>g :GFiles<CR>
+" easy save
+nnoremap  <Leader>w :w<cr>
 " indentation
 nnoremap  <Tab> >>
 nnoremap  <BS> <<
@@ -152,6 +155,8 @@ noremap <Leader>y "+y
 noremap <Leader>p "+p
 " paste last yanked thing
 noremap P "0p
+" replace all pattern
+nnoremap <Leader>r :%s/from/to/g
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()

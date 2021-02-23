@@ -6,6 +6,10 @@ sudo apt install wget
 sudo apt install git
 sudo apt-get install ripgrep
 
+# global gitignore
+curl -o ~/.gitignore_global https://raw.githubusercontent.com/obsfx/dotfiles/master/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
+
 git config --global user.email "balandiomer@gmail.com"
 git config --global user.name "obsfx"
 
