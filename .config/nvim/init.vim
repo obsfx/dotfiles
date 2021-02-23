@@ -157,6 +157,9 @@ noremap <Leader>p "+p
 noremap P "0p
 " replace all pattern
 nnoremap <Leader>r :%s/from/to/g
+" left right for command mode
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
