@@ -1,3 +1,4 @@
+set exrc
 set guicursor=
 set nowrap
 set sidescroll=1
@@ -68,6 +69,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
 Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-surround'
 
 Plug 'sjl/badwolf'
 
@@ -157,6 +159,8 @@ noremap <Leader>p "+p
 noremap P "0p
 " replace all pattern
 nnoremap <Leader>r :%s/from/to/g
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 " left right for command mode
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
