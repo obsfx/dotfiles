@@ -159,8 +159,10 @@ noremap <Leader>p "+p
 noremap P "0p
 " replace all pattern
 nnoremap <Leader>r :%s/from/to/g
+" replace exact all pattern
+nnoremap <Leader>re :%s/\<from\>/to/gc
 " Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
+nmap <Leader>rn <Plug>(coc-rename)
 " left right for command mode
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>

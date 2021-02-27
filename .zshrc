@@ -20,3 +20,8 @@ export FZF_DEFAULT_COMMAND="rg --files -g '!/node_modules'"
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+export PATH=/opt/firefox/firefox:$PATH
+export PATH=$PATH:/usr/local/go/bin
+export VISUAL=vim
+export EDITOR="$VISUAL"

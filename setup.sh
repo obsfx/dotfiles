@@ -12,6 +12,7 @@ git config --global core.excludesfile ~/.gitignore_global
 
 git config --global user.email "balandiomer@gmail.com"
 git config --global user.name "obsfx"
+git config --global core.editor "vim"
 
 sudo apt install python3-pip
 
