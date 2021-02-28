@@ -166,6 +166,8 @@ nmap <Leader>rn <Plug>(coc-rename)
 " left right for command mode
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
+" disable lowercase in visual mode
+vnoremap u <NOP>
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
