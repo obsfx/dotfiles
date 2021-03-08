@@ -256,7 +256,7 @@ set statusline+=%<\                                 " cut at end
 " vim file explorer
 " remove banner
 let g:netrw_banner = 0
-" disable file deleting & capslocked hjkl
+" disable file delete with D & capslocked hjkl
 function! NetrwD_NOP(islocal) abort
   return ''
 endfunction
