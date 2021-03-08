@@ -44,7 +44,19 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', {
   \ 'do': 'npm install',
-  \ 'for': ['javascript', 'javascriptreact', 'typescriptreact', 'typescript', 'css', 'scss', 'json', 'graphql', 'markdown', 'yaml', 'html'] }
+  \ 'for': [
+  \ 'javascript',
+  \ 'javascriptreact',
+  \ 'typescriptreact',
+  \ 'typescript',
+  \ 'css',
+  \ 'scss',
+  \ 'json',
+  \ 'graphql',
+  \ 'markdown',
+  \ 'yaml',
+  \ 'html'
+  \ ] }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'amadeus/vim-xml'
 Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
@@ -59,6 +71,7 @@ Plug 'mattn/emmet-vim'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'habamax/vim-godot'
 Plug 'vlime/vlime', {'rtp': 'vim/'}
+Plug 'posva/vim-vue'
 
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
@@ -99,7 +112,8 @@ let g:coc_global_extensions = [
     \ 'coc-clangd',
     \ 'coc-highlight',
     \ 'coc-python',
-    \ 'coc-git'
+    \ 'coc-git',
+    \ 'coc-vetur',
     \ ]
 
 " prettier
@@ -168,6 +182,15 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 " disable lowercase in visual mode
 vnoremap u <NOP>
+" refresh screen
+function! RefreshScreen()
+  call feedkeys("ma")
+  :redraw!
+  call feedkeys("ggG")
+  call feedkeys("`a")
+ :delmarks a
+endfunction
+nnoremap <C-l> :call RefreshScreen()<CR>
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
