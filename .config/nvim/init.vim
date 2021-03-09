@@ -177,7 +177,7 @@ nnoremap <Leader>r :%s/from/to/g
 nnoremap <Leader>re :%s/\<from\>/to/gc
 " Symbol renaming.
 nmap <Leader>rn <Plug>(coc-rename)
-" swith alternate file
+" switch alternate file
 nnoremap <Leader>af :b#<CR>
 " left right for command mode
 cnoremap <C-h> <Left>
