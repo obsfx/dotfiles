@@ -179,6 +179,10 @@ nnoremap <Leader>re :%s/\<from\>/to/gc
 nmap <Leader>rn <Plug>(coc-rename)
 " switch alternate file
 nnoremap <Leader>af :b#<CR>
+" switch prev buffer
+nnoremap <Leader>bb :bp<CR>
+" switch next buffer
+nnoremap <Leader>bn :bn<CR>
 " left right for command mode
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
