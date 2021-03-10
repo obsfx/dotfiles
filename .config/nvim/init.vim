@@ -49,6 +49,7 @@ Plug 'prettier/vim-prettier', {
   \ 'javascriptreact',
   \ 'typescriptreact',
   \ 'typescript',
+  \ 'vue',
   \ 'css',
   \ 'scss',
   \ 'json',
