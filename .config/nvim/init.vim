@@ -26,13 +26,14 @@ set scrolloff=4
 set signcolumn=yes
 set autoread
 "set noshowmode
-"
+
+
 " neovim + tmux true color
-"let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-"let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-"let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-"set termguicolors
-"set t_Co=256
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set termguicolors
+" set t_Co=256
 
 filetype off
 
@@ -78,7 +79,6 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-utils/vim-man'
-Plug 'mbbill/undotree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
@@ -86,18 +86,22 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
 Plug 'sjl/badwolf'
+Plug 'obsfx/atlas.vim'
 
 call plug#end()
 
 " theme
-colorscheme badwolf
-hi Normal ctermbg=232
-hi LineNr ctermbg=232
-hi SignColumn ctermbg=232
-hi EndOfBuffer ctermbg=232
-hi TabLineFill ctermbg=234 ctermfg=15
-hi TabLine ctermbg=234 ctermfg=15
-hi TabLineSel ctermbg=250 ctermfg=16
+" colorscheme badwolf
+" hi Normal ctermbg=232
+" hi LineNr ctermbg=232
+" hi SignColumn ctermbg=232
+" hi EndOfBuffer ctermbg=232
+" hi TabLineFill ctermbg=234 ctermfg=15
+" hi TabLine ctermbg=234 ctermfg=15
+" hi TabLineSel ctermbg=250 ctermfg=16
+
+let g:atlas_bold = "bold"
+colorscheme atlas
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '.'
@@ -242,13 +246,13 @@ nnoremap <Leader>/ :Ack!<Space>
 "   https://github.com/fatih/dotfiles/blob/master/vimrc
 "   https://learnvimscriptthehardway.stevelosh.com/chapters/17.html
 
-let bg          = 250
-let fg          = 16
-let inactive_bg = 234
-let inactive_fg = 15
-
-exe(printf('hi StatusLine ctermbg=%d ctermfg=%d cterm=NONE', bg, fg))
-exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
+" let bg          = 250
+" let fg          = 16
+" let inactive_bg = 234
+" let inactive_fg = 15
+"
+" exe(printf('hi StatusLine ctermbg=%d ctermfg=%d cterm=NONE', bg, fg))
+" exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
 
 set statusline=
 set statusline+=\ %{&modified?'●':'○'}              " modified indicator

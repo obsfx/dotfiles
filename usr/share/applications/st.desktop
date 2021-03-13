@@ -1,12 +1,12 @@
- [Desktop Entry]
- Name=Simple Terminal
- GenericName=Terminal
- Comment=Suckless terminal emulator for X
- Exec=st -t "Simple Terminal" -f "Iosevka SS12:pixelsize=14:antialias=true:autohint=true"
- Icon=utilities-terminal
- Terminal=false
- Type=Application
- Encoding=UTF-8
- Categories=System;TerminalEmulator;
- Keywords=shell;prompt;command;commandline;cmd;
- StartupWMClass=st-256color
+[Desktop Entry]
+Name=Simple Terminal
+GenericName=Terminal
+Comment=Suckless terminal emulator for X
+Exec=st -t "Simple Terminal" -f "Iosevka SS12 Medium:pixelsize=14:autohint=true"
+Icon=utilities-terminal
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=System;TerminalEmulator;
+Keywords=shell;prompt;command;commandline;cmd;
+StartupWMClass=st-256color
