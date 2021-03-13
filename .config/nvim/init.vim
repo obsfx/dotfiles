@@ -27,7 +27,6 @@ set signcolumn=yes
 set autoread
 "set noshowmode
 
-
 " neovim + tmux true color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -193,15 +192,20 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 " disable lowercase in visual mode
 vnoremap u <NOP>
-" refresh screen
-function! RefreshScreen()
-  call feedkeys("ma")
-  :redraw!
-  call feedkeys("ggG")
-  call feedkeys("`a")
- :delmarks a
+" GoTo code navigation
+nmap <silent> <Leader>gd <Plug>(coc-definition)
+nmap <silent> <Leader>gy <Plug>(coc-type-definition)
+nmap <silent> <Leader>gi <Plug>(coc-implementation)
+nmap <silent> <Leader>gr <Plug>(coc-references)
+
+function! ShowDocOrDiagnostic()
+  if coc#status() != ''
+    call CocAction('doHover')
+  endif
 endfunction
-nnoremap <C-l> :call RefreshScreen()<CR>
+
+" show if doc or diagnostic exist
+nnoremap <silent> <Leader>k :call ShowDocOrDiagnostic()<CR>
 
 " remove trailing whitespaces on save
 function! RemoveTrailingWhitespaces()
@@ -211,16 +215,20 @@ function! RemoveTrailingWhitespaces()
 endfunction
 
 augroup rm_trailing_ws
+  autocmd!
   autocmd BufWritePre * call RemoveTrailingWhitespaces()
 augroup end
 
 augroup cls_on_complete_done
+  autocmd!
   autocmd CompleteDone * pclose
 augroup end
 
 augroup resize_equally
+  autocmd!
   autocmd VimResized * wincmd =
 augroup end
+
 
 " Use ripgrep for searching
 " Options include:
@@ -255,6 +263,7 @@ nnoremap <Leader>/ :Ack!<Space>
 " exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
 
 set statusline=
+set statusline+=\ %{coc#status()}                   " modified indicator
 set statusline+=\ %{&modified?'●':'○'}              " modified indicator
 set statusline+=\ \ %f                              " filepath
 set statusline+=%=                                  " switch to right side
