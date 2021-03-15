@@ -179,8 +179,6 @@ noremap P "0p
 nnoremap <Leader>r :%s/from/to/g
 " replace exact all pattern
 nnoremap <Leader>re :%s/\<from\>/to/gc
-" Symbol renaming.
-nmap <Leader>rn <Plug>(coc-rename)
 " switch alternate file
 nnoremap <Leader>af :b#<CR>
 " switch prev buffer
@@ -192,11 +190,17 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 " disable lowercase in visual mode
 vnoremap u <NOP>
+" coc.nvim
+" Symbol renaming.
+nmap <Leader>rn <Plug>(coc-rename)
 " GoTo code navigation
 nmap <silent> <Leader>gd <Plug>(coc-definition)
 nmap <silent> <Leader>gy <Plug>(coc-type-definition)
 nmap <silent> <Leader>gi <Plug>(coc-implementation)
 nmap <silent> <Leader>gr <Plug>(coc-references)
+
+" trigger auto completion
+inoremap <silent><expr> <C-c> coc#refresh()
 
 function! ShowDocOrDiagnostic()
   if coc#status() != ''
@@ -262,8 +266,33 @@ nnoremap <Leader>/ :Ack!<Space>
 " exe(printf('hi StatusLine ctermbg=%d ctermfg=%d cterm=NONE', bg, fg))
 " exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
 
+" Coc.nvim status builder
+function! CocStatus()
+  let status = get(g:, 'coc_status', '')
+  if empty(status) | return '' | endif
+
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+
+  let msgs = []
+
+  if get(info, 'error', 0)
+    call add(msgs, ''. info['error'] . 'X')
+  endif
+
+  if get(info, 'warning', 0)
+    call add(msgs, ''. info['warning'] . '!')
+  endif
+
+  if get(info, 'information', 0)
+    call add(msgs, ''. info['information'] . '?')
+  endif
+
+  return ' ' . status . ' ' . join(msgs, ' ')
+endfunction
+
 set statusline=
-set statusline+=\ %{coc#status()}                   " modified indicator
+set statusline+=%{CocStatus()}                      " coc status
 set statusline+=\ %{&modified?'●':'○'}              " modified indicator
 set statusline+=\ \ %f                              " filepath
 set statusline+=%=                                  " switch to right side
