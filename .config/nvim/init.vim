@@ -266,13 +266,13 @@ nnoremap <Leader>/ :Ack!<Space>
 " exe(printf('hi StatusLine ctermbg=%d ctermfg=%d cterm=NONE', bg, fg))
 " exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
 
-" Coc.nvim status builder
 function! CocStatus() abort
   let status = get(g:, 'coc_status', '')
   if empty(status) | return '' | endif
   return ' ' . status
 endfunction
 
+" Coc.nvim status builder
 function! CocStatusField(key, sym) abort
   let info = get(b:, 'coc_diagnostic_info', {})
   if empty(info) | return '' | endif
@@ -280,39 +280,53 @@ function! CocStatusField(key, sym) abort
   return ''
 endfunction
 
-function! CocError() abort
-  return CocStatusField('error', 'X')
-endfunction
-
-function! CocWarning() abort
-  return CocStatusField('warning', '!')
-endfunction
-
-function! CocInfo() abort
-  return CocStatusField('information', '?')
-endfunction
-
 hi CocStatusError guifg=#f43753 guibg=#282828
+hi CocStatusErrorInactive guifg=#444444 guibg=#1c1b1a
 hi CocStatusWarning guifg=#ffc24b guibg=#282828
-hi CocStatusInfo guifg=#ffd178 guibg=#282828
+hi CocStatusWarningInactive guifg=#444444 guibg=#1c1b1a
+hi CocStatusInfo guifg=#ffd178 guibg=#282828 ctermbg=NONE
+hi CocStatusInfoInactive guifg=#444444 guibg=#1c1b1a
 
-set statusline=
-set statusline+=%{CocStatus()}                      " coc status
-set statusline+=%#CocStatusError#                   " coc error color"
-set statusline+=%{CocError()}                       " coc error
-set statusline+=%#CocStatusWarning#                 " coc warning color
-set statusline+=%{CocWarning()}                     " coc warning
-set statusline+=%#CocStatusInfo#                    " coc info color
-set statusline+=%{CocInfo()}                        " coc info
-set statusline+=%*                                  " switch back to status line colors
-set statusline+=\ %{&modified?'●':'○'}              " modified indicator
-set statusline+=\ \ %f                              " filepath
-set statusline+=%=                                  " switch to right side
-set statusline+=\ %{&ff}                            " file format
-set statusline+=\ [%{strlen(&fenc)?&fenc:&enc}]     " encoding
-set statusline+=\ ~                                 " separator
-set statusline+=\ %l:%c\ %p%%                       " line:col perc
-set statusline+=%<\                                 " cut at end
+" Created using lightline source code
+" https://github.com/itchyny/lightline.vim
+function! Modified()
+  return &modified ? '●' : '○'
+endfunction
+
+function! BuildColoredSection(hlgroup, output)
+  return '%#' . a:hlgroup . '#' . '%{' . a:output . '}%*'
+endfunction
+
+function! BuildStatusline(inactive)
+  let inactivesuffix = a:inactive == 1 ? 'Inactive' : ''
+
+  let cocerror = 'CocStatusError' . inactivesuffix
+  let cocwarning = 'CocStatusWarning' . inactivesuffix
+  let cocinfo = 'CocStatusInfo' . inactivesuffix
+
+  let line = '%{CocStatus()}'
+  let line .= BuildColoredSection(cocerror, "CocStatusField('error', 'X')")
+  let line .= BuildColoredSection(cocwarning, "CocStatusField('warning', '!')")
+  let line .= BuildColoredSection(cocinfo, "CocStatusField('information', '?')")
+  let line .= ' %{Modified()}  %f'
+  let line .= '%='
+  let line .= '%{&ff} [%{strlen(&fenc)?&fenc:&enc}] ~ %l:%c %p%% %<'
+
+  return line
+endfunction
+
+function! UpdateStatusline()
+  let currentw = winnr()
+
+  for n in range(1, winnr('$'))
+    call setwinvar(n, '&statusline', BuildStatusline(currentw != n))
+  endfor
+endfunction
+
+augroup statusline
+  autocmd!
+  autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * call UpdateStatusline()
+augroup end
 
 " vim file explorer
 " remove banner
