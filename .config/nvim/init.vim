@@ -233,7 +233,6 @@ augroup resize_equally
   autocmd VimResized * wincmd =
 augroup end
 
-
 " Use ripgrep for searching
 " Options include:
 "   --vimgrep -> Needed to parse the rg response properly for ack.vim
@@ -258,6 +257,9 @@ nnoremap <Leader>/ :Ack!<Space>
 "   https://github.com/fatih/dotfiles/blob/master/vimrc
 "   https://learnvimscriptthehardway.stevelosh.com/chapters/17.html
 
+" created using lightline source code
+"   https://github.com/itchyny/lightline.vim
+
 " let bg          = 250
 " let fg          = 16
 " let inactive_bg = 234
@@ -265,6 +267,15 @@ nnoremap <Leader>/ :Ack!<Space>
 "
 " exe(printf('hi StatusLine ctermbg=%d ctermfg=%d cterm=NONE', bg, fg))
 " exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
+
+hi GitHead guifg=#eeeeee guibg=#282828
+hi GitHeadInactive guifg=#444444 guibg=#1c1b1a
+hi CocStatusError guifg=#f43753 guibg=#222222 gui=BOLD
+hi CocStatusErrorInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
+hi CocStatusWarning guifg=#ffc24b guibg=#222222 gui=BOLD
+hi CocStatusWarningInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
+hi CocStatusInfo guifg=#ffd178 guibg=#222222 gui=BOLD
+hi CocStatusInfoInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
 
 function! CocStatus() abort
   let status = get(g:, 'coc_status', '')
@@ -280,15 +291,6 @@ function! CocStatusField(key, sym) abort
   return ''
 endfunction
 
-hi CocStatusError guifg=#f43753 guibg=#282828
-hi CocStatusErrorInactive guifg=#444444 guibg=#1c1b1a
-hi CocStatusWarning guifg=#ffc24b guibg=#282828
-hi CocStatusWarningInactive guifg=#444444 guibg=#1c1b1a
-hi CocStatusInfo guifg=#ffd178 guibg=#282828 ctermbg=NONE
-hi CocStatusInfoInactive guifg=#444444 guibg=#1c1b1a
-
-" Created using lightline source code
-" https://github.com/itchyny/lightline.vim
 function! Modified()
   return &modified ? '●' : '○'
 endfunction
@@ -297,12 +299,19 @@ function! BuildColoredSection(hlgroup, output)
   return '%#' . a:hlgroup . '#' . '%{' . a:output . '}%*'
 endfunction
 
+function! GitHead()
+  let h = FugitiveHead()
+  if h != '' | return '  ' . h . ' ' | endif
+  return ''
+endfunction
+
 function! BuildStatusline(inactive)
   let inactivesuffix = a:inactive == 1 ? 'Inactive' : ''
 
   let cocerror = 'CocStatusError' . inactivesuffix
   let cocwarning = 'CocStatusWarning' . inactivesuffix
   let cocinfo = 'CocStatusInfo' . inactivesuffix
+  let githead = 'GitHead' . inactivesuffix
 
   let line = '%{CocStatus()}'
   let line .= BuildColoredSection(cocerror, "CocStatusField('error', 'X')")
@@ -310,7 +319,9 @@ function! BuildStatusline(inactive)
   let line .= BuildColoredSection(cocinfo, "CocStatusField('information', '?')")
   let line .= ' %{Modified()}  %f'
   let line .= '%='
-  let line .= '%{&ff} [%{strlen(&fenc)?&fenc:&enc}] ~ %l:%c %p%% %<'
+  let line .= '  %{&ff} [%{strlen(&fenc)?&fenc:&enc}] ~ %l:%c %p%% '
+  let line .= BuildColoredSection(githead, "GitHead()")
+  let line .='%<'
 
   return line
 endfunction
