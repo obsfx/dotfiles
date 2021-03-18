@@ -253,6 +253,9 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <Leader>/ :RG<Space>
 
+" set context to current file's directory
+autocmd BufEnter * silent! lcd %:p:h
+
 " status line
 " resources
 "   https://shapeshed.com/vim-statuslines/
