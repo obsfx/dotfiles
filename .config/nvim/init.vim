@@ -234,7 +234,7 @@ augroup end
 
 " Use ripgrep for searching
 " https://github.com/junegunn/fzf.vim/blob/master/doc/fzf-vim.txt#L355
-function! RipgrepFzf(query, fullscreen)
+function! RipgrepFzf(argv, fullscreen)
   let command_args = [
         \ '--column',
         \ '--line-number',
@@ -244,10 +244,20 @@ function! RipgrepFzf(query, fullscreen)
         \ '--type-not sql',
         \ '--smart-case',
         \ ]
-  let command_fmt = 'rg ' . join(command_args, ' ') . ' -- %s || true'
-  let initial_command = printf(command_fmt, shellescape(a:query))
+
+  let extra_commands = []
+  let query = ''
+  let paramlist = split(a:argv, ' ')
+
+  if len(paramlist) > 0
+    let extra_commands = paramlist[0:-2]
+    let query = paramlist[-1]
+  endif
+
+  let command_fmt = 'rg ' . join(command_args + extra_commands, ' ') . ' -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(query))
   let reload_command = printf(command_fmt, '{q}')
-  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  let spec = {'options': ['--phony', '--query', query, '--bind', 'change:reload:'.reload_command]}
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
