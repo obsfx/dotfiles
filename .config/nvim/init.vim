@@ -193,10 +193,10 @@ vnoremap u <NOP>
 " Symbol renaming.
 nmap <Leader>rn <Plug>(coc-rename)
 " GoTo code navigation
-nmap <silent> <Leader>gd <Plug>(coc-definition)
-nmap <silent> <Leader>gy <Plug>(coc-type-definition)
-nmap <silent> <Leader>gi <Plug>(coc-implementation)
-nmap <silent> <Leader>gr <Plug>(coc-references)
+nmap <silent> <Leader>cd <Plug>(coc-definition)
+nmap <silent> <Leader>cy <Plug>(coc-type-definition)
+nmap <silent> <Leader>ci <Plug>(coc-implementation)
+nmap <silent> <Leader>cr <Plug>(coc-references)
 
 " trigger auto completion
 inoremap <silent><expr> <C-c> coc#refresh()
@@ -253,9 +253,6 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <Leader>/ :RG<Space>
 
-" set context to current file's directory
-autocmd BufEnter * silent! lcd %:p:h
-
 " status line
 " resources
 "   https://shapeshed.com/vim-statuslines/
@@ -283,6 +280,40 @@ hi CocStatusWarning guifg=#ffc24b guibg=#222222 gui=BOLD
 hi CocStatusWarningInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
 hi CocStatusInfo guifg=#ffd178 guibg=#222222 gui=BOLD
 hi CocStatusInfoInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
+
+function! SubstituteHome(filename)
+  let TILDE = '~'
+  return substitute(a:filename, $HOME, TILDE, '')
+endfunction
+
+function! ShrinkPath(path)
+  return "." ==# a:path[0] ? a:path[0:1] : a:path[0]
+endfunction
+
+function! GetFishLikePath(filename, level)
+  let paths = split(SubstituteHome(a:filename), '/')
+
+  " This is the case where we are at '/'
+  if len(paths) ==# 0
+    return '/'
+  elseif len(paths) ==# 1
+    " This is the case where we are in '$HOME' aka '~/'
+    if paths[0] == '~'
+      return '~/'
+    " This is the case where we are in a top level directory like:
+    " /var, /etc, /usr, etc.
+    else
+      return filename
+    endif
+  endif
+
+  let level = -(a:level)
+
+  let path_folder_file = join(paths[level:], '/')
+  let path_before = join(map(paths[0:level-1], {key, val -> ShrinkPath(val)}), '/')
+
+  return path_before . '/' . path_folder_file
+endfunction
 
 function! CocStatus() abort
   let status = get(g:, 'coc_status', '')
@@ -324,7 +355,7 @@ function! BuildStatusline(inactive)
   let line .= BuildColoredSection(cocerror, "CocStatusField('error', 'X')")
   let line .= BuildColoredSection(cocwarning, "CocStatusField('warning', '!')")
   let line .= BuildColoredSection(cocinfo, "CocStatusField('information', '?')")
-  let line .= ' %{Modified()}  %f'
+  let line .= ' %{Modified()}  %{GetFishLikePath(expand("%:p"), 1)}'
   let line .= '%='
   let line .= '  %{&ff} [%{strlen(&fenc)?&fenc:&enc}] ~ %l:%c %p%% '
   let line .= BuildColoredSection(githead, "GitHead()")
