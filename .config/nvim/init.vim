@@ -13,7 +13,7 @@ set tabstop=2
 set smarttab
 set shiftwidth=2
 set expandtab
-set number
+"set number
 set numberwidth=2
 set encoding=UTF-8
 set nocompatible
@@ -98,11 +98,12 @@ call plug#end()
 " hi TabLine ctermbg=234 ctermfg=15
 " hi TabLineSel ctermbg=250 ctermfg=16
 
-let g:atlas_bold = "bold"
-colorscheme atlas
+" let g:atlas_bold = "bold"
+" colorscheme atlas
+color badwolf
 
 let g:indentLine_leadingSpaceEnabled = 1
-let g:indentLine_leadingSpaceChar = '.'
+let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_char = '│'
 
 " write tag + ctrl + z + ,
@@ -274,13 +275,8 @@ nnoremap <Leader>/ :RG<Space>
 " created using lightline source code
 "   https://github.com/itchyny/lightline.vim
 
-" let bg          = 250
-" let fg          = 16
-" let inactive_bg = 234
-" let inactive_fg = 15
-"
-" exe(printf('hi StatusLine ctermbg=%d ctermfg=%d cterm=NONE', bg, fg))
-" exe(printf('hi StatusLineNC ctermbg=%d ctermfg=%d cterm=NONE', inactive_bg, inactive_fg))
+hi StatusLine guifg=#777777 ctermfg=234 guibg=#222222 ctermbg=242 gui=NONE cterm=Bold
+hi StatusLineNC guifg=#444444 ctermfg=246 guibg=NONE ctermbg=238 gui=NONE cterm=NONE
 
 hi GitHead guifg=#eeeeee guibg=#282828
 hi GitHeadInactive guifg=#444444 guibg=#1c1b1a
@@ -290,6 +286,8 @@ hi CocStatusWarning guifg=#ffc24b guibg=#222222 gui=BOLD
 hi CocStatusWarningInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
 hi CocStatusInfo guifg=#ffd178 guibg=#222222 gui=BOLD
 hi CocStatusInfoInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
+hi ModifiedC guifg=#ffd178 guibg=#222222 gui=BOLD
+hi ModifiedCInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
 
 function! SubstituteHome(filename)
   let TILDE = '~'
@@ -340,7 +338,7 @@ function! CocStatusField(key, sym) abort
 endfunction
 
 function! Modified()
-  return &modified ? '●' : '○'
+  return &modified ? '[+]' : ''
 endfunction
 
 function! BuildColoredSection(hlgroup, output)
@@ -360,14 +358,16 @@ function! BuildStatusline(inactive)
   let cocwarning = 'CocStatusWarning' . inactivesuffix
   let cocinfo = 'CocStatusInfo' . inactivesuffix
   let githead = 'GitHead' . inactivesuffix
+  let modified = 'ModifiedC' . inactivesuffix
 
   let line = '%{CocStatus()}'
   let line .= BuildColoredSection(cocerror, "CocStatusField('error', 'X')")
   let line .= BuildColoredSection(cocwarning, "CocStatusField('warning', '!')")
   let line .= BuildColoredSection(cocinfo, "CocStatusField('information', '?')")
-  let line .= ' %{Modified()}  %{GetFishLikePath(expand("%:p"), 1)}'
+  let line .= ' %{GetFishLikePath(expand("%:p"), 1) } '
+  let line .= BuildColoredSection(modified, "Modified()")
   let line .= '%='
-  let line .= '  %{&ff} [%{strlen(&fenc)?&fenc:&enc}] ~ %l:%c %p%% '
+  let line .= '  %{&ff} [%{strlen(&fenc)?&fenc:&enc}] ~ %l/%{line("$")}:%c %p%% '
   let line .= BuildColoredSection(githead, "GitHead()")
   let line .='%<'
 
