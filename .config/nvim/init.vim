@@ -85,6 +85,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
+Plug 'lifepillar/vim-gruvbox8'
 
 call plug#end()
 
@@ -100,7 +101,13 @@ call plug#end()
 
 " let g:atlas_bold = "bold"
 " colorscheme atlas
-color badwolf
+
+" color badwolf
+
+"colorscheme gruvbox8_hard
+
+set background=light
+colorscheme gruvbox8_soft
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
@@ -274,22 +281,62 @@ nnoremap <Leader>/ :RG<Space>
 
 " created using lightline source code
 "   https://github.com/itchyny/lightline.vim
+let custom_sl = 0
 
-hi StatusLine guifg=#777777 ctermfg=234 guibg=#222222 ctermbg=242 gui=NONE cterm=Bold
-hi StatusLineNC guifg=#444444 ctermfg=246 guibg=NONE ctermbg=238 gui=NONE cterm=NONE
+function! RunHi(cmd, bg, fg, gui)
+  exe(printf('hi ' . a:cmd . ' guibg=%s guifg=%s gui=%s', a:bg, a:fg, a:gui))
+endfunction
 
-hi GitHead guifg=#eeeeee guibg=#282828
-hi GitHeadInactive guifg=#444444 guibg=#1c1b1a
-hi CocStatusError guifg=#f43753 guibg=#222222 gui=BOLD
-hi CocStatusErrorInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
-hi CocStatusWarning guifg=#ffc24b guibg=#222222 gui=BOLD
-hi CocStatusWarningInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
-hi CocStatusInfo guifg=#ffd178 guibg=#222222 gui=BOLD
-hi CocStatusInfoInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
-hi ModifiedC guifg=#ffd178 guibg=#222222 gui=BOLD
-hi ModifiedCInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
-hi LineN guifg=#eeeeee guibg=#222222 gui=BOLD
-hi LineNInactive guifg=#444444 guibg=#1c1b1a gui=BOLD
+" badwolf specific statusline colors
+" ==============================================
+if g:colors_name == 'badwolf'
+  let custom_sl = 1
+
+  let status_bg = '#222222'
+  let status_fg = '#777777'
+  let inactive_bg = '#1c1b1a'
+  let inactive_fg = '#444444'
+
+  let fg_sec = '#eeeeee'
+  let bg_sec = '#282828'
+  let fg_err = '#f43753'
+  let fg_warn = '#ffc24b'
+  let fg_info = '#ffd178'
+endif
+
+" gruvbox8_hard specific statusline colors
+" ==============================================
+if g:colors_name == 'gruvbox8_hard'
+  let custom_sl = 1
+
+  let status_bg = '#504945'
+  let status_fg = '#ebdbb2'
+  let inactive_bg = '#3c3836'
+  let inactive_fg = '#a89984'
+
+  let fg_sec = '#eeeeee'
+  let bg_sec = '#282828'
+  let fg_err = '#f43753'
+  let fg_warn = '#ffc24b'
+  let fg_info = '#ffd178'
+endif
+
+if custom_sl == 1
+  call RunHi('StatusLine', status_bg, status_fg, 'NONE')
+  call RunHi('StatusLineNC', inactive_bg, inactive_fg, 'NONE')
+  call RunHi('GitHead', bg_sec, fg_sec, 'NONE')
+  call RunHi('GitHeadInactive', inactive_bg, inactive_fg, 'NONE')
+  call RunHi('CocStatusError', status_bg, fg_err, 'BOLD')
+  call RunHi('CocStatusErrorInactive', inactive_bg, inactive_fg, 'BOLD')
+  call RunHi('CocStatusWarning', status_bg, fg_warn, 'BOLD')
+  call RunHi('CocStatusErrorInactive', inactive_bg, inactive_fg, 'BOLD')
+  call RunHi('CocStatusInfo', status_bg, fg_info, 'BOLD')
+  call RunHi('CocStatusInfoInactive', inactive_bg, inactive_fg, 'BOLD')
+  call RunHi('ModifiedC', status_bg, fg_info, 'BOLD')
+  call RunHi('ModifiedCInactive', inactive_bg, inactive_fg, 'BOLD')
+  call RunHi('LineN', status_bg, fg_sec, 'BOLD')
+  call RunHi('LineNInactive', inactive_bg, inactive_fg, 'BOLD')
+endif
 
 function! SubstituteHome(filename)
   let TILDE = '~'
