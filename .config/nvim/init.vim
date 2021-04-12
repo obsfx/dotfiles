@@ -86,6 +86,7 @@ Plug 'tpope/vim-surround'
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
 Plug 'lifepillar/vim-gruvbox8'
+Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
@@ -102,12 +103,14 @@ call plug#end()
 " let g:atlas_bold = "bold"
 " colorscheme atlas
 
-" color badwolf
+" colorscheme badwolf
 
-"colorscheme gruvbox8_hard
+" colorscheme gruvbox8_hard
 
-set background=light
-colorscheme gruvbox8_soft
+" set background=light
+" colorscheme gruvbox8_soft
+
+colorscheme jellybeans
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
@@ -319,6 +322,23 @@ if g:colors_name == 'gruvbox8_hard'
   let fg_err = '#f43753'
   let fg_warn = '#ffc24b'
   let fg_info = '#ffd178'
+endif
+
+" jellybeans specific statusline colors
+" ==============================================
+if g:colors_name == 'jellybeans'
+  let custom_sl = 1
+
+  let status_bg = '#dddddd'
+  let status_fg = '#151515'
+  let inactive_bg = '#403c41'
+  let inactive_fg = '#e7e7e7'
+
+  let fg_sec = '#151515'
+  let bg_sec = '#a8a8a8'
+  let fg_err = '#151515'
+  let fg_warn = '#151515'
+  let fg_info = '#151515'
 endif
 
 if custom_sl == 1
