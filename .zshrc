@@ -1,3 +1,7 @@
+alias vim=nvim
+export VISUAL=nvim
+export EDITOR="$VISUAL"
+
 export ZSH="/home/obsfx/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
@@ -60,6 +64,10 @@ fshow() {
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                 {}
 FZF-EOF"
+}
+
+swbr() {
+  git checkout $(git branch | fzf --ansi --reverse)
 }
 
 switchnvm() {

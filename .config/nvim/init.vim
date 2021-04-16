@@ -19,7 +19,7 @@ set encoding=UTF-8
 set nocompatible
 set cmdheight=2
 set background=dark
-set undodir=~/.vim/undodir
+set undodir=~/.nvim/undodir
 set undofile
 set cursorline
 set scrolloff=4
@@ -135,6 +135,9 @@ let g:prettier#autoformat_config_present = 1
 let g:prettier#autoformat_require_pragma = 0
 let g:prettier#quickfix_enabled  = 0
 let g:prettier#exec_cmd_async = 1
+
+" vim vue prevent slowing down
+let g:vue_pre_processors = ['scss']
 
 " remap leader to space
 let mapleader = " "
