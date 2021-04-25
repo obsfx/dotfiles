@@ -99,6 +99,6 @@ cakeline.register("gh", {
   inactivecolors = {bg = active.bg, fg = inactive.fg, gui = 'NONE'}
 }, 'GitHead()', false)
 
-local statusline = " {fp} {md} {switchright}{cs}{ce}{cw}{ci} {ff} [{enc}] ~ {ln}:{cl} {per} {gh}"
+local statusline = "{mode} {fp} {md} {switchright}{cs}{ce}{cw}{ci} {ff} [{enc}] ~ {ln}:{cl} {per} {gh}"
 cakeline.setline(statusline)
 
