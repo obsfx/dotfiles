@@ -258,40 +258,6 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <Leader>/ :RG<Space>
 
-function! SubstituteHome(filename)
-  let TILDE = '~'
-  return substitute(a:filename, $HOME, TILDE, '')
-endfunction
-
-function! ShrinkPath(path)
-  return "." ==# a:path[0] ? a:path[0:1] : a:path[0]
-endfunction
-
-function! GetFishLikePath(filename, level)
-  let paths = split(SubstituteHome(a:filename), '/')
-
-  " This is the case where we are at '/'
-  if len(paths) ==# 0
-    return '/'
-  elseif len(paths) ==# 1
-    " This is the case where we are in '$HOME' aka '~/'
-    if paths[0] == '~'
-      return '~/'
-    " This is the case where we are in a top level directory like:
-    " /var, /etc, /usr, etc.
-    else
-      return filename
-    endif
-  endif
-
-  let level = -(a:level)
-
-  let path_folder_file = join(paths[level:], '/')
-  let path_before = join(map(paths[0:level-1], {key, val -> ShrinkPath(val)}), '/')
-
-  return path_before . '/' . path_folder_file
-endfunction
-
 function! CocStatus() abort
   let status = get(g:, 'coc_status', '')
   if empty(status) | return '' | endif
@@ -306,23 +272,29 @@ function! CocStatusField(key, sym) abort
   return ''
 endfunction
 
-function! Modified()
-  return &modified ? '[+]' : ''
-endfunction
-
-function! BuildColoredSection(hlgroup, output)
-  return '%#' . a:hlgroup . '#' . '%{' . a:output . '}%*'
-endfunction
-
 function! GitHead()
   let h = FugitiveHead()
   if h != '' | return '  ' . h . ' ' | endif
   return ''
 endfunction
 
-function! LineNum()
-  return line(".") . '/' . line("$")
-endfunction
+hi StatusLine guibg=#45413b guifg=#ffffff gui=BOLD
+hi StatusLineNC guibg=#2a2724 guifg=#aaaaaa gui=BOLD
+
+set statusline=
+set statusline+=%f
+set statusline+=\ %m
+set statusline+=%=
+set statusline+=%{CocStatus()}
+set statusline+=%{CocStatusField('error','X')}
+set statusline+=%{CocStatusField('warning','!')}
+set statusline+=%{CocStatusField('information','?')}
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\ [%{&fileformat}]
+set statusline+=\ %l/%L:%c
+set statusline+=\ %p%%
+set statusline+=\ %{GitHead()}
+set statusline+=%<
 
 " vim file explorer
 " remove banner
@@ -339,4 +311,3 @@ let g:Netrw_UserMaps = [
   \ ['L', 'NetrwD_NOP'],
   \ ]
 
-lua require("conf")
