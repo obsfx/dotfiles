@@ -85,32 +85,10 @@ Plug 'tpope/vim-surround'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
-Plug 'lifepillar/vim-gruvbox8'
-Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
-" theme
-" colorscheme badwolf
-" hi Normal ctermbg=232
-" hi LineNr ctermbg=232
-" hi SignColumn ctermbg=232
-" hi EndOfBuffer ctermbg=232
-" hi TabLineFill ctermbg=234 ctermfg=15
-" hi TabLine ctermbg=234 ctermfg=15
-" hi TabLineSel ctermbg=250 ctermfg=16
-
-" let g:atlas_bold = "bold"
-" colorscheme atlas
-
-" colorscheme badwolf
-
-" colorscheme gruvbox8_hard
-
-" set background=light
-" colorscheme gruvbox8_soft
-
-colorscheme jellybeans
+colorscheme badwolf
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
@@ -128,6 +106,7 @@ let g:coc_global_extensions = [
     \ 'coc-python',
     \ 'coc-git',
     \ 'coc-vetur',
+    \ 'coc-eslint',
     \ ]
 
 " prettier
@@ -263,9 +242,11 @@ function! RipgrepFzf(argv, fullscreen)
   let query = ''
   let paramlist = split(a:argv, ' ')
 
-  if len(paramlist) > 0
-    let extra_commands = paramlist[0:-2]
-    let query = paramlist[-1]
+  if paramlist[0] == '--type'
+    let extra_commands = paramlist[0:1]
+    let query = join(paramlist[2:len(paramlist)], " ")
+    let query = join(paramlist, " ")
+    echo query
   endif
 
   let command_fmt = 'rg ' . join(command_args + extra_commands, ' ') . ' -- %s || true'
@@ -276,90 +257,6 @@ function! RipgrepFzf(argv, fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <Leader>/ :RG<Space>
-
-" status line
-" resources
-"   https://shapeshed.com/vim-statuslines/
-"   https://gist.github.com/meskarune/57b613907ebd1df67eb7bdb83c6e6641
-"   http://got-ravings.blogspot.com/2008/08/vim-pr0n-making-statuslines-that-own.html
-"   https://github.com/fatih/dotfiles/blob/master/vimrc
-"   https://learnvimscriptthehardway.stevelosh.com/chapters/17.html
-
-" created using lightline source code
-"   https://github.com/itchyny/lightline.vim
-let custom_sl = 0
-
-function! RunHi(cmd, bg, fg, gui)
-  exe(printf('hi ' . a:cmd . ' guibg=%s guifg=%s gui=%s', a:bg, a:fg, a:gui))
-endfunction
-
-" badwolf specific statusline colors
-" ==============================================
-if g:colors_name == 'badwolf'
-  let custom_sl = 1
-
-  let status_bg = '#222222'
-  let status_fg = '#777777'
-  let inactive_bg = '#1c1b1a'
-  let inactive_fg = '#444444'
-
-  let fg_sec = '#eeeeee'
-  let bg_sec = '#282828'
-  let fg_err = '#f43753'
-  let fg_warn = '#ffc24b'
-  let fg_info = '#ffd178'
-endif
-
-" gruvbox8_hard specific statusline colors
-" ==============================================
-if g:colors_name == 'gruvbox8_hard'
-  let custom_sl = 1
-
-  let status_bg = '#504945'
-  let status_fg = '#ebdbb2'
-  let inactive_bg = '#3c3836'
-  let inactive_fg = '#a89984'
-
-  let fg_sec = '#eeeeee'
-  let bg_sec = '#282828'
-  let fg_err = '#f43753'
-  let fg_warn = '#ffc24b'
-  let fg_info = '#ffd178'
-endif
-
-" jellybeans specific statusline colors
-" ==============================================
-if g:colors_name == 'jellybeans'
-  let custom_sl = 1
-
-  let status_bg = '#dddddd'
-  let status_fg = '#151515'
-  let inactive_bg = '#403c41'
-  let inactive_fg = '#e7e7e7'
-
-  let fg_sec = '#151515'
-  let bg_sec = '#a8a8a8'
-  let fg_err = '#151515'
-  let fg_warn = '#151515'
-  let fg_info = '#151515'
-endif
-
-if custom_sl == 1
-  call RunHi('StatusLine', status_bg, status_fg, 'NONE')
-  call RunHi('StatusLineNC', inactive_bg, inactive_fg, 'NONE')
-  call RunHi('GitHead', bg_sec, fg_sec, 'NONE')
-  call RunHi('GitHeadInactive', inactive_bg, inactive_fg, 'NONE')
-  call RunHi('CocStatusError', status_bg, fg_err, 'BOLD')
-  call RunHi('CocStatusErrorInactive', inactive_bg, inactive_fg, 'BOLD')
-  call RunHi('CocStatusWarning', status_bg, fg_warn, 'BOLD')
-  call RunHi('CocStatusErrorInactive', inactive_bg, inactive_fg, 'BOLD')
-  call RunHi('CocStatusInfo', status_bg, fg_info, 'BOLD')
-  call RunHi('CocStatusInfoInactive', inactive_bg, inactive_fg, 'BOLD')
-  call RunHi('ModifiedC', status_bg, fg_info, 'BOLD')
-  call RunHi('ModifiedCInactive', inactive_bg, inactive_fg, 'BOLD')
-  call RunHi('LineN', status_bg, fg_sec, 'BOLD')
-  call RunHi('LineNInactive', inactive_bg, inactive_fg, 'BOLD')
-endif
 
 function! SubstituteHome(filename)
   let TILDE = '~'
@@ -427,45 +324,6 @@ function! LineNum()
   return line(".") . '/' . line("$")
 endfunction
 
-function! BuildStatusline(inactive)
-  let inactivesuffix = a:inactive == 1 ? 'Inactive' : ''
-
-  let cocerror = 'CocStatusError' . inactivesuffix
-  let cocwarning = 'CocStatusWarning' . inactivesuffix
-  let cocinfo = 'CocStatusInfo' . inactivesuffix
-  let githead = 'GitHead' . inactivesuffix
-  let modified = 'ModifiedC' . inactivesuffix
-  let linen = 'LineN' . inactivesuffix
-
-  let line = '%{CocStatus()}'
-  let line .= BuildColoredSection(cocerror, "CocStatusField('error', 'X')")
-  let line .= BuildColoredSection(cocwarning, "CocStatusField('warning', '!')")
-  let line .= BuildColoredSection(cocinfo, "CocStatusField('information', '?')")
-  let line .= ' %{GetFishLikePath(expand("%:p"), 1) } '
-  let line .= BuildColoredSection(modified, "Modified()")
-  let line .= '%='
-  let line .= '  %{&ff} [%{strlen(&fenc)?&fenc:&enc}] ~ '
-  let line .= BuildColoredSection(linen, "LineNum()")
-  let line .= ':%c %p%% '
-  let line .= BuildColoredSection(githead, "GitHead()")
-  let line .='%<'
-
-  return line
-endfunction
-
-function! UpdateStatusline()
-  let currentw = winnr()
-
-  for n in range(1, winnr('$'))
-    call setwinvar(n, '&statusline', BuildStatusline(currentw != n))
-  endfor
-endfunction
-
-augroup statusline
-  autocmd!
-  autocmd WinEnter,BufEnter,BufDelete,SessionLoadPost,FileChangedShellPost * call UpdateStatusline()
-augroup end
-
 " vim file explorer
 " remove banner
 let g:netrw_banner = 0
@@ -480,3 +338,5 @@ let g:Netrw_UserMaps = [
   \ ['K', 'NetrwD_NOP'],
   \ ['L', 'NetrwD_NOP'],
   \ ]
+
+lua require("conf")
