@@ -258,6 +258,41 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <Leader>/ :RG<Space>
 
+function! SubstituteHome(filename)
+  let TILDE = '~'
+  return substitute(a:filename, $HOME, TILDE, '')
+endfunction
+
+function! ShrinkPath(path)
+  return "." ==# a:path[0] ? a:path[0:1] : a:path[0]
+endfunction
+
+function! GetFishLikePath()
+  let filename = expand("%:p")
+  let paths = split(SubstituteHome(filename), '/')
+
+  " This is the case where we are at '/'
+  if len(paths) ==# 0
+    return '/'
+  elseif len(paths) ==# 1
+    " This is the case where we are in '$HOME' aka '~/'
+    if paths[0] == '~'
+      return '~/'
+    " This is the case where we are in a top level directory like:
+    " /var, /etc, /usr, etc.
+    else
+      return filename
+    endif
+  endif
+
+  let level = -(1)
+
+  let path_folder_file = join(paths[level:], '/')
+  let path_before = join(map(paths[0:level-1], {key, val -> ShrinkPath(val)}), '/')
+
+  return path_before . '/' . path_folder_file
+endfunction
+
 function! CocStatus() abort
   let status = get(g:, 'coc_status', '')
   if empty(status) | return '' | endif
@@ -282,7 +317,7 @@ hi StatusLine guibg=#45413b guifg=#ffffff gui=BOLD
 hi StatusLineNC guibg=#2a2724 guifg=#aaaaaa gui=BOLD
 
 set statusline=
-set statusline+=%f
+set statusline+=%{GetFishLikePath()}
 set statusline+=\ %m
 set statusline+=%=
 set statusline+=%{CocStatus()}
@@ -291,6 +326,7 @@ set statusline+=%{CocStatusField('warning','!')}
 set statusline+=%{CocStatusField('information','?')}
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\ [%{&fileformat}]
+set statusline+=\ ~
 set statusline+=\ %l/%L:%c
 set statusline+=\ %p%%
 set statusline+=\ %{GitHead()}
