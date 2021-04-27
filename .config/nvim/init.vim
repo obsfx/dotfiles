@@ -82,6 +82,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
+Plug 'editorconfig/editorconfig-vim'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
@@ -245,8 +246,8 @@ function! RipgrepFzf(argv, fullscreen)
   if paramlist[0] == '--type'
     let extra_commands = paramlist[0:1]
     let query = join(paramlist[2:len(paramlist)], " ")
+  else
     let query = join(paramlist, " ")
-    echo query
   endif
 
   let command_fmt = 'rg ' . join(command_args + extra_commands, ' ') . ' -- %s || true'
