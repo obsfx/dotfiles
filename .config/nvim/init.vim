@@ -26,6 +26,8 @@ set scrolloff=4
 set signcolumn=yes
 set autoread
 "set noshowmode
+set exrc
+set secure
 
 " neovim + tmux true color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -82,7 +84,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
-Plug 'editorconfig/editorconfig-vim'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
