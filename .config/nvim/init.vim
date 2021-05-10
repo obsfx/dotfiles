@@ -13,7 +13,8 @@ set tabstop=2
 set smarttab
 set shiftwidth=2
 set expandtab
-"set number
+set number
+set relativenumber
 set numberwidth=2
 set encoding=UTF-8
 set nocompatible
@@ -80,17 +81,24 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
 Plug 'jiangmiao/auto-pairs'
 Plug 'vim-utils/vim-man'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
+Plug 'folke/tokyonight.nvim'
+Plug 'haishanh/night-owl.vim'
+Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
-colorscheme badwolf
+" let g:tokyonight_style = "night"
+" colorscheme tokyonight
+
+colorscheme night-owl
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
@@ -154,9 +162,9 @@ inoremap  <Esc> <NOP>
 " no more ctrl-c
 inoremap  <C-c> <NOP>
 " leader + s fzf :Files
-nnoremap  <Leader>s :Files<CR>
-" leader + x fzf :GFiles
-nnoremap  <Leader>g :GFiles<CR>
+"nnoremap  <Leader>s :Files<CR>
+"" leader + x fzf :GFiles
+"nnoremap  <Leader>g :GFiles<CR>
 " easy save
 nnoremap  <Leader>w :w<cr>
 " indentation
@@ -226,6 +234,11 @@ augroup resize_equally
   autocmd!
   autocmd VimResized * wincmd =
 augroup end
+
+if executable('rg')
+  let g:ctrlp_map = '<Leader>s'
+  let g:ctrlp_user_command = 'rg %s --files -g "!/node_modules" --hidden --color=never'
+endif
 
 " Use ripgrep for searching
 " https://github.com/junegunn/fzf.vim/blob/master/doc/fzf-vim.txt#L355
@@ -315,8 +328,8 @@ function! GitHead()
   return ''
 endfunction
 
-hi StatusLine guibg=#45413b guifg=#ffffff gui=BOLD
-hi StatusLineNC guibg=#2a2724 guifg=#aaaaaa gui=BOLD
+" hi StatusLine guibg=#45413b guifg=#ffffff gui=BOLD
+" hi StatusLineNC guibg=#2a2724 guifg=#aaaaaa gui=BOLD
 
 set statusline=
 set statusline+=%{GetFishLikePath()}
@@ -348,4 +361,3 @@ let g:Netrw_UserMaps = [
   \ ['K', 'NetrwD_NOP'],
   \ ['L', 'NetrwD_NOP'],
   \ ]
-
