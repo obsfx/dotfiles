@@ -83,15 +83,12 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'vim-utils/vim-man'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
-Plug 'folke/tokyonight.nvim'
 Plug 'haishanh/night-owl.vim'
-Plug 'jacoborus/tender.vim'
 
 call plug#end()
 
@@ -99,6 +96,9 @@ call plug#end()
 " colorscheme tokyonight
 
 colorscheme night-owl
+hi TabLine guifg=#eeeeee ctermfg=255 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+hi TabLineSel guifg=#eeeeee ctermfg=255 guibg=#111111 ctermbg=235 gui=NONE cterm=NONE
+hi TabLineFill guifg=#777777 ctermfg=243 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
@@ -162,9 +162,9 @@ inoremap  <Esc> <NOP>
 " no more ctrl-c
 inoremap  <C-c> <NOP>
 " leader + s fzf :Files
-"nnoremap  <Leader>s :Files<CR>
+nnoremap  <Leader>s :Files<CR>
 "" leader + x fzf :GFiles
-"nnoremap  <Leader>g :GFiles<CR>
+nnoremap  <Leader>g :GFiles<CR>
 " easy save
 nnoremap  <Leader>w :w<cr>
 " indentation
@@ -234,11 +234,6 @@ augroup resize_equally
   autocmd!
   autocmd VimResized * wincmd =
 augroup end
-
-if executable('rg')
-  let g:ctrlp_map = '<Leader>s'
-  let g:ctrlp_user_command = 'rg %s --files -g "!/node_modules" --hidden --color=never'
-endif
 
 " Use ripgrep for searching
 " https://github.com/junegunn/fzf.vim/blob/master/doc/fzf-vim.txt#L355
