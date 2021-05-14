@@ -88,6 +88,7 @@ Plug 'tpope/vim-surround'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
+Plug 'gruvbox-community/gruvbox',
 Plug 'haishanh/night-owl.vim'
 
 call plug#end()
@@ -95,10 +96,14 @@ call plug#end()
 " let g:tokyonight_style = "night"
 " colorscheme tokyonight
 
-colorscheme night-owl
-hi TabLine guifg=#eeeeee ctermfg=255 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
-hi TabLineSel guifg=#eeeeee ctermfg=255 guibg=#111111 ctermbg=235 gui=NONE cterm=NONE
-hi TabLineFill guifg=#777777 ctermfg=243 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+" colorscheme night-owl
+" hi TabLine guifg=#eeeeee ctermfg=255 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+" hi TabLineSel guifg=#eeeeee ctermfg=255 guibg=#111111 ctermbg=235 gui=NONE cterm=NONE
+" hi TabLineFill guifg=#777777 ctermfg=243 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+
+
+let g:gruvbox_contrast_dark = 'hard'
+colorscheme gruvbox
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
