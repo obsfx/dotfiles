@@ -67,7 +67,6 @@ Plug 'ericpruitt/tmux.vim', {'rtp': 'vim/'}
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'vim-python/python-syntax'
 Plug 'tbastos/vim-lua'
-Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
@@ -85,6 +84,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
+Plug 'lifepillar/vim-solarized8'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
@@ -93,14 +93,10 @@ Plug 'haishanh/night-owl.vim'
 
 call plug#end()
 
-" let g:tokyonight_style = "night"
-" colorscheme tokyonight
-
 " colorscheme night-owl
 " hi TabLine guifg=#eeeeee ctermfg=255 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
 " hi TabLineSel guifg=#eeeeee ctermfg=255 guibg=#111111 ctermbg=235 gui=NONE cterm=NONE
 " hi TabLineFill guifg=#777777 ctermfg=243 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
-
 
 let g:gruvbox_contrast_dark = 'hard'
 colorscheme gruvbox
