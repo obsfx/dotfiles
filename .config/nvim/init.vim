@@ -84,7 +84,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
-Plug 'lifepillar/vim-solarized8'
 
 Plug 'sjl/badwolf'
 Plug 'obsfx/atlas.vim'
@@ -156,6 +155,10 @@ nnoremap H ^
 nnoremap L $
 vnoremap H ^
 vnoremap L g_
+nnoremap K gg
+nnoremap J G
+vnoremap K gg
+vnoremap J G
 " jj to exit insert mode
 inoremap  jj <Esc>
 " no more esc
@@ -201,6 +204,8 @@ nmap <silent> <Leader>cd <Plug>(coc-definition)
 nmap <silent> <Leader>cy <Plug>(coc-type-definition)
 nmap <silent> <Leader>ci <Plug>(coc-implementation)
 nmap <silent> <Leader>cr <Plug>(coc-references)
+" diagnostics
+nmap <silent> <Leader>ca :CocDiagnostics<cr>
 
 " trigger auto completion
 inoremap <silent><expr> <C-c> coc#refresh()
