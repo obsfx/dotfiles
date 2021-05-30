@@ -85,20 +85,30 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
-Plug 'sjl/badwolf'
-Plug 'obsfx/atlas.vim'
 Plug 'gruvbox-community/gruvbox',
+Plug 'cseelus/vim-colors-lucid'
+Plug 'nikolvs/vim-sunbather'
 Plug 'haishanh/night-owl.vim'
+Plug 'pineapplegiant/spaceduck'
+Plug 'kaicataldo/material.vim', { 'branch': 'main' }
 
 call plug#end()
 
 " colorscheme night-owl
-" hi TabLine guifg=#eeeeee ctermfg=255 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
-" hi TabLineSel guifg=#eeeeee ctermfg=255 guibg=#111111 ctermbg=235 gui=NONE cterm=NONE
-" hi TabLineFill guifg=#777777 ctermfg=243 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+" hi TabLine guifg=#eeeeee ctermfg=255 guibg=#011627 ctermbg=235 gui=NONE cterm=NONE
+" hi TabLineSel guifg=#eeeeee ctermfg=255 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
+" hi TabLineFill guifg=#777777 ctermfg=243 guibg=#011627 ctermbg=235 gui=NONE cterm=NONE
+" hi PMenuSel guibg=#161536 ctermbg=176 gui=NONE cterm=NONE
 
-let g:gruvbox_contrast_dark = 'hard'
-colorscheme gruvbox
+" let g:gruvbox_contrast_dark = 'hard'
+" colorscheme gruvbox
+
+"colorscheme lucid
+
+" colorscheme sunbather
+
+let g:material_theme_style = 'ocean'
+colorscheme material
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
