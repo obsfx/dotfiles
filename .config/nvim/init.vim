@@ -85,12 +85,15 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
+Plug 'rktjmp/lush.nvim'
+
 Plug 'gruvbox-community/gruvbox',
 Plug 'cseelus/vim-colors-lucid'
 Plug 'nikolvs/vim-sunbather'
 Plug 'haishanh/night-owl.vim'
 Plug 'pineapplegiant/spaceduck'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'usirin/lucidity'
 
 call plug#end()
 
@@ -201,6 +204,8 @@ nnoremap <Leader>af :b#<CR>
 nnoremap <Leader>bb :bp<CR>
 " switch next buffer
 nnoremap <Leader>bn :bn<CR>
+" left right for command mode
+nnoremap <Leader>bf :Buffers<CR>
 " left right for command mode
 cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
