@@ -73,3 +73,8 @@ nvmil() {
 nvmiall() {
   nvm install $(nvm ls-remote | fzf --ansi --reverse)
 }
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# keybindings
+bindkey -s '^F' 'cd $(find . -type d | fzf); tmux^M'
