@@ -43,9 +43,9 @@ sudo apt install ttf-ancient-fonts-symbola
 sudo apt install unifont
 
 # kitty
-# sudo apt install kitty
-# mkdir ~/.config/kitty
-# curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
+sudo apt install kitty
+mkdir ~/.config/kitty
+curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/kitty.conf" > ~/.config/kitty/kitty.conf
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
@@ -73,13 +73,6 @@ curl -fsSL https://starship.rs/install.sh | bash
 
 # .zsh config
 curl -o ~/.zshrc https://raw.githubusercontent.com/obsfx/dotfiles/master/.zshrc
-
-# regolith
-sudo apt install i3xrocks-focused-window-name
-sudo apt install regolith-desktop-standard
-curl -o ~/.config/regolith/Xresources https://raw.githubusercontent.com/obsfx/dotfiles/master/.config/regolith/Xresources
-curl -o ~/.rofi https://raw.githubusercontent.com/obsfx/dotfiles/master/.rofi
-curl -o ~/.wallpapers/bg.jpg --create-dirs https://raw.githubusercontent.com/obsfx/dotfiles/master/.wallpapers/bg.jpg
 
 sudo apt install zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
