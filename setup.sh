@@ -68,6 +68,13 @@ git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.8.0
 # sudo apt install alacritty
 # curl "https://raw.githubusercontent.com/obsfx/dotfiles/master/.alacritty.yml" > ~/.alacritty.yml
 
+# regolith
+# sudo apt install i3xrocks-focused-window-name
+# sudo apt install regolith-desktop-standard
+# curl -o ~/.config/regolith/Xresources https://raw.githubusercontent.com/obsfx/dotfiles/master/.config/regolith/Xresources
+# curl -o ~/.rofi https://raw.githubusercontent.com/obsfx/dotfiles/master/.rofi
+# curl -o ~/.wallpapers/bg.jpg --create-dirs https://raw.githubusercontent.com/obsfx/dotfiles/master/.wallpapers/bg.jpg
+
 # starship.rs
 curl -fsSL https://starship.rs/install.sh | bash
 
