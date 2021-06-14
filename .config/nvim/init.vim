@@ -35,7 +35,7 @@ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set termguicolors
-" set t_Co=256
+"set t_Co=256
 
 filetype off
 
@@ -85,30 +85,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
-Plug 'rktjmp/lush.nvim'
-
-Plug 'gruvbox-community/gruvbox',
-Plug 'cseelus/vim-colors-lucid'
-Plug 'nikolvs/vim-sunbather'
-Plug 'haishanh/night-owl.vim'
-Plug 'pineapplegiant/spaceduck'
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'usirin/lucidity'
 
 call plug#end()
-
-" colorscheme night-owl
-" hi TabLine guifg=#eeeeee ctermfg=255 guibg=#011627 ctermbg=235 gui=NONE cterm=NONE
-" hi TabLineSel guifg=#eeeeee ctermfg=255 guibg=#112630 ctermbg=235 gui=NONE cterm=NONE
-" hi TabLineFill guifg=#777777 ctermfg=243 guibg=#011627 ctermbg=235 gui=NONE cterm=NONE
-" hi PMenuSel guibg=#161536 ctermbg=176 gui=NONE cterm=NONE
-
-" let g:gruvbox_contrast_dark = 'hard'
-" colorscheme gruvbox
-
-"colorscheme lucid
-
-" colorscheme sunbather
 
 let g:material_theme_style = 'ocean'
 colorscheme material
@@ -130,6 +109,7 @@ let g:coc_global_extensions = [
     \ 'coc-git',
     \ 'coc-vetur',
     \ 'coc-eslint',
+    \ 'coc-json',
     \ ]
 
 " prettier
@@ -168,10 +148,10 @@ nnoremap H ^
 nnoremap L $
 vnoremap H ^
 vnoremap L g_
-nnoremap K gg
-nnoremap J G
-vnoremap K gg
-vnoremap J G
+nnoremap KK gg
+nnoremap JJ G
+vnoremap KK gg
+vnoremap JJ G
 " jj to exit insert mode
 inoremap  jj <Esc>
 " no more esc
