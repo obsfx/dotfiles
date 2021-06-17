@@ -86,11 +86,15 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+Plug 'nanotech/jellybeans.vim'
 
 call plug#end()
 
-let g:material_theme_style = 'ocean'
-colorscheme material
+" let g:material_theme_style = 'ocean'
+" colorscheme material
+
+let g:jellybeans_overrides = { 'background': { 'guibg': '000000' }, }
+colorscheme jellybeans
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
