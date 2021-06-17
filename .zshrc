@@ -4,7 +4,6 @@ export EDITOR="$VISUAL"
 
 export ZSH="/home/obsfx/.oh-my-zsh"
 
-ZSH_THEME="robbyrussell"
 plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
