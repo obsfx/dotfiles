@@ -29,6 +29,9 @@ set autoread
 "set noshowmode
 set exrc
 set secure
+" Show invisible characters
+set lcs=trail:·,eol:¬,nbsp:_
+set list
 
 " neovim + tmux true color
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -75,6 +78,8 @@ Plug 'OmniSharp/omnisharp-vim'
 Plug 'habamax/vim-godot'
 Plug 'vlime/vlime', {'rtp': 'vim/'}
 Plug 'posva/vim-vue'
+Plug 'jparise/vim-graphql'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
@@ -86,15 +91,15 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-surround'
 
 Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-Plug 'nanotech/jellybeans.vim'
+Plug 'rktjmp/lush.nvim'
+Plug 'usirin/bleed-purple.nvim'
 
 call plug#end()
 
-" let g:material_theme_style = 'ocean'
-" colorscheme material
+let g:material_theme_style = 'ocean'
+colorscheme material
 
-let g:jellybeans_overrides = { 'background': { 'guibg': '000000' }, }
-colorscheme jellybeans
+" colorscheme bleed-purple
 
 let g:indentLine_leadingSpaceEnabled = 1
 let g:indentLine_leadingSpaceChar = '·'
@@ -109,6 +114,7 @@ let g:coc_global_extensions = [
     \ 'coc-tsserver',
     \ 'coc-clangd',
     \ 'coc-highlight',
+    \ 'coc-styled-components',
     \ 'coc-python',
     \ 'coc-git',
     \ 'coc-vetur',
