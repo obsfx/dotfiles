@@ -79,7 +79,7 @@ Plug 'habamax/vim-godot'
 Plug 'vlime/vlime', {'rtp': 'vim/'}
 Plug 'posva/vim-vue'
 Plug 'jparise/vim-graphql'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'fatih/vim-go'
 
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tpope/vim-fugitive'
@@ -120,6 +120,7 @@ let g:coc_global_extensions = [
     \ 'coc-vetur',
     \ 'coc-eslint',
     \ 'coc-json',
+    \ 'coc-go',
     \ ]
 
 " prettier
