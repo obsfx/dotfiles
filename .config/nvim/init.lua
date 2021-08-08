@@ -101,19 +101,14 @@ require("packer").startup(function(use)
   use "tpope/vim-fugitive"
   use "jiangmiao/auto-pairs"
   use "vim-utils/vim-man"
-  -- use  {"junegunn/fzf",
-  --   dir = "~/.fzf",
-  --   do = "./install --all"
-  -- }
-  -- use "junegunn/fzf.vim"
+  use  {"junegunn/fzf",
+    dir = "~/.fzf",
+    run = "./install --all"
+  }
+  use "junegunn/fzf.vim"
   use "Yggdroot/indentLine"
   use "tpope/vim-surround"
   use {"neoclide/coc.nvim", branch = "release"}
-
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
-  }
 
   use {"kaicataldo/material.vim", branch = "main"}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
@@ -194,9 +189,9 @@ map("i",  "<Esc>",    "<NOP>", {noremap = true})
 -- no more ctrl-c
 map("i",  "<C-c>",    "<NOP>", {noremap = true})
 
-map("n",  "<Leader>s",":Telescope find_files<CR>", {noremap = true})
-map("n",  "<Leader>g",":Telescope git_files<CR>", {noremap = true})
-map("n",  "<Leader>/","<cmd>Telescope buffers<cr>", {noremap = true})
+map("n",  "<Leader>s",":Files<CR>", {noremap = true})
+map("n",  "<Leader>g",":GFiles<CR>", {noremap = true})
+--map("n",  "<Leader>/","<cmd>Telescope buffers<cr>", {noremap = true})
 
 -- easy save
 map("n",  "<Leader>w",":w<cr>", {noremap = true})
@@ -274,42 +269,27 @@ cmd([[
   augroup end
 ]])
 
--- telescope
-require("telescope").setup {
-  defaults = {
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "-g=\"!*-lock.json\"",
-      "--type-not sql",
-      "--smart-case",
-    },
-    prompt_prefix = "> ",
-    selection_caret = "> ",
-    entry_prefix = "  ",
-    initial_mode = "insert",
-    selection_strategy = "reset",
-    sorting_strategy = "descending",
-    layout_strategy = "horizontal",
-    layout_config = {horizontal = {mirror = false}, vertical = {mirror = false}},
-    file_sorter = require"telescope.sorters".get_fuzzy_file,
-    file_ignore_patterns = {},
-    generic_sorter = require"telescope.sorters".get_generic_fuzzy_sorter,
-    winblend = 0,
-    border = {},
-    borderchars = {"─", "│", "─", "│", "╭", "╮", "╯", "╰"},
-    color_devicons = true,
-    use_less = true,
-    path_display = {},
-    set_env = {["COLORTERM"] = "truecolor"}, -- default = nil,
-    file_previewer = require"telescope.previewers".vim_buffer_cat.new,
-    grep_previewer = require"telescope.previewers".vim_buffer_vimgrep.new,
-    qflist_previewer = require"telescope.previewers".vim_buffer_qflist.new
+require("nvim-treesitter.configs").setup {
+  highlight = {enable = true},
+
+  query_linter = {enable = true, use_virtual_text = true, lint_events = {"BufWrite", "CursorHold"}},
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = "o",
+      toggle_hl_groups = "i",
+      toggle_injected_languages = "t",
+      toggle_anonymous_nodes = "a",
+      toggle_language_display = "I",
+      focus_language = "f",
+      unfocus_language = "F",
+      update = "R",
+      goto_node = "<cr>",
+      show_help = "?"
+    }
   }
 }
 
@@ -431,7 +411,6 @@ function _G.git_head()
   return ""
 end
 
-
 set.statusline = ""
 set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
 set.statusline = set.statusline .. " %m"
@@ -452,14 +431,16 @@ set.statusline = set.statusline .. "%<"
 -- remove banner
 g.netrw_banner = 0
 -- disable file delete with D & capslocked hjkl
-function _G.netrw_nop(islocal)
-  return ''
-end
+cmd([[
+  function! Netrw_NOP(islocal) abort
+    return ''
+  endfunction
+]])
 
 g.Netrw_UserMaps = {
-  { 'D', 'v:lua.netrw_nop' },
-  { 'H', 'v:lua.netrw_nop' },
-  { 'J', 'v:lua.netrw_nop' },
-  { 'K', 'v:lua.netrw_nop' },
-  { 'L', 'v:lua.netrw_nop' },
+  { 'D', 'Netrw_NOP' },
+  { 'H', 'Netrw_NOP' },
+  { 'J', 'Netrw_NOP' },
+  { 'K', 'Netrw_NOP' },
+  { 'L', 'Netrw_NOP' },
 }
