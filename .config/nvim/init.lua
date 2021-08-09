@@ -36,7 +36,7 @@ set.autoread        = true
 -- set.noshowmode      = true
 set.secure          = true
 -- Show invisible characters
-cmd([[set list listchars=tab:\ \ ,trail:·,eol:¬,nbsp:·]])
+cmd([[set list listchars=tab:-->,trail:·,eol:¬,nbsp:·]])
 
 -- neovim + tmux true color
 cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
@@ -59,7 +59,7 @@ vim.cmd([[packadd packer.nvim]])
 -- Auto compile when there are changes in plugins.lua
 vim.cmd([[autocmd BufWritePost plugins.lua PackerCompile]])
 
-require("packer").startup(function(use)
+require("packer").startup(function()
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
@@ -200,8 +200,8 @@ map("n",  "<BS>",     "<<", {noremap = true})
 map("v",  "<Tab>",    ">gv", {noremap = true})
 map("v",  "<BS>",     "<gv", {noremap = true})
 -- use system clipboard
-map("n",  "<Leader>y", [["+y]], {noremap = true})
-map("n",  "<Leader>p", [["+p]], {noremap = true})
+map("",  "<Leader>y", [["+y]], {noremap = true})
+map("",  "<Leader>p", [["+p]], {noremap = true})
 -- paste last yanked thing
 map("n",  "P",         [["0p]], {noremap = true})
 -- replace all pattern
@@ -383,10 +383,25 @@ function _G.fish_like_path()
   return vim.fn.join(before, "/") .. "/" .. vim.fn.join(after, "/")
 end
 
+vim.cmd([[
+  function! CocStatus() abort
+    let status = get(g:, 'coc_status', '')
+    if empty(status) | return '' | endif
+    return ' ' . status
+  endfunction
+
+  " Coc.nvim status builder
+  function! CocStatusField(key, sym) abort
+    let info = get(b:, 'coc_diagnostic_info', {})
+    if empty(info) | return '' | endif
+    if get(info, a:key, 0) | return '  ' . info[a:key] . a:sym | endif
+    return ''
+  endfunction
+]])
 
 -- Coc.nvim status builder
 function _G.coc_status()
-  local status = fn.get(g, "coc_status", '')
+  local status = fn.get(vim.go, "coc_status", '')
   if fn.empty(status) then
     return ""
   end
@@ -394,7 +409,8 @@ function _G.coc_status()
 end
 
 function _G.coc_status_field(key, sym)
-  local info = fn.get(vim.b, "coc_diagnostic_info", {})
+  local info = fn.get(vim.bo, "coc_diagnostic_info", {})
+  --print(info, "--info", info[key])
   if fn.empty(info) then
     return ""
   end
@@ -419,10 +435,10 @@ set.statusline = ""
 set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
 set.statusline = set.statusline .. " %m"
 set.statusline = set.statusline .. "%="
-set.statusline = set.statusline .. "%{v:lua.coc_status()}"
-set.statusline = set.statusline .. "%{v:lua.coc_status_field('error','X')}"
-set.statusline = set.statusline .. "%{v:lua.coc_status_field('warning','!')}"
-set.statusline = set.statusline .. "%{v:lua.coc_status_field('information','?')}"
+set.statusline = set.statusline .. "%{CocStatus()}"
+set.statusline = set.statusline .. "%{CocStatusField('error','X')}"
+set.statusline = set.statusline .. "%{CocStatusField('warning','!')}"
+set.statusline = set.statusline .. "%{CocStatusField('information','?')}"
 set.statusline = set.statusline .. " %{&fileencoding?&fileencoding:&encoding}"
 set.statusline = set.statusline .. " [%{&fileformat}]"
 set.statusline = set.statusline .. " ~"
