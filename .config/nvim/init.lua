@@ -27,7 +27,6 @@ set.encoding        = "UTF-8"
 set.compatible      = false
 set.cmdheight       = 2
 set.background      = "dark"
-set.undodir         = "~/.nvim/undodir"
 set.undofile        = true
 set.cursorline      = true
 set.scrolloff       = 4
@@ -36,7 +35,7 @@ set.autoread        = true
 -- set.noshowmode      = true
 set.secure          = true
 -- Show invisible characters
-cmd([[set list listchars=tab:-->,trail:·,eol:¬,nbsp:·]])
+cmd([[set list listchars=tab:➜\ ,trail:·,eol:¬,nbsp:·]])
 
 -- neovim + tmux true color
 cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
@@ -267,6 +266,10 @@ cmd([[
     autocmd VimResized * wincmd =
   augroup end
 ]])
+
+-- go
+cmd([[au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4]])
+cmd([[au BufWritePost *.go silent! execute "!gofmt -w %" | e]])
 
 require("nvim-treesitter.configs").setup {
   highlight = {enable = true},
