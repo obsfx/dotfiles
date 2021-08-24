@@ -108,6 +108,8 @@ require("packer").startup(function()
   use "Yggdroot/indentLine"
   use "tpope/vim-surround"
   use {"neoclide/coc.nvim", branch = "release"}
+  use "obsfx/vim-react-snippets"
+  use "SirVer/ultisnips"
 
   use {"kaicataldo/material.vim", branch = "main"}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
@@ -126,6 +128,9 @@ g.indentLine_char = '│'
 -- write tag + ctrl + z + ,
 g.user_emmet_leader_key = '<C-z>'
 
+-- snippets
+g.UltiSnipsExpandTrigger="<C-s>"
+
 g.coc_global_extensions = {
   'coc-css',
   'coc-html',
@@ -133,6 +138,7 @@ g.coc_global_extensions = {
   'coc-clangd',
   'coc-highlight',
   'coc-styled-components',
+  'coc-snippets',
   'coc-python',
   'coc-git',
   'coc-vetur',
