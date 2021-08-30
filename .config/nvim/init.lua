@@ -404,26 +404,26 @@ vim.cmd([[
   function! CocStatus() abort
     let status = get(g:, 'coc_status', '')
     if empty(status) | return '' | endif
-    status
+    return ' ' .. status
   endfunction
 
   " Coc.nvim status builder
   function! CocStatusField(key, sym) abort
     let info = get(b:, 'coc_diagnostic_info', {})
     if empty(info) | return '' | endif
-    if get(info, a:key, 0) | return info[a:key] . a:sym | endif
+    if get(info, a:key, 0) | return '  ' .. info[a:key] . a:sym | endif
     return ''
   endfunction
 ]])
 
--- -- get git head
--- function _G.git_head()
---   local h = vim.fn["FugitiveHead"]()
---   if h ~= "" then
---     return "  " .. h .. " "
---   end
---   return ""
--- end
+-- get git head
+function _G.git_head()
+  local h = vim.fn["FugitiveHead"]()
+  if h ~= "" then
+    return "  " .. h .. " "
+  end
+  return ""
+end
 
 local function coc_error()
   return vim.fn["CocStatusField"]('error','X')
@@ -437,9 +437,16 @@ local function coc_info()
   return vim.fn["CocStatusField"]('information','?')
 end
 
+local custom_powerline = require'lualine.themes.powerline'
+custom_powerline.normal.a.bg = '#E2E8F0'
+custom_powerline.normal.a.fg = '#1A202C'
+
+custom_powerline.visual.a.bg = '#C4F1F9'
+custom_powerline.visual.a.fg = '#086F83'
+
 require('lualine').setup({
   options = {
-    theme = 'gruvbox_material',
+    theme = custom_powerline,
     section_separators = {'', ''},
     component_separators = {'', ''}
   },
