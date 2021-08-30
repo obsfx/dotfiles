@@ -1,39 +1,39 @@
-local set           = vim.o
-local cmd           = vim.cmd
-local fn            = vim.fn
-local execute       = vim.api.nvim_command
-local g             = vim.g
-local map           = vim.api.nvim_set_keymap
+local set = vim.o
+local cmd = vim.cmd
+local fn  = vim.fn
+local execute = vim.api.nvim_command
+local g = vim.g
+local map = vim.api.nvim_set_keymap
 
-set.exrc            = true
-set.guicursor       = ""
-set.wrap            = false
-set.scroll          = 1
-set.hidden          = true
-set.backup          = false
-set.swapfile        = false
-set.writebackup     = false
-set.updatetime      = 300
-set.timeoutlen      = 500
-set.shortmess       = set.shortmess .. "c"
-set.tabstop         = 2
-set.smarttab        = true
-set.shiftwidth      = 2
-set.expandtab       = true
-set.number          = true
-set.relativenumber  = true
-set.numberwidth     = 2
-set.encoding        = "UTF-8"
-set.compatible      = false
-set.cmdheight       = 2
-set.background      = "dark"
-set.undofile        = true
-set.cursorline      = true
-set.scrolloff       = 4
-set.signcolumn      = "yes"
-set.autoread        = true
--- set.noshowmode      = true
-set.secure          = true
+set.exrc = true
+set.guicursor = ""
+set.wrap = false
+set.scroll = 1
+set.hidden = true
+set.backup = false
+set.swapfile = false
+set.writebackup = false
+set.updatetime = 300
+set.timeoutlen = 500
+set.shortmess = set.shortmess .. "c"
+set.tabstop = 2
+set.smarttab = true
+set.shiftwidth = 2
+set.expandtab = true
+set.number = true
+set.relativenumber = true
+set.numberwidth = 2
+set.encoding = "UTF-8"
+set.compatible = false
+set.cmdheight = 2
+set.background = "dark"
+set.undofile = true
+set.cursorline = true
+set.scrolloff = 4
+set.signcolumn = "yes"
+set.autoread = true
+set.showmode = false
+set.secure = true
 -- Show invisible characters
 cmd([[set list listchars=tab:➜\ ,trail:·,eol:¬,nbsp:·]])
 
@@ -110,14 +110,22 @@ require("packer").startup(function()
   use {"neoclide/coc.nvim", branch = "release"}
   use "obsfx/vim-react-snippets"
   use "SirVer/ultisnips"
+  use {
+    'hoob3rt/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
+  }
 
   use {"kaicataldo/material.vim", branch = "main"}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
   use "rktjmp/lush.nvim"
+  use 'jacoborus/tender.vim'
+  use 'rakr/vim-one'
 end)
 
-g.material_theme_style = 'ocean'
-cmd([[colorscheme material]])
+-- g.material_theme_style = 'ocean'
+-- cmd([[colorscheme material]])
+
+cmd([[colorscheme tender]])
 
 -- cmd([[colorscheme bleed-purple]])
 
@@ -396,65 +404,64 @@ vim.cmd([[
   function! CocStatus() abort
     let status = get(g:, 'coc_status', '')
     if empty(status) | return '' | endif
-    return ' ' . status
+    status
   endfunction
 
   " Coc.nvim status builder
   function! CocStatusField(key, sym) abort
     let info = get(b:, 'coc_diagnostic_info', {})
     if empty(info) | return '' | endif
-    if get(info, a:key, 0) | return '  ' . info[a:key] . a:sym | endif
+    if get(info, a:key, 0) | return info[a:key] . a:sym | endif
     return ''
   endfunction
 ]])
 
--- Coc.nvim status builder
-function _G.coc_status()
-  local status = fn.get(vim.go, "coc_status", '')
-  if fn.empty(status) then
-    return ""
-  end
-  return " " ..status
+-- -- get git head
+-- function _G.git_head()
+--   local h = vim.fn["FugitiveHead"]()
+--   if h ~= "" then
+--     return "  " .. h .. " "
+--   end
+--   return ""
+-- end
+
+local function coc_error()
+  return vim.fn["CocStatusField"]('error','X')
 end
 
-function _G.coc_status_field(key, sym)
-  local info = fn.get(vim.bo, "coc_diagnostic_info", {})
-  --print(info, "--info", info[key])
-  if fn.empty(info) then
-    return ""
-  end
-
-  if fn.get(info, key, 0) then
-    return "  " .. info[key] .. sym
-  end
-
-  return ""
+local function coc_warning()
+  return vim.fn["CocStatusField"]('warning','!')
 end
 
--- get git head
-function _G.git_head()
-  local h = vim.fn["FugitiveHead"]()
-  if h ~= "" then
-    return "  " .. h .. " "
-  end
-  return ""
+local function coc_info()
+  return vim.fn["CocStatusField"]('information','?')
 end
 
-set.statusline = ""
-set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
-set.statusline = set.statusline .. " %m"
-set.statusline = set.statusline .. "%="
-set.statusline = set.statusline .. "%{CocStatus()}"
-set.statusline = set.statusline .. "%{CocStatusField('error','X')}"
-set.statusline = set.statusline .. "%{CocStatusField('warning','!')}"
-set.statusline = set.statusline .. "%{CocStatusField('information','?')}"
-set.statusline = set.statusline .. " %{&fileencoding?&fileencoding:&encoding}"
-set.statusline = set.statusline .. " [%{&fileformat}]"
-set.statusline = set.statusline .. " ~"
-set.statusline = set.statusline .. " %l/%L:%c"
-set.statusline = set.statusline .. " %p%%"
-set.statusline = set.statusline .. " %{v:lua.git_head()}"
-set.statusline = set.statusline .. "%<"
+require('lualine').setup({
+  options = {
+    theme = 'gruvbox_material',
+    section_separators = {'', ''},
+    component_separators = {'', ''}
+  },
+  sections = {
+    lualine_x = {'CocStatus', coc_error, coc_warning, coc_info, 'encoding', 'fileformat', 'filetype'}
+  }
+})
+-- set.statusline = ""
+-- set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
+-- set.statusline = set.statusline .. " %m"
+-- set.statusline = set.statusline .. "%="
+-- set.statusline = set.statusline .. "%{CocStatus()}"
+-- set.statusline = set.statusline .. "%{CocStatusField('error','X')}"
+-- set.statusline = set.statusline .. "%{CocStatusField('warning','!')}"
+-- set.statusline = set.statusline .. "%{CocStatusField('information','?')}"
+-- set.statusline = set.statusline .. " %{&fileencoding?&fileencoding:&encoding}"
+-- set.statusline = set.statusline .. " [%{&fileformat}]"
+-- set.statusline = set.statusline .. " ~"
+-- set.statusline = set.statusline .. " %l/%L:%c"
+-- set.statusline = set.statusline .. " %p%%"
+-- set.statusline = set.statusline .. " %{v:lua.git_head()}"
+-- set.statusline = set.statusline .. "%<"
 
 -- Use ripgrep for searching
 -- https://github.com/junegunn/fzf.vim/blob/master/doc/fzf-vim.txt#L355
