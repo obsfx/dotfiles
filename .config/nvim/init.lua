@@ -115,6 +115,8 @@ require("packer").startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
+  use 'cweagans/vim-taskpaper'
+
   use {"kaicataldo/material.vim", branch = "main"}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
   use "rktjmp/lush.nvim"
