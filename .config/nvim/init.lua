@@ -80,21 +80,21 @@ require("packer").startup(function()
       "html"
     }
   }
-  use "HerringtonDarkholme/yats.vim"
+  --use "HerringtonDarkholme/yats.vim"
   use "amadeus/vim-xml"
   use {"ericpruitt/tmux.vim", rtp = "vim/"}
-  use "cakebaker/scss-syntax.vim"
-  use "vim-python/python-syntax"
-  use "tbastos/vim-lua"
-  use "pangloss/vim-javascript"
-  use "maxmellon/vim-jsx-pretty"
-  use "leafgarland/typescript-vim"
+  --use "cakebaker/scss-syntax.vim"
+  --use "vim-python/python-syntax"
+  --use "tbastos/vim-lua"
+  --use "pangloss/vim-javascript"
+  --use "maxmellon/vim-jsx-pretty"
+  --use "leafgarland/typescript-vim"
   use "mattn/emmet-vim"
   use "OmniSharp/omnisharp-vim"
   use "habamax/vim-godot"
   use {"vlime/vlime", rtp = "vim/"}
-  use "posva/vim-vue"
-  use "jparise/vim-graphql"
+  --use "posva/vim-vue"
+  --use "jparise/vim-graphql"
 
   use "roxma/vim-tmux-clipboard"
   use "tpope/vim-fugitive"
@@ -122,12 +122,17 @@ require("packer").startup(function()
   use "rktjmp/lush.nvim"
   use 'jacoborus/tender.vim'
   use 'rakr/vim-one'
+  use 'morhetz/gruvbox'
+  use 'lifepillar/vim-gruvbox8'
+  use 'metalelf0/jellybeans-nvim'
+  use 'ishan9299/modus-theme-vim'
 end)
 
--- g.material_theme_style = 'ocean'
--- cmd([[colorscheme material]])
+g.material_theme_style = 'ocean'
+cmd([[colorscheme material]])
 
-cmd([[colorscheme tender]])
+--cmd([[colorscheme jellybeans-nvim]])
+-- cmd([[colorscheme modus-vivendi]])
 
 -- cmd([[colorscheme bleed-purple]])
 
@@ -155,6 +160,7 @@ g.coc_global_extensions = {
   'coc-eslint',
   'coc-json',
   'coc-go',
+  'coc-conjure',
 }
 
 -- prettier
@@ -288,6 +294,24 @@ cmd([[au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4]])
 cmd([[au BufWritePost *.go silent! execute "!gofmt -w %" | e]])
 
 require("nvim-treesitter.configs").setup {
+  ensure_installed = {
+    "javascript",
+    "typescript",
+    "c",
+    "go",
+    "python",
+    "css",
+    "scss",
+    "json",
+    "commonlisp",
+    "lua",
+    "tsx",
+    "html",
+    "graphql",
+    "bash",
+    "vue",
+    "vim"
+  },
   highlight = {enable = true},
 
   query_linter = {enable = true, use_virtual_text = true, lint_events = {"BufWrite", "CursorHold"}},
@@ -448,8 +472,8 @@ custom_powerline.visual.a.fg = '#086F83'
 
 require('lualine').setup({
   options = {
-    theme = custom_powerline,
-    section_separators = {'', ''},
+    theme = "ayu_dark",
+    section_separators = { left = '', right = ''},
     component_separators = {'', ''}
   },
   sections = {
