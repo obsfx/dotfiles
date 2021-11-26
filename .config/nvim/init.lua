@@ -1,5 +1,4 @@
-local set = vim.o
-local cmd = vim.cmd
+local set = vim.o local cmd = vim.cmd
 local fn  = vim.fn
 local execute = vim.api.nvim_command
 local g = vim.g
@@ -32,7 +31,7 @@ set.cursorline = true
 set.scrolloff = 4
 set.signcolumn = "yes"
 set.autoread = true
-set.showmode = false
+-- set.showmode = false
 set.secure = true
 -- Show invisible characters
 cmd([[set list listchars=tab:➜\ ,trail:·,eol:¬,nbsp:·]])
@@ -41,7 +40,7 @@ cmd([[set list listchars=tab:➜\ ,trail:·,eol:¬,nbsp:·]])
 cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
 cmd([[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]])
 cmd([[let $NVIM_TUI_ENABLE_TRUE_COLOR=1]])
-set.termguicolors   = true
+set.termguicolors = true
 -- set.t_Co            = 256
 
 cmd([[filetype off]])
@@ -95,6 +94,7 @@ require("packer").startup(function()
   use {"vlime/vlime", rtp = "vim/"}
   --use "posva/vim-vue"
   --use "jparise/vim-graphql"
+  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
   use "roxma/vim-tmux-clipboard"
   use "tpope/vim-fugitive"
@@ -115,26 +115,18 @@ require("packer").startup(function()
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
   }
 
-  use 'cweagans/vim-taskpaper'
-
   use {"kaicataldo/material.vim", branch = "main"}
-  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-  use "rktjmp/lush.nvim"
   use 'jacoborus/tender.vim'
-  use 'rakr/vim-one'
   use 'morhetz/gruvbox'
   use 'lifepillar/vim-gruvbox8'
-  use 'metalelf0/jellybeans-nvim'
-  use 'ishan9299/modus-theme-vim'
+  use 'nikolvs/vim-sunbather'
 end)
 
-g.material_theme_style = 'ocean'
-cmd([[colorscheme material]])
+-- g.material_theme_style = 'ocean'
+-- cmd([[colorscheme material]])
 
---cmd([[colorscheme jellybeans-nvim]])
--- cmd([[colorscheme modus-vivendi]])
-
--- cmd([[colorscheme bleed-purple]])
+-- cmd([[colorscheme gruvbox8_hard]])
+cmd([[colorscheme sunbather]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
@@ -470,16 +462,16 @@ custom_powerline.normal.a.fg = '#1A202C'
 custom_powerline.visual.a.bg = '#C4F1F9'
 custom_powerline.visual.a.fg = '#086F83'
 
-require('lualine').setup({
-  options = {
-    theme = "ayu_dark",
-    section_separators = { left = '', right = ''},
-    component_separators = {'', ''}
-  },
-  sections = {
-    lualine_x = {'CocStatus', coc_error, coc_warning, coc_info, 'encoding', 'fileformat', 'filetype'}
-  }
-})
+-- require('lualine').setup({
+--   options = {
+--     theme = "gruvbox-material",
+--     section_separators = { left = '', right = ''},
+--     component_separators = {'', ''}
+--   },
+--   sections = {
+--     lualine_x = {'CocStatus', 'encoding', 'fileformat', 'filetype'}
+--   }
+-- })
 -- set.statusline = ""
 -- set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
 -- set.statusline = set.statusline .. " %m"
