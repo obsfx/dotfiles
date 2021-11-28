@@ -442,27 +442,20 @@ local function coc_info()
   return vim.fn["CocStatusField"]('information','?')
 end
 
-local custom_powerline = require'lualine.themes.powerline'
-custom_powerline.normal.a.bg = '#E2E8F0'
-custom_powerline.normal.a.fg = '#1A202C'
-
-custom_powerline.visual.a.bg = '#C4F1F9'
-custom_powerline.visual.a.fg = '#086F83'
-
- set.statusline = ""
- set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
- set.statusline = set.statusline .. " %m"
- set.statusline = set.statusline .. "%="
- set.statusline = set.statusline .. "%{CocStatus()}"
- set.statusline = set.statusline .. "%{CocStatusField('error','X')}"
- set.statusline = set.statusline .. "%{CocStatusField('warning','!')}"
- set.statusline = set.statusline .. "%{CocStatusField('information','?')}"
- set.statusline = set.statusline .. " %{&fileencoding?&fileencoding:&encoding}"
- set.statusline = set.statusline .. " [%{&fileformat}]"
- set.statusline = set.statusline .. " %l/%L:%c"
- set.statusline = set.statusline .. " %p%%"
- set.statusline = set.statusline .. " %{v:lua.git_head()}"
- set.statusline = set.statusline .. "%<"
+set.statusline = ""
+set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
+set.statusline = set.statusline .. " %m"
+set.statusline = set.statusline .. "%="
+set.statusline = set.statusline .. "%{CocStatus()}"
+set.statusline = set.statusline .. "%{CocStatusField('error','X')}"
+set.statusline = set.statusline .. "%{CocStatusField('warning','!')}"
+set.statusline = set.statusline .. "%{CocStatusField('information','?')}"
+set.statusline = set.statusline .. " %{&fileencoding?&fileencoding:&encoding}"
+set.statusline = set.statusline .. " [%{&fileformat}]"
+set.statusline = set.statusline .. " %l/%L:%c"
+set.statusline = set.statusline .. " %p%%"
+set.statusline = set.statusline .. " %{v:lua.git_head()}"
+set.statusline = set.statusline .. "%<"
 
 -- Use ripgrep for searching
 -- https://github.com/junegunn/fzf.vim/blob/master/doc/fzf-vim.txt#L355
