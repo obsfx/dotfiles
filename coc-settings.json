@@ -1,0 +1,34 @@
+{
+  "languageserver": {
+    "godot": {
+        "host": "127.0.0.1",
+        "filetypes": ["gdscript"],
+        "port": 6008
+    }
+  },
+"suggest.completionItemKindLabels": {
+    "method": "ƒ   Method",
+    "function": "ƒ   Function",
+    "variable": "[] Variable",
+    "constant": "   Constant",
+    "class": "   Class",
+    "interface": "ﰮ   Constant",
+    "struct": "   Struct",
+    "event": "   Event",
+    "operator": "⨂   Operator",
+    "module": "   Module",
+    "property": "   Property",
+    "enum": "   Enum",
+    "reference": "   Reference",
+    "keyword": "   Keyword",
+    "file": "   File",
+    "folder": "   Folder",
+    "color": "   Color",
+    "unit": "   Unit",
+    "snippet": "﬌   Snippet",
+    "text": "   Text",
+    "constructor": "   Constructor",
+    "value": "   Value",
+    "enumMember": "   Enum Member"
+  }
+}
