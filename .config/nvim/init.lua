@@ -79,21 +79,12 @@ require("packer").startup(function()
       "html"
     }
   }
-  --use "HerringtonDarkholme/yats.vim"
   use "amadeus/vim-xml"
   use {"ericpruitt/tmux.vim", rtp = "vim/"}
-  --use "cakebaker/scss-syntax.vim"
-  --use "vim-python/python-syntax"
-  --use "tbastos/vim-lua"
-  --use "pangloss/vim-javascript"
-  --use "maxmellon/vim-jsx-pretty"
-  --use "leafgarland/typescript-vim"
   use "mattn/emmet-vim"
   use "OmniSharp/omnisharp-vim"
   use "habamax/vim-godot"
   use {"vlime/vlime", rtp = "vim/"}
-  --use "posva/vim-vue"
-  --use "jparise/vim-graphql"
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
   use "roxma/vim-tmux-clipboard"
@@ -110,10 +101,6 @@ require("packer").startup(function()
   use {"neoclide/coc.nvim", branch = "release"}
   use "obsfx/vim-react-snippets"
   use "SirVer/ultisnips"
-  use {
-    'hoob3rt/lualine.nvim',
-    requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  }
 
   use {"kaicataldo/material.vim", branch = "main"}
   use 'jacoborus/tender.vim'
@@ -122,11 +109,11 @@ require("packer").startup(function()
   use 'nikolvs/vim-sunbather'
 end)
 
--- g.material_theme_style = 'ocean'
--- cmd([[colorscheme material]])
+g.material_theme_style = 'ocean'
+cmd([[colorscheme material]])
 
 -- cmd([[colorscheme gruvbox8_hard]])
-cmd([[colorscheme sunbather]])
+-- cmd([[colorscheme sunbather]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
@@ -462,31 +449,20 @@ custom_powerline.normal.a.fg = '#1A202C'
 custom_powerline.visual.a.bg = '#C4F1F9'
 custom_powerline.visual.a.fg = '#086F83'
 
--- require('lualine').setup({
---   options = {
---     theme = "gruvbox-material",
---     section_separators = { left = '', right = ''},
---     component_separators = {'', ''}
---   },
---   sections = {
---     lualine_x = {'CocStatus', 'encoding', 'fileformat', 'filetype'}
---   }
--- })
--- set.statusline = ""
--- set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
--- set.statusline = set.statusline .. " %m"
--- set.statusline = set.statusline .. "%="
--- set.statusline = set.statusline .. "%{CocStatus()}"
--- set.statusline = set.statusline .. "%{CocStatusField('error','X')}"
--- set.statusline = set.statusline .. "%{CocStatusField('warning','!')}"
--- set.statusline = set.statusline .. "%{CocStatusField('information','?')}"
--- set.statusline = set.statusline .. " %{&fileencoding?&fileencoding:&encoding}"
--- set.statusline = set.statusline .. " [%{&fileformat}]"
--- set.statusline = set.statusline .. " ~"
--- set.statusline = set.statusline .. " %l/%L:%c"
--- set.statusline = set.statusline .. " %p%%"
--- set.statusline = set.statusline .. " %{v:lua.git_head()}"
--- set.statusline = set.statusline .. "%<"
+ set.statusline = ""
+ set.statusline = set.statusline .. "%{v:lua.fish_like_path()}"
+ set.statusline = set.statusline .. " %m"
+ set.statusline = set.statusline .. "%="
+ set.statusline = set.statusline .. "%{CocStatus()}"
+ set.statusline = set.statusline .. "%{CocStatusField('error','X')}"
+ set.statusline = set.statusline .. "%{CocStatusField('warning','!')}"
+ set.statusline = set.statusline .. "%{CocStatusField('information','?')}"
+ set.statusline = set.statusline .. " %{&fileencoding?&fileencoding:&encoding}"
+ set.statusline = set.statusline .. " [%{&fileformat}]"
+ set.statusline = set.statusline .. " %l/%L:%c"
+ set.statusline = set.statusline .. " %p%%"
+ set.statusline = set.statusline .. " %{v:lua.git_head()}"
+ set.statusline = set.statusline .. "%<"
 
 -- Use ripgrep for searching
 -- https://github.com/junegunn/fzf.vim/blob/master/doc/fzf-vim.txt#L355
