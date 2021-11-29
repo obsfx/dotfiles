@@ -104,13 +104,18 @@ require("packer").startup(function()
 
   use {"kaicataldo/material.vim", branch = "main"}
   use 'jacoborus/tender.vim'
-  use 'morhetz/gruvbox'
   use 'lifepillar/vim-gruvbox8'
-  use 'nikolvs/vim-sunbather'
+  use 'mhartington/oceanic-next'
+  use 'aonemd/kuroi.vim'
 end)
 
-g.material_theme_style = 'ocean'
-cmd([[colorscheme material]])
+-- g.material_theme_style = 'ocean'
+-- cmd([[colorscheme material]])
+
+-- g.oceanic_next_terminal_bold = 1
+-- cmd([[colorscheme OceanicNext]])
+
+cmd([[colorscheme kuroi]])
 
 -- cmd([[colorscheme gruvbox8_hard]])
 -- cmd([[colorscheme sunbather]])
