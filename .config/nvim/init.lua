@@ -101,12 +101,17 @@ require("packer").startup(function()
   use {"neoclide/coc.nvim", branch = "release"}
   use "obsfx/vim-react-snippets"
   use "SirVer/ultisnips"
+  use 'itchyny/lightline.vim'
 
+  use 'sjl/badwolf'
   use {"kaicataldo/material.vim", branch = "main"}
   use 'jacoborus/tender.vim'
   use 'lifepillar/vim-gruvbox8'
   use 'mhartington/oceanic-next'
   use 'aonemd/kuroi.vim'
+  use 'sstallion/vim-wtf'
+  use 'bluz71/vim-nightfly-guicolors'
+  use 'vv9k/vim-github-dark'
 end)
 
 -- g.material_theme_style = 'ocean'
@@ -115,10 +120,18 @@ end)
 -- g.oceanic_next_terminal_bold = 1
 -- cmd([[colorscheme OceanicNext]])
 
-cmd([[colorscheme kuroi]])
+-- cmd([[colorscheme kuroi]])
+
+--cmd([[colorscheme badwolf]])
+
+-- cmd([[colorscheme wtf]])
+
+cmd([[colorscheme ghdark]])
 
 -- cmd([[colorscheme gruvbox8_hard]])
 -- cmd([[colorscheme sunbather]])
+
+g.lightline = { colorscheme = "ghdark" }
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
