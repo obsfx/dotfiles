@@ -102,6 +102,7 @@ require("packer").startup(function()
   use "obsfx/vim-react-snippets"
   use "SirVer/ultisnips"
 
+
   use 'sjl/badwolf'
   use {"kaicataldo/material.vim", branch = "main"}
   use 'jacoborus/tender.vim'
@@ -193,7 +194,6 @@ map("n",  "<C-z>",    "<NOP>", {noremap = true})
 -- disable ctrl u in insert mode
 map("i",  "<C-u>",    "<NOP>", {noremap = true})
 -- Remap H and L (top, bottom of screen to left and right end of line)
--- https://github.com/fatih/dotfiles/blob/master/vimrc
 map("n",  "H",        "^", {noremap = true})
 map("n",  "L",        "$", {noremap = true})
 map("v",  "H",        "^", {noremap = true})
@@ -215,10 +215,10 @@ map("n",  "<Leader>g",":GFiles<CR>", {noremap = true})
 -- easy save
 map("n",  "<Leader>w",":w<cr>", {noremap = true})
 -- indentation
-map("n",  "<Tab>",    ">>", {noremap = true})
-map("n",  "<BS>",     "<<", {noremap = true})
-map("v",  "<Tab>",    ">gv", {noremap = true})
-map("v",  "<BS>",     "<gv", {noremap = true})
+map("n",  "<Leader><Tab>",    ">>", {noremap = true})
+map("n",  "<Leader><BS>",     "<<", {noremap = true})
+map("v",  "<Leader><Tab>",    ">gv", {noremap = true})
+map("v",  "<Leader><BS>",     "<gv", {noremap = true})
 -- use system clipboard
 map("",  "<Leader>y", [["+y]], {noremap = true})
 map("",  "<Leader>p", [["+p]], {noremap = true})
@@ -246,6 +246,7 @@ map("v",  "u",          "<NOP>", {noremap = true})
 map("n",  "<Leader>rn", "<Plug>(coc-rename)", {})
 -- GoTo code navigation
 map("n",  "<Leader>cd", "<Plug>(coc-definition)", {silent = true})
+map("n",  "<Leader>cd", "<Plug>(coc-definition)", {silent = true})
 map("n",  "<Leader>cy", "<Plug>(coc-type-definition)", {silent = true})
 map("n",  "<Leader>ci", "<Plug>(coc-implementation)", {silent = true})
 map("n",  "<Leader>cr", "<Plug>(coc-references)", {silent = true})
@@ -256,13 +257,11 @@ map("n",  "<Leader>ca", ":CocDiagnostics<cr>", {silent = true})
 map("i",  "<C-c>",      "coc#refresh()", {silent = true, expr = true, noremap = true})
 
 function _G.show_doc_or_diagnostic()
-  if fn["coc#status"]() ~= '' then
-    cmd([[call CocAction('doHover')]])
-  end
+  cmd([[call CocAction('doHover')]])
 end
 
 -- show if doc or diagnostic exist
-map("n",  "<Leader>k",  "v:lua.show_doc_or_diagnostic()", {silent = true})
+map("n",  "<Leader>k",  ":call v:lua.show_doc_or_diagnostic()<CR>", {silent = true, noremap = true})
 
 -- remove trailing whitespaces on save
 function _G.remove_trailing_ws()
