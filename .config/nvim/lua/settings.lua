@@ -89,6 +89,8 @@ g.vue_pre_processors = {'scss'}
 -- vim file explorer
 -- remove banner
 g.netrw_banner = 0
+-- tree view
+g.netrw_liststyle = 3
 -- disable file delete with D & capslocked hjkl
 cmd([[
   function! Netrw_NOP(islocal) abort
