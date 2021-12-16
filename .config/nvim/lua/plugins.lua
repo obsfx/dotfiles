@@ -1,5 +1,6 @@
 local cmd = vim.cmd
 local fn  = vim.fn
+local execute = vim.api.nvim_command
 
 -- Auto install packer.nvim if not exists
 local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
@@ -52,7 +53,6 @@ require("packer").startup(function()
   use "Yggdroot/indentLine"
   use "tpope/vim-surround"
   use {"neoclide/coc.nvim", branch = "release"}
-  use "obsfx/vim-react-snippets"
   use "SirVer/ultisnips"
 
   use 'sjl/badwolf'
