@@ -57,14 +57,6 @@ require("packer").startup(function()
 
   use 'sjl/badwolf'
   use {"kaicataldo/material.vim", branch = "main"}
-  use 'jacoborus/tender.vim'
   use 'lifepillar/vim-gruvbox8'
-  use 'mhartington/oceanic-next'
-  use 'aonemd/kuroi.vim'
-  use 'sstallion/vim-wtf'
-  use 'bluz71/vim-nightfly-guicolors'
-  use 'vv9k/vim-github-dark'
-  use 'sickill/vim-monokai'
   use 'arzg/vim-colors-xcode'
-  use 'ayu-theme/ayu-vim'
 end)

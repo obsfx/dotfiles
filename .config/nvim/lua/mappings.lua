@@ -45,10 +45,10 @@ map("n",  "<Leader>g",":GFiles<CR>", {noremap = true})
 -- easy save
 map("n",  "<Leader>w",":w<cr>", {noremap = true})
 -- indentation
-map("n",  "<Leader><Tab>",    ">>", {noremap = true})
-map("n",  "<Leader><BS>",     "<<", {noremap = true})
-map("v",  "<Leader><Tab>",    ">gv", {noremap = true})
-map("v",  "<Leader><BS>",     "<gv", {noremap = true})
+map("n",  ">",    ">>", {noremap = true})
+map("n",  "<",     "<<", {noremap = true})
+map("v",  ">",    ">gv", {noremap = true})
+map("v",  "<",     "<gv", {noremap = true})
 -- use system clipboard
 map("",  "<Leader>y", [["+y]], {noremap = true})
 map("",  "<Leader>p", [["+p]], {noremap = true})

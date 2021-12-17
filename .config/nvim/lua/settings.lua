@@ -75,6 +75,7 @@ g.coc_global_extensions = {
   'coc-json',
   'coc-go',
   'coc-conjure',
+  'coc-lua',
 }
 
 -- prettier
