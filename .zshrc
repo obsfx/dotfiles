@@ -1,6 +1,7 @@
 alias vim=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export SUDO_EDITOR=nvim
 
 export ZSH="/home/obsfx/.oh-my-zsh"
 
@@ -8,7 +9,10 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH="$HOME/bin:$PATH"
+alias kssh="kitty +kitten ssh"
+
+export GOPATH=$HOME/go
+export PATH="$PATH:$HOME/bin:/usr/local/go/bin:$GOPATH/bin"
 
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R'
@@ -77,3 +81,10 @@ nvmiall() {
 
 # keybindings
 bindkey -s '^F' 'cd $(find . -type d | fzf); tmux^M'
+
+if [ ! -f /tmp/system-update-checked ]; then
+  # check updates
+  echo "(checking updates)"
+  sudo apt update
+  touch /tmp/system-update-checked
+fi
