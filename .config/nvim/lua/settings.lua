@@ -33,6 +33,7 @@ set.signcolumn = "yes"
 set.autoread = true
 -- set.showmode = false
 set.secure = true
+set.mouse = "a"
 -- Show invisible characters
 cmd([[set list listchars=tab:➜\ ,trail:·,eol:¬,nbsp:·]])
 
@@ -48,7 +49,14 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
-cmd([[colorscheme xcodedarkhc]])
+cmd([[colorscheme badwolf]])
+-- Example config in Lua
+-- require("github-theme").setup({
+--   theme_style = "dark_default",
+--   function_style = "bold",
+--   sidebars = {"qf", "vista_kind", "terminal", "packer"},
+--   hide_inactive_statusline = false
+-- })
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
@@ -63,12 +71,13 @@ g.UltiSnipsExpandTrigger="<C-s>"
 g.coc_global_extensions = {
   'coc-css',
   'coc-html',
+  'coc-pyright',
   'coc-tsserver',
+  'coc-prettier',
   'coc-clangd',
   'coc-highlight',
   'coc-styled-components',
   'coc-snippets',
-  'coc-python',
   'coc-git',
   'coc-vetur',
   'coc-eslint',
@@ -79,10 +88,10 @@ g.coc_global_extensions = {
 }
 
 -- prettier
-g["prettier#autoformat_config_present"] = 1
-g["prettier#autoformat_require_pragma"] = 0
-g["prettier#quickfix_enabled"]  = 0
-g["prettier#exec_cmd_async"] = 1
+--g["prettier#autoformat_config_present"] = 1
+--g["prettier#autoformat_require_pragma"] = 0
+--g["prettier#quickfix_enabled"]  = 0
+--g["prettier#exec_cmd_async"] = 1
 
 -- vim vue prevent slowing down
 g.vue_pre_processors = {'scss'}
@@ -91,7 +100,7 @@ g.vue_pre_processors = {'scss'}
 -- remove banner
 g.netrw_banner = 0
 -- tree view
-g.netrw_liststyle = 3
+-- g.netrw_liststyle = 3
 -- disable file delete with D & capslocked hjkl
 cmd([[
   function! Netrw_NOP(islocal) abort

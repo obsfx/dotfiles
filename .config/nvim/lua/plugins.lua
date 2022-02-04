@@ -15,24 +15,6 @@ require("packer").startup(function()
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
-  use {
-    "prettier/vim-prettier",
-    run = "npm install",
-    ft = {
-      "javascript",
-      "javascriptreact",
-      "typescriptreact",
-      "typescript",
-      "vue",
-      "css",
-      "scss",
-      "json",
-      "graphql",
-      "markdown",
-      "yaml",
-      "html"
-    }
-  }
   use "amadeus/vim-xml"
   use {"ericpruitt/tmux.vim", rtp = "vim/"}
   use "mattn/emmet-vim"
@@ -40,6 +22,8 @@ require("packer").startup(function()
   use "habamax/vim-godot"
   use {"vlime/vlime", rtp = "vim/"}
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+
+  use 'fatih/vim-go'
 
   use "roxma/vim-tmux-clipboard"
   use "tpope/vim-fugitive"
@@ -53,10 +37,12 @@ require("packer").startup(function()
   use "Yggdroot/indentLine"
   use "tpope/vim-surround"
   use {"neoclide/coc.nvim", branch = "release"}
+  use {"psf/black", branch = "stable"}
   use "SirVer/ultisnips"
 
   use 'sjl/badwolf'
   use {"kaicataldo/material.vim", branch = "main"}
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
+  use "projekt0n/github-nvim-theme"
 end)

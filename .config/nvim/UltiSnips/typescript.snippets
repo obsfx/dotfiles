@@ -1,0 +1,109 @@
+snippet es "Emotion Definition" b
+const c = css\`\`
+endsnippet
+
+snippet fc "Flex" b
+<Flex css={}></Flex>
+endsnippet
+
+snippet xc "Box" b
+<Box css={}></Bix>
+endsnippet
+
+snippet rfc "React Functional Component" b
+import React from 'react'
+
+const FunctionComponent: React.FC<{}> = ({}) => {
+	return (
+		<div>
+			function component
+		</div>
+	)
+}
+
+export default FunctionComponent
+endsnippet
+
+snippet rfc2 "React Functional Component 2" b
+import React from "react";
+import { css } from "@emotion/react";
+import { Flex, Box } from "@rebass/grid/emotion";
+
+import * as GlobalStyle from "components/style/GlobalStyle";
+
+interface Props {
+}
+
+function (props: Props) {
+
+  return (
+	<Flex>
+		<Box>Component</Box>
+	</Flex>
+  );
+}
+
+export default React.memo();
+endsnippet
+
+snippet rsc "React Styled Component" b
+import styled from 'styled-components';
+
+const ${1:`!v expand('%:t:r')`} = styled.${2:div}\`
+	$3
+\`;
+
+export default $1;
+endsnippet
+
+snippet us.s "useState" w
+const [$1, set${1/\w+\s*/\u$0/g}] = useState(${3:''})${0:;}
+endsnippet
+
+snippet us.e "useEffect" w
+useEffect(() => {
+  $1
+})${0:;}
+endsnippet
+
+snippet us.er "useEffect with return" w
+useEffect(() => {
+  $1
+	return () => {
+    $2
+	};
+})${0:;}
+endsnippet
+
+snippet us.c "useContext" w
+const $1 = useContext($2)${0:;}
+endsnippet
+
+snippet us.r "useReducer" w
+const [$1, dispatch] = useReducer($1Reducer, ${2:${VISUAL:initialState}})
+const $1Reducer = (state, action) => {
+	switch (action.type) {
+		default:
+			return state;
+	}
+}${0:;}
+endsnippet
+
+snippet us.cb "useCallback" w
+useCallback(
+	() => {
+		$1
+	},
+	[$2],
+)${0:;}
+endsnippet
+
+snippet us.m "useMemo" w
+const $1 = useMemo(() => {
+	$2
+}, [$3])${0:;}
+endsnippet
+
+snippet us.rf "useRef" w
+const $1 = useRef($2)${0:;}
+endsnippet

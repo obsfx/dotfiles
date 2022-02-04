@@ -15,10 +15,10 @@ map("n",  "<Down>",   "<NOP>", {noremap = true})
 map("n",  "<Left>",   "<NOP>", {noremap = true})
 map("n",  "<Right>",  "<NOP>", {noremap = true})
 -- line moving
-map("n",  "<A-k>",    ":m .-2<CR>==", {noremap = true})
-map("n",  "<A-j>",    ":m .+1<CR>==", {noremap = true})
-map("v",  "<A-j>",    ":m '>+1<CR>gv=gv", {noremap = true})
-map("v",  "<A-k>",    ":m '<-2<CR>gv=gv", {noremap = true})
+map("n",  "<C-k>",    ":m .-2<CR>==", {noremap = true})
+map("n",  "<C-j>",    ":m .+1<CR>==", {noremap = true})
+map("v",  "<C-j>",    ":m '>+1<CR>gv=gv", {noremap = true})
+map("v",  "<C-k>",    ":m '<-2<CR>gv=gv", {noremap = true})
 -- disable suspend
 map("n",  "<C-z>",    "<NOP>", {noremap = true})
 -- disable ctrl u in insert mode
@@ -80,6 +80,7 @@ map("n",  "<Leader>cd", "<Plug>(coc-definition)", {silent = true})
 map("n",  "<Leader>cy", "<Plug>(coc-type-definition)", {silent = true})
 map("n",  "<Leader>ci", "<Plug>(coc-implementation)", {silent = true})
 map("n",  "<Leader>cr", "<Plug>(coc-references)", {silent = true})
+map("n",  "<Leader>cf", ":CocFix<CR>", {silent = true})
 -- diagnostics
 map("n",  "<Leader>ca", ":CocDiagnostics<cr>", {silent = true})
 

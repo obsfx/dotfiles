@@ -23,8 +23,11 @@ cmd([[
     autocmd!
     autocmd VimResized * wincmd =
   augroup end
+
+  autocmd BufWritePre *.py execute ':Black'
 ]])
 
 -- go
 cmd([[au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4]])
-cmd([[au BufWritePost *.go silent! execute "!gofmt -w %" | e]])
+cmd([[command! -nargs=0 Prettier :CocCommand prettier.formatFile]])
+--cmd([[au BufWritePost *.go silent! execute "!gofmt -w %" | e]])
