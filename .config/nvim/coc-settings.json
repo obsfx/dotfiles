@@ -2,21 +2,22 @@
   "languageserver": {
     "godot": {
       "host": "127.0.0.1",
-      "filetypes": [
-        "gdscript"
-      ],
+      "filetypes": ["gdscript"],
       "port": 6008
     }
   },
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "cs",
-		"graphql",
+    "graphql",
     "go",
     "javascript",
     "javascriptreact",
     "lua",
     "typescript",
-    "typescriptreact"
-  ]
+    "typescriptreact",
+    "svelte",
+    "json"
+  ],
+  "svelte.enable-ts-plugin": true
 }

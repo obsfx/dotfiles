@@ -40,9 +40,21 @@ require("packer").startup(function()
   use {"psf/black", branch = "stable"}
   use "SirVer/ultisnips"
 
+
+  use 'jacoborus/tender.vim'
   use 'sjl/badwolf'
   use {"kaicataldo/material.vim", branch = "main"}
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
   use "projekt0n/github-nvim-theme"
+  use 'EdenEast/nightfox.nvim'
+  use 'zekzekus/menguless'
+  use 'owickstrom/vim-colors-paramount'
+  use 'andreypopp/vim-colors-plain'
+
+  use 'kyazdani42/nvim-web-devicons'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 end)

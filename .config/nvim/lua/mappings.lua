@@ -15,10 +15,10 @@ map("n",  "<Down>",   "<NOP>", {noremap = true})
 map("n",  "<Left>",   "<NOP>", {noremap = true})
 map("n",  "<Right>",  "<NOP>", {noremap = true})
 -- line moving
-map("n",  "<C-k>",    ":m .-2<CR>==", {noremap = true})
-map("n",  "<C-j>",    ":m .+1<CR>==", {noremap = true})
-map("v",  "<C-j>",    ":m '>+1<CR>gv=gv", {noremap = true})
-map("v",  "<C-k>",    ":m '<-2<CR>gv=gv", {noremap = true})
+map("n",  "<C-n>",    ":m .+1<CR>==", {noremap = true})
+map("n",  "<C-p>",    ":m .-2<CR>==", {noremap = true})
+map("v",  "<C-n>",    ":m '>+1<CR>gv=gv", {noremap = true})
+map("v",  "<C-p>",    ":m '<-2<CR>gv=gv", {noremap = true})
 -- disable suspend
 map("n",  "<C-z>",    "<NOP>", {noremap = true})
 -- disable ctrl u in insert mode
@@ -39,8 +39,10 @@ map("i",  "<Esc>",    "<NOP>", {noremap = true})
 -- no more ctrl-c
 map("i",  "<C-c>",    "<NOP>", {noremap = true})
 
-map("n",  "<Leader>s",":Files<CR>", {noremap = true})
-map("n",  "<Leader>g",":GFiles<CR>", {noremap = true})
+--map("n",  "<Leader>s",":Files<CR>", {noremap = true})
+--map("n",  "<Leader>g",":GFiles<CR>", {noremap = true})
+map("n",  "<Leader>s","<cmd>Telescope find_files<CR>", {noremap = true})
+map("n",  "<Leader>g","<cmd>Telescope live_grep<CR>", {noremap = true})
 
 -- easy save
 map("n",  "<Leader>w",":w<cr>", {noremap = true})

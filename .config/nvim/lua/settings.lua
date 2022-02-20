@@ -35,7 +35,7 @@ set.autoread = true
 set.secure = true
 set.mouse = "a"
 -- Show invisible characters
-cmd([[set list listchars=tab:➜\ ,trail:·,eol:¬,nbsp:·]])
+cmd([[set list listchars=tab:>\ ,trail:·,eol:¬,nbsp:·]])
 
 -- neovim + tmux true color
 cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
@@ -49,7 +49,8 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
-cmd([[colorscheme badwolf]])
+cmd([[colorscheme gruvbox8_hard]])
+--cmd([[colorscheme tender]])
 -- Example config in Lua
 -- require("github-theme").setup({
 --   theme_style = "dark_default",
@@ -85,6 +86,7 @@ g.coc_global_extensions = {
   'coc-go',
   'coc-conjure',
   'coc-lua',
+  'coc-svelte',
 }
 
 -- prettier
@@ -114,4 +116,20 @@ g.Netrw_UserMaps = {
   { 'J', 'Netrw_NOP' },
   { 'K', 'Netrw_NOP' },
   { 'L', 'Netrw_NOP' },
+}
+
+local actions = require("telescope.actions")
+
+require("telescope").setup{
+  defaults = {
+	  preview = false,
+    layout_config = {
+      vertical = { width = 1 }
+    },
+    mappings = {
+      i = {
+        ["<esc>"] = actions.close
+      },
+    },
+  }
 }
