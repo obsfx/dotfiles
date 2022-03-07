@@ -37,20 +37,13 @@ require("packer").startup(function()
   use "Yggdroot/indentLine"
   use "tpope/vim-surround"
   use {"neoclide/coc.nvim", branch = "release"}
-  use {"psf/black", branch = "stable"}
   use "SirVer/ultisnips"
 
-
-  use 'jacoborus/tender.vim'
   use 'sjl/badwolf'
-  use {"kaicataldo/material.vim", branch = "main"}
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
-  use "projekt0n/github-nvim-theme"
-  use 'EdenEast/nightfox.nvim'
-  use 'zekzekus/menguless'
-  use 'owickstrom/vim-colors-paramount'
-  use 'andreypopp/vim-colors-plain'
+  use 'kaicataldo/material.vim'
+  use 'cocopon/iceberg.vim'
 
   use 'kyazdani42/nvim-web-devicons'
   use {

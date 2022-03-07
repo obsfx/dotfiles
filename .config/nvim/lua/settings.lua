@@ -49,15 +49,9 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
-cmd([[colorscheme gruvbox8_hard]])
---cmd([[colorscheme tender]])
--- Example config in Lua
--- require("github-theme").setup({
---   theme_style = "dark_default",
---   function_style = "bold",
---   sidebars = {"qf", "vista_kind", "terminal", "packer"},
---   hide_inactive_statusline = false
--- })
+--cmd([[colorscheme gruvbox8_hard]])
+g.material_theme_style = "darker"
+cmd([[colorscheme material]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
