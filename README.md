@@ -1,6 +1,8 @@
 # dotfiles
 
-- **Editor:** Neovim
+![](https://raw.githubusercontent.com/obsfx/dotfiles/main/s.png)
+
+- **Editor:** NeoVim
 - **Terminal Multiplexer:** tmux
-- **Terminal:** Kitty
-- **Font:** Hack / Iosevka SS12 / Iosevka Term SS09
+- **Terminal:** Alacritty
+- **Font:** Fira Code Retina
