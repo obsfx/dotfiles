@@ -85,6 +85,9 @@ map("n",  "<Leader>cr", "<Plug>(coc-references)", {silent = true})
 map("n",  "<Leader>cf", ":CocFix<CR>", {silent = true})
 -- diagnostics
 map("n",  "<Leader>ca", ":CocDiagnostics<cr>", {silent = true})
+-- fugitive
+map("n",  "gs", ":Gvdiffsplit<cr>", {silent = true})
+map("n",  "gl", ":Gclog<cr>", {silent = true})
 
 -- trigger auto completion
 map("i",  "<C-c>",      "coc#refresh()", {silent = true, expr = true, noremap = true})

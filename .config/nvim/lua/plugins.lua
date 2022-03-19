@@ -43,7 +43,7 @@ require("packer").startup(function()
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
   use 'kaicataldo/material.vim'
-  use 'cocopon/iceberg.vim'
+  use 'norcalli/nvim-colorizer.lua'
 
   use 'kyazdani42/nvim-web-devicons'
   use {
