@@ -104,6 +104,11 @@ cmd([[
   endfunction
 ]])
 
+-- emotion css block macro
+cmd([[
+  let @c="maHf{lvt}yJJkiconst jjpa = css`jjojj'a"
+]])
+
 g.Netrw_UserMaps = {
   { 'D', 'Netrw_NOP' },
   { 'H', 'Netrw_NOP' },
