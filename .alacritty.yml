@@ -18,42 +18,50 @@ font:
   bold:
     family: FiraCode Nerd Font Mono
   italic:
-    family: FiraCode Nerd Font Mono
+    family: Menlo
   bold_italic:
-    family: FiraCode Nerd Font Mono
-  size: 12.0
+    family: Menlo
+  size: 15.0
   offset:
     x: 0
-    y: 0
+    y: 4
+  # OS X only: use thin stroke font rendering. Thin strokes are suitable
+  # for retina displays, but for non-retina you probably want this set to
+  # false.
+  use_thin_strokes: true
 
-# Colors (Wombat)
+# When true, bold text is drawn using the bright variant of colors.
+draw_bold_text_with_bright_colors: true
+dynamic_title: true
+
+# Colors (Tomorrow Night Bright)
 colors:
   # Default colors
   primary:
-    background: '#1f1f1f'
-    foreground: '#e5e1d8'
+    background: '0x000000'
+    foreground: '0xeaeaea'
 
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#f7786d'
-    green:   '#bde97c'
-    yellow:  '#efdfac'
-    blue:    '#6ebaf8'
-    magenta: '#ef88ff'
-    cyan:    '#90fdf8'
-    white:   '#e5e1d8'
+    black:   '0x000000'
+    red:     '0xd54e53'
+    green:   '0xb9ca4a'
+    yellow:  '0xe6c547'
+    blue:    '0x7aa6da'
+    magenta: '0xc397d8'
+    cyan:    '0x70c0ba'
+    white:   '0x424242'
 
   # Bright colors
   bright:
-    black:   '#b4b4b4'
-    red:     '#f99f92'
-    green:   '#e3f7a1'
-    yellow:  '#f2e9bf'
-    blue:    '#b3d2ff'
-    magenta: '#e5bdff'
-    cyan:    '#c2fefa'
-    white:   '#ffffff'
+    black:   '0x666666'
+    red:     '0xff3334'
+    green:   '0x9ec400'
+    yellow:  '0xe7c547'
+    blue:    '0x7aa6da'
+    magenta: '0xb77ee0'
+    cyan:    '0x54ced6'
+    white:   '0x2a2a2a'
 
 cursor:
   # Cursor style

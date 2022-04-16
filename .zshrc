@@ -1,9 +1,8 @@
 alias vim=nvim
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export SUDO_EDITOR=nvim
 
-export ZSH="/home/obsfx/.oh-my-zsh"
+export ZSH="/Users/omercanbalandi/.oh-my-zsh"
 
 plugins=(git)
 
@@ -11,17 +10,19 @@ source $ZSH/oh-my-zsh.sh
 
 alias kssh="kitty +kitten ssh"
 
+HOME_BIN=$HOME/bin
+LOCAL_BIN=$HOME/.local/bin
+USR_LOCAL_GO=/usr/local/go/bin
 export GOPATH=$HOME/go
-export PATH="$PATH:$HOME/bin:/usr/local/go/bin:$GOPATH/bin"
+export PATH="$PATH:$HOME_BIN:$LOCAL_BIN:$USR_LOCAL_GO:$GOPATH/bin"
 
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R'
 
 eval "$(starship init zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
 
 # place this after nvm initialization!
 # https://stackoverflow.com/a/39519460
@@ -82,9 +83,4 @@ nvmiall() {
 # keybindings
 bindkey -s '^F' 'cd $(find . -type d | fzf); tmux^M'
 
-if [ ! -f /tmp/system-update-checked ]; then
-  # check updates
-  echo "(checking updates)"
-  sudo apt update
-  touch /tmp/system-update-checked
-fi
+

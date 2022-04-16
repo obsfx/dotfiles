@@ -50,8 +50,10 @@ cmd([[syntax enable]])
 cmd([[syntax on]])
 
 --cmd([[colorscheme gruvbox8_hard]])
-g.material_theme_style = "darker"
-cmd([[colorscheme material]])
+--g.material_theme_style = "darker"
+--cmd([[colorscheme material]])
+--cmd([[colorscheme nightfly]])
+cmd([[colorscheme kanagawa]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
@@ -108,6 +110,9 @@ cmd([[
 cmd([[
   let @c="maHf{lvt}yJJkiconst jjpa = css`jjojj'a"
 ]])
+
+-- nvim colorizer init
+require'colorizer'.setup()
 
 g.Netrw_UserMaps = {
   { 'D', 'Netrw_NOP' },

@@ -38,12 +38,14 @@ require("packer").startup(function()
   use "tpope/vim-surround"
   use {"neoclide/coc.nvim", branch = "release"}
   use "SirVer/ultisnips"
+  use 'norcalli/nvim-colorizer.lua'
 
   use 'sjl/badwolf'
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
   use 'kaicataldo/material.vim'
-  use 'norcalli/nvim-colorizer.lua'
+  use 'bluz71/vim-nightfly-guicolors'
+  use 'rebelot/kanagawa.nvim'
 
   use 'kyazdani42/nvim-web-devicons'
   use {
