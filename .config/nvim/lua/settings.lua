@@ -1,4 +1,5 @@
 local set = vim.o
+
 local cmd = vim.cmd
 local fn  = vim.fn
 local execute = vim.api.nvim_command
@@ -36,6 +37,12 @@ set.secure = true
 set.mouse = "a"
 -- Show invisible characters
 cmd([[set list listchars=tab:>\ ,trail:·,eol:¬,nbsp:·]])
+-- Set cursor to beam in insert mode
+cmd([[
+  highlight Cursor guifg=white guibg=black
+  highlight iCursor guifg=white guibg=steelblue
+  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+]])
 
 -- neovim + tmux true color
 cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
@@ -49,11 +56,15 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
---cmd([[colorscheme gruvbox8_hard]])
---g.material_theme_style = "darker"
---cmd([[colorscheme material]])
+cmd([[colorscheme gruvbox8_hard]])
 --cmd([[colorscheme nightfly]])
-cmd([[colorscheme kanagawa]])
+--cmd([[colorscheme kanagawa]])
+--g.sonokai_style = 'espresso'
+--cmd([[colorscheme sonokai]])
+--cmd([[colorscheme rasmus]])
+
+--g.calvera_contrast = true
+--cmd([[ colorscheme calvera ]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
@@ -126,7 +137,7 @@ local actions = require("telescope.actions")
 
 require("telescope").setup{
   defaults = {
-	  preview = false,
+	  --preview = false,
     layout_config = {
       vertical = { width = 1 }
     },

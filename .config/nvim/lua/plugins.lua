@@ -21,9 +21,13 @@ require("packer").startup(function()
   use "OmniSharp/omnisharp-vim"
   use "habamax/vim-godot"
   use {"vlime/vlime", rtp = "vim/"}
-  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
 
   use 'fatih/vim-go'
+
+  use {
+      'nvim-treesitter/nvim-treesitter',
+      run = ':TSUpdate'
+  }
 
   use "roxma/vim-tmux-clipboard"
   use "tpope/vim-fugitive"
@@ -40,12 +44,13 @@ require("packer").startup(function()
   use "SirVer/ultisnips"
   use 'norcalli/nvim-colorizer.lua'
 
-  use 'sjl/badwolf'
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
-  use 'kaicataldo/material.vim'
+  use 'sainnhe/sonokai'
   use 'bluz71/vim-nightfly-guicolors'
   use 'rebelot/kanagawa.nvim'
+  use 'kvrohit/rasmus.nvim'
+  -- use {"mg979/vim-visual-multi", branch = "master"}
 
   use 'kyazdani42/nvim-web-devicons'
   use {

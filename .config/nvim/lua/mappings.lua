@@ -82,7 +82,7 @@ map("n",  "<Leader>cd", "<Plug>(coc-definition)", {silent = true})
 map("n",  "<Leader>cy", "<Plug>(coc-type-definition)", {silent = true})
 map("n",  "<Leader>ci", "<Plug>(coc-implementation)", {silent = true})
 map("n",  "<Leader>cr", "<Plug>(coc-references)", {silent = true})
-map("n",  "<Leader>cf", ":CocFix<CR>", {silent = true})
+map("n",  "<Leader>cf", "<Plug>(coc-codeaction)", {silent = true})
 -- diagnostics
 map("n",  "<Leader>ca", ":CocDiagnostics<cr>", {silent = true})
 -- fugitive

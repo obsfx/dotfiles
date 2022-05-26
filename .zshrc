@@ -1,4 +1,5 @@
 alias vim=nvim
+alias gvim=nvim-qt
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 
@@ -9,6 +10,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 alias kssh="kitty +kitten ssh"
+export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 HOME_BIN=$HOME/bin
 LOCAL_BIN=$HOME/.local/bin
@@ -82,5 +84,3 @@ nvmiall() {
 
 # keybindings
 bindkey -s '^F' 'cd $(find . -type d | fzf); tmux^M'
-
-
