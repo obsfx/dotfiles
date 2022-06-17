@@ -10,12 +10,13 @@ ensure_installed = {
     "json",
     "commonlisp",
     "lua",
-    --"tsx",
+    "tsx",
     "html",
     "graphql",
     "bash",
     "vue",
-    "vim"
+    "vim",
+    "svelte"
   },
   highlight = {enable = true},
   query_linter = {enable = true, use_virtual_text = true, lint_events = {"BufWrite", "CursorHold"}},

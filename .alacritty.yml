@@ -14,21 +14,21 @@ env:
 font:
   # Normal (roman) font face
   normal:
-    family: Iosevka Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
     style: Regular
   bold:
-    family: Iosevka Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
     style: Bold
   italic:
-    family: Iosevka Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
     style: Italic
   bold_italic:
-    family: Iosevka Nerd Font Mono
+    family: JetBrainsMono Nerd Font Mono
     style: Bold Italic
-  size: 17.0
+  size: 18.0
   offset:
     x: 0
-    y: 1
+    y: 4
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
   # false.

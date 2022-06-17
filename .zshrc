@@ -1,3 +1,5 @@
+TERM=xterm-256color
+
 alias vim=nvim
 alias gvim=nvim-qt
 export VISUAL=nvim

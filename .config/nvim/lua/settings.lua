@@ -57,14 +57,8 @@ cmd([[syntax enable]])
 cmd([[syntax on]])
 
 cmd([[colorscheme gruvbox8_hard]])
---cmd([[colorscheme nightfly]])
 --cmd([[colorscheme kanagawa]])
---g.sonokai_style = 'espresso'
---cmd([[colorscheme sonokai]])
 --cmd([[colorscheme rasmus]])
-
---g.calvera_contrast = true
---cmd([[ colorscheme calvera ]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'

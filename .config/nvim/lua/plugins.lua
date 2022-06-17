@@ -46,10 +46,8 @@ require("packer").startup(function()
 
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
-  use 'sainnhe/sonokai'
-  use 'bluz71/vim-nightfly-guicolors'
   use 'rebelot/kanagawa.nvim'
-  use 'kvrohit/rasmus.nvim'
+
   -- use {"mg979/vim-visual-multi", branch = "master"}
 
   use 'kyazdani42/nvim-web-devicons'
