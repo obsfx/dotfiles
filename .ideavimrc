@@ -1,0 +1,97 @@
+set exrc
+set guicursor=
+set nowrap
+set sidescroll=1
+set hidden
+set nobackup
+set noswapfile
+set nowritebackup
+set updatetime=300
+set timeoutlen=500
+set shortmess+=c
+set tabstop=2
+set smarttab
+set shiftwidth=2
+set expandtab
+set number
+set relativenumber
+set numberwidth=2
+set encoding=UTF-8
+set nocompatible
+set cmdheight=2
+set background=dark
+set undodir=~/.nvim/undodir
+set undofile
+set cursorline
+set scrolloff=4
+set signcolumn=yes
+set autoread
+set exrc
+set secure
+
+" remap leader to space
+let mapleader = " "
+nnoremap <SPACE> <NOP>
+" no more arrow keys
+inoremap  <Up>     <NOP>
+inoremap  <Down>   <NOP>
+inoremap  <Left>   <NOP>
+inoremap  <Right>  <NOP>
+noremap   <Up>     <NOP>
+noremap   <Down>   <NOP>
+noremap   <Left>   <NOP>
+noremap   <Right>  <NOP>
+" line moving
+nnoremap  <A-k> :m .-2<CR>==
+nnoremap  <A-j> :m .+1<CR>==
+vnoremap  <A-j> :m '>+1<CR>gv=gv
+vnoremap  <A-k> :m '<-2<CR>gv=gv
+" disable suspend
+nnoremap  <C-z> <NOP>
+" disable ctrl u in insert mode
+inoremap  <C-u> <NOP>
+" Remap H and L (top, bottom of screen to left and right end of line)
+"  https://github.com/fatih/dotfiles/blob/master/vimrc
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L g_
+nnoremap KK gg
+nnoremap JJ G
+vnoremap KK gg
+vnoremap JJ G
+" jj to exit insert mode
+inoremap  jj <Esc>
+" no more esc
+inoremap  <Esc> <NOP>
+" no more ctrl-c
+inoremap  <C-c> <NOP>
+" easy save
+nnoremap  <Leader>w :w<cr>
+" indentation
+nnoremap  <Tab> >>
+nnoremap  <BS> <<
+vnoremap  <Tab> >gv
+vnoremap  <BS> <gv
+" use system clipboard
+noremap <Leader>y "+y
+noremap <Leader>p "+p
+" paste last yanked thing
+noremap P "0p
+" replace all pattern
+nnoremap <Leader>r :%s/from/to/g
+" replace exact all pattern
+nnoremap <Leader>re :%s/\<from\>/to/gc
+" switch alternate file
+nnoremap <Leader>af :b#<CR>
+" switch prev buffer
+nnoremap <Leader>bb :bp<CR>
+" switch next buffer
+nnoremap <Leader>bn :bn<CR>
+" left right for command mode
+nnoremap <Leader>bf :Buffers<CR>
+" left right for command mode
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+" disable lowercase in visual mode
+vnoremap u <NOP>

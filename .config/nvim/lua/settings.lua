@@ -1,9 +1,9 @@
 local set = vim.o
-
 local cmd = vim.cmd
-local fn  = vim.fn
-local execute = vim.api.nvim_command
 local g = vim.g
+
+-- local fn  = vim.fn
+-- local execute = vim.api.nvim_command
 
 set.exrc = true
 set.guicursor = ""
@@ -125,20 +125,4 @@ g.Netrw_UserMaps = {
   { 'J', 'Netrw_NOP' },
   { 'K', 'Netrw_NOP' },
   { 'L', 'Netrw_NOP' },
-}
-
-local actions = require("telescope.actions")
-
-require("telescope").setup{
-  defaults = {
-	  --preview = false,
-    layout_config = {
-      vertical = { width = 1 }
-    },
-    mappings = {
-      i = {
-        ["<esc>"] = actions.close
-      },
-    },
-  }
 }

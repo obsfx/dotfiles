@@ -1,4 +1,4 @@
-local set = vim.o 
+local set = vim.o
 local utils = require("utils")
 
 -- fish like path and utils https://github.com/usirin/init.lua
@@ -47,18 +47,6 @@ function _G.git_head()
     return "  " .. h .. " "
   end
   return ""
-end
-
-local function coc_error()
-  return vim.fn["CocStatusField"]('error','X')
-end
-
-local function coc_warning()
-  return vim.fn["CocStatusField"]('warning','!')
-end
-
-local function coc_info()
-  return vim.fn["CocStatusField"]('information','?')
 end
 
 set.statusline = ""
