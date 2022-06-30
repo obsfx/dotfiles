@@ -47,6 +47,7 @@ require("packer").startup(function()
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
   use 'rebelot/kanagawa.nvim'
+  use 'ayu-theme/ayu-vim'
 
   -- use {"mg979/vim-visual-multi", branch = "master"}
 
@@ -55,4 +56,5 @@ require("packer").startup(function()
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
   }
+  use 'fannheyward/telescope-coc.nvim'
 end)

@@ -24,14 +24,15 @@ map("n",  "<C-z>",    "<NOP>", {noremap = true})
 -- disable ctrl u in insert mode
 map("i",  "<C-u>",    "<NOP>", {noremap = true})
 -- Remap H and L (top, bottom of screen to left and right end of line)
-map("n",  "H",        "^", {noremap = true})
-map("n",  "L",        "$", {noremap = true})
-map("v",  "H",        "^", {noremap = true})
-map("v",  "L",        "g_", {noremap = true})
-map("n",  "KK",       "gg", {noremap = true})
-map("n",  "JJ",       "G", {noremap = true})
-map("v",  "KK",       "gg", {noremap = true})
-map("v",  "JJ",       "G", {noremap = true})
+-- Disabled to keep base vim experience
+--map("n",  "H",        "^", {noremap = true})
+--map("n",  "L",        "$", {noremap = true})
+--map("v",  "H",        "^", {noremap = true})
+--map("v",  "L",        "g_", {noremap = true})
+--map("n",  "KK",       "gg", {noremap = true})
+--map("n",  "JJ",       "G", {noremap = true})
+--map("v",  "KK",       "gg", {noremap = true})
+--map("v",  "JJ",       "G", {noremap = true})
 -- jj to exit insert mode
 map("i",  "jj",       "<Esc>", {noremap = true})
 -- no more esc
@@ -88,6 +89,10 @@ map("n",  "<Leader>ca", ":CocDiagnostics<cr>", {silent = true})
 -- fugitive
 map("n",  "gs", ":Gvdiffsplit<cr>", {silent = true})
 map("n",  "gl", ":Gclog<cr>", {silent = true})
+-- telescope coc
+map("n",  "<Leader>twd", ":Telescope coc workspace_diagnostics<CR>", {silent = true})
+map("n",  "<Leader>td", ":Telescope coc diagnostics<CR>", {silent = true})
+map("n",  "<Leader>tr", ":Telescope coc references<CR>", {silent = true})
 
 -- trigger auto completion
 map("i",  "<C-c>",      "coc#refresh()", {silent = true, expr = true, noremap = true})

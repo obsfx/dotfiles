@@ -56,9 +56,8 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
-cmd([[colorscheme gruvbox8_hard]])
---cmd([[colorscheme kanagawa]])
---cmd([[colorscheme rasmus]])
+--cmd([[colorscheme gruvbox8_hard]])
+cmd([[colorscheme kanagawa]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
