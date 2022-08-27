@@ -56,8 +56,8 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
---cmd([[colorscheme gruvbox8_hard]])
-cmd([[colorscheme kanagawa]])
+cmd([[colorscheme gruvbox8_hard]])
+--cmd([[colorscheme kanagawa]])
 
 g.indentLine_leadingSpaceEnabled = 1
 g.indentLine_leadingSpaceChar = '·'
@@ -67,7 +67,7 @@ g.indentLine_char = '│'
 g.user_emmet_leader_key = '<C-z>'
 
 -- snippets
-g.UltiSnipsExpandTrigger="<C-s>"
+g.UltiSnipsExpandTrigger = "<C-s>"
 
 g.coc_global_extensions = {
   'coc-css',
@@ -85,7 +85,8 @@ g.coc_global_extensions = {
   'coc-json',
   'coc-go',
   'coc-conjure',
-  'coc-lua',
+  --'coc-lua',
+  'coc-sumneko-lua',
   'coc-svelte',
 }
 
@@ -96,7 +97,7 @@ g.coc_global_extensions = {
 --g["prettier#exec_cmd_async"] = 1
 
 -- vim vue prevent slowing down
-g.vue_pre_processors = {'scss'}
+g.vue_pre_processors = { 'scss' }
 
 -- vim file explorer
 -- remove banner
@@ -116,7 +117,7 @@ cmd([[
 ]])
 
 -- nvim colorizer init
-require'colorizer'.setup()
+require 'colorizer'.setup()
 
 g.Netrw_UserMaps = {
   { 'D', 'Netrw_NOP' },
