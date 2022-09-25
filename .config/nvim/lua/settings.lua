@@ -36,7 +36,7 @@ set.autoread = true
 set.secure = true
 set.mouse = "a"
 -- Show invisible characters
-cmd([[set list listchars=tab:>\ ,trail:·,eol:¬,nbsp:·]])
+cmd([[set list listchars=tab:>\ ,trail:·,eol:¬,space:⋅,nbsp:·]])
 -- Set cursor to beam in insert mode
 cmd([[
   highlight Cursor guifg=white guibg=black
@@ -56,12 +56,24 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
-cmd([[colorscheme gruvbox8_hard]])
+--cmd([[colorscheme gruvbox8_hard]])
 --cmd([[colorscheme kanagawa]])
+--g.material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+g.material_theme_style = 'darker'
+cmd([[colorscheme material]])
+--g.material_style = 'deep ocean'
+--cmd([[colorscheme material]])
 
-g.indentLine_leadingSpaceEnabled = 1
-g.indentLine_leadingSpaceChar = '·'
-g.indentLine_char = '│'
+--g.indentLine_leadingSpaceEnabled = 1
+--g.indentLine_leadingSpaceChar = '·'
+--g.indentLine_char = '│'
+
+require("indent_blankline").setup {
+  -- for example, context is off by default, use this to turn it on
+  show_current_context = false,
+  show_current_context_start = false,
+  show_end_of_line = true,
+}
 
 -- write tag + ctrl + z + ,
 g.user_emmet_leader_key = '<C-z>'
@@ -87,9 +99,9 @@ g.coc_global_extensions = {
   'coc-conjure',
   --'coc-lua',
   'coc-sumneko-lua',
+  '@yaegassy/coc-tailwindcss3',
   'coc-svelte',
 }
-
 -- prettier
 --g["prettier#autoformat_config_present"] = 1
 --g["prettier#autoformat_require_pragma"] = 0
@@ -109,11 +121,6 @@ cmd([[
   function! Netrw_NOP(islocal) abort
     return ''
   endfunction
-]])
-
--- emotion css block macro
-cmd([[
-  let @c="maHf{lvt}yJJkiconst jjpa = css`jjojj'a"
 ]])
 
 -- nvim colorizer init
