@@ -5,4 +5,4 @@
 - **Editor:** [Neovim](https://neovim.io/)
 - **Terminal Multiplexer:** [tmux](https://github.com/tmux/tmux)
 - **Terminal:** [iTerm2](https://iterm2.com/)
-- **Font:** [](JetBrains Nerd Font Mono)
+- **Font:** JetBrains Nerd Font Mono
