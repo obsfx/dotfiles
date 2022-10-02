@@ -6,3 +6,9 @@
 - **Terminal Multiplexer:** [tmux](https://github.com/tmux/tmux)
 - **Terminal:** [iTerm2](https://iterm2.com/)
 - **Font:** JetBrains Nerd Font Mono
+- **Other Software**
+   - Firefox
+   - MacDown
+   - Raycast
+   - Rectangle
+   - VimR
