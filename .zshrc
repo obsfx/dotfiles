@@ -1,4 +1,4 @@
-TERM=screen-256color
+TERM=xterm-256color
 
 alias vim=nvim
 alias gvim=nvim-qt
