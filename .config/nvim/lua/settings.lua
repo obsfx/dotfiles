@@ -59,8 +59,17 @@ cmd([[syntax on]])
 --cmd([[colorscheme gruvbox8_hard]])
 --cmd([[colorscheme kanagawa]])
 --g.material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
-g.material_theme_style = 'darker'
-cmd([[colorscheme material]])
+
+--vim.g.adwaita_darker = true -- for darker version
+--cmd([[colorscheme adwaita]])
+
+--g.material_theme_style = 'darker'
+--cmd([[colorscheme material]])
+
+-- require("noirbuddy").setup()
+vim.opt.termguicolors = true
+vim.cmd.colorscheme 'melange'
+
 --g.material_style = 'deep ocean'
 --cmd([[colorscheme material]])
 

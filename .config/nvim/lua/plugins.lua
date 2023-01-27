@@ -22,6 +22,8 @@ require("packer").startup(function()
   use "habamax/vim-godot"
   use { "vlime/vlime", rtp = "vim/" }
 
+  use "github/copilot.vim"
+
   use 'fatih/vim-go'
 
   use {
@@ -52,6 +54,12 @@ require("packer").startup(function()
   use 'rebelot/kanagawa.nvim'
   use 'ayu-theme/ayu-vim'
   use { 'kaicataldo/material.vim', branch = 'main' }
+  use 'Mofiqul/adwaita.nvim'
+  use {
+    "jesseleite/nvim-noirbuddy",
+    requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
+  }
+  use "savq/melange-nvim"
 
   use 'kyazdani42/nvim-web-devicons'
   use {
