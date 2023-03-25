@@ -63,3 +63,5 @@ set.statusline = set.statusline .. " %l/%L:%c"
 set.statusline = set.statusline .. " %p%%"
 set.statusline = set.statusline .. " %{v:lua.git_head()}"
 set.statusline = set.statusline .. "%<"
+
+-- set.statusline = "f%f - F%F - t%t - m%m - M%M - r%r - R%R - h%h - H%H - w%w - W%W - y%y - Y%Y - q%q - k%k - n%n - b%b - B%B"

@@ -1,5 +1,3 @@
-TERM=xterm-256color
-
 alias vim=nvim
 alias gvim=nvim-qt
 export VISUAL=nvim
@@ -17,9 +15,10 @@ export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 HOME_BIN=$HOME/bin
 LOCAL_BIN=$HOME/.local/bin
 USR_LOCAL_GO=/usr/local/go/bin
-export MONGODBPATH="/opt/homebrew/Cellar/mongodb-community@4.4/4.4.16/bin"
 export GOPATH=$HOME/go
-export PATH="$PATH:$HOME_BIN:$LOCAL_BIN:$USR_LOCAL_GO:$MONGODBPATH:$GOPATH/bin"
+export PATH="$PATH:$HOME_BIN:$LOCAL_BIN:$USR_LOCAL_GO:$GOPATH/bin:$(pyenv root)/shims:${PATH}"
+
+export PYTHON=python
 
 export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
 export LESS=' -R'

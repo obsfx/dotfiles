@@ -45,9 +45,15 @@ cmd([[
 ]])
 
 -- neovim + tmux true color
-cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
-cmd([[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]])
+--cmd([[let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"]])
+--cmd([[let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"]])
 cmd([[let $NVIM_TUI_ENABLE_TRUE_COLOR=1]])
+cmd([[
+  if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  endif
+]])
 set.termguicolors = true
 -- set.t_Co            = 256
 
@@ -56,26 +62,34 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
---cmd([[colorscheme gruvbox8_hard]])
---cmd([[colorscheme kanagawa]])
---g.material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
+--vim.opt.termguicolors = true
+--vim.cmd.colorscheme 'melange'
 
 --vim.g.adwaita_darker = true -- for darker version
---cmd([[colorscheme adwaita]])
+--vim.g.adwaita_disable_cursorline = true -- to disable cursorline
+--vim.cmd([[colorscheme adwaita]])
 
+--cmd([[colorscheme gruvbox8_hard]])
+-- cmd([[colorscheme kanagawa]])
+--g.material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker' | 'default-community' | 'palenight-community' | 'ocean-community' | 'lighter-community' | 'darker-community'
 --g.material_theme_style = 'darker'
 --cmd([[colorscheme material]])
-
--- require("noirbuddy").setup()
-vim.opt.termguicolors = true
-vim.cmd.colorscheme 'melange'
-
 --g.material_style = 'deep ocean'
 --cmd([[colorscheme material]])
 
 --g.indentLine_leadingSpaceEnabled = 1
 --g.indentLine_leadingSpaceChar = '·'
 --g.indentLine_char = '│'
+
+g.gruvbox_contrast_dark = 'hard'
+vim.cmd([[colorscheme gruvbox]])
+
+--vim.cmd([[colorscheme oxocarbon]])
+
+--vim.cmd([[colorscheme nordic]])
+
+--vim.cmd([[colorscheme xcodedarkhc]])
+--vim.cmd([[colorscheme duskfox]])
 
 require("indent_blankline").setup {
   -- for example, context is off by default, use this to turn it on

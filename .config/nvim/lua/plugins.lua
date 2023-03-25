@@ -1,6 +1,6 @@
-local cmd     = vim.cmd
-local fn      = vim.fn
-local execute = vim.api.nvim_command
+local cmd          = vim.cmd
+local fn           = vim.fn
+local execute      = vim.api.nvim_command
 
 -- Auto install packer.nvim if not exists
 local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
@@ -15,14 +15,14 @@ require("packer").startup(function()
   -- Packer can manage itself
   use "wbthomason/packer.nvim"
 
+  use "github/copilot.vim"
+
   use "amadeus/vim-xml"
   use { "ericpruitt/tmux.vim", rtp = "vim/" }
   use "mattn/emmet-vim"
   use "OmniSharp/omnisharp-vim"
   use "habamax/vim-godot"
   use { "vlime/vlime", rtp = "vim/" }
-
-  use "github/copilot.vim"
 
   use 'fatih/vim-go'
 
@@ -54,12 +54,14 @@ require("packer").startup(function()
   use 'rebelot/kanagawa.nvim'
   use 'ayu-theme/ayu-vim'
   use { 'kaicataldo/material.vim', branch = 'main' }
-  use 'Mofiqul/adwaita.nvim'
-  use {
-    "jesseleite/nvim-noirbuddy",
-    requires = { "tjdevries/colorbuddy.nvim", branch = "dev" }
-  }
+  use "EdenEast/nightfox.nvim"
+  use "Yazeed1s/oh-lucy.nvim"
   use "savq/melange-nvim"
+  use 'Mofiqul/adwaita.nvim'
+  use 'gruvbox-community/gruvbox'
+  use 'shaunsingh/nord.nvim'
+  use "andersevenrud/nordic.nvim"
+  use 'nyoom-engineering/oxocarbon.nvim'
 
   use 'kyazdani42/nvim-web-devicons'
   use {

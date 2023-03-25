@@ -1,12 +1,12 @@
-require'nvim-treesitter.configs'.setup {
-ensure_installed = {
+require 'nvim-treesitter.configs'.setup {
+  ensure_installed = {
     "javascript",
     "typescript",
     "c",
-    "go",
     "python",
     "css",
     "scss",
+    "go",
     "json",
     "commonlisp",
     "lua",
@@ -18,12 +18,10 @@ ensure_installed = {
     "vim",
     "svelte"
   },
-  highlight = {enable = true},
-  query_linter = {enable = true, use_virtual_text = true, lint_events = {"BufWrite", "CursorHold"}},
-  playground = {
+
+  highlight = {
     enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
+    --disable = { "go" },
   },
+  auto_install = true,
 }
