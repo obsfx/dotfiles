@@ -44,7 +44,7 @@ vim.cmd([[
 function _G.git_head()
   local h = vim.fn["FugitiveHead"]()
   if h ~= "" then
-    return "  " .. h .. " "
+    return " (" .. h .. ") "
   end
   return ""
 end

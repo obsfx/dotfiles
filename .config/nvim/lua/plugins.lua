@@ -52,16 +52,12 @@ require("packer").startup(function()
   use 'lifepillar/vim-gruvbox8'
   use 'arzg/vim-colors-xcode'
   use 'rebelot/kanagawa.nvim'
-  use 'ayu-theme/ayu-vim'
   use { 'kaicataldo/material.vim', branch = 'main' }
   use "EdenEast/nightfox.nvim"
   use "Yazeed1s/oh-lucy.nvim"
-  use "savq/melange-nvim"
   use 'Mofiqul/adwaita.nvim'
   use 'gruvbox-community/gruvbox'
-  use 'shaunsingh/nord.nvim'
-  use "andersevenrud/nordic.nvim"
-  use 'nyoom-engineering/oxocarbon.nvim'
+  use { 'Everblush/nvim', as = 'everblush' }
 
   use 'kyazdani42/nvim-web-devicons'
   use {
