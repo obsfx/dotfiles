@@ -9,7 +9,7 @@
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSave": true,
   "prettier.enable": true,
-  "prettier.requireConfig": false,
+  "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
   "svelte.enable-ts-plugin": true,
   "sumneko-lua.enableNvimLuaDev": true,
