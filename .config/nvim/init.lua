@@ -57,7 +57,10 @@ require("packer").startup(function()
   use 'rebelot/kanagawa.nvim'
   use 'gruvbox-community/gruvbox'
   use 'loctvl842/monokai-pro.nvim'
-  use 'marko-cerovac/material.nvim'
+  use {
+    'kaicataldo/material.vim',
+    branch = "main"
+  }
 
   -- font icons
   use 'kyazdani42/nvim-web-devicons'
@@ -121,10 +124,11 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
---g.material_theme_style = 'darker'
---cmd([[colorscheme material]])
-g.gruvbox_contrast_dark = 'hard'
-cmd([[colorscheme gruvbox]])
+g.material_theme_style = 'ocean'
+cmd([[colorscheme material]])
+
+--g.gruvbox_contrast_dark = 'hard'
+--cmd([[colorscheme gruvbox]])
 
 
 require("indent_blankline").setup {
