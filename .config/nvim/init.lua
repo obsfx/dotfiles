@@ -1,14 +1,12 @@
-local cmd               = vim.cmd
-local fn                = vim.fn
-local execute           = vim.api.nvim_command
-local set               = vim.o
-local g                 = vim.g
-local map               = vim.api.nvim_set_keymap
-local telescope_actions = require("telescope.actions")
-
+local fn           = vim.fn
+local execute      = vim.api.nvim_command
+local cmd          = vim.cmd
+local set          = vim.o
+local g            = vim.g
+local map          = vim.api.nvim_set_keymap
 -- #plugins
 -- Auto install packer.nvim if not exists
-local install_path      = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
@@ -25,7 +23,6 @@ require("packer").startup(function()
   use { "neoclide/coc.nvim", branch = "release" }
   use "tpope/vim-fugitive"
   use "github/copilot.vim"
-  use "lukas-reineke/indent-blankline.nvim"
   use { "ericpruitt/tmux.vim", rtp = "vim/" }
   use "roxma/vim-tmux-clipboard"
   use {
@@ -39,11 +36,7 @@ require("packer").startup(function()
   use 'fannheyward/telescope-coc.nvim'
 
   -- different programming languages stuff
-  use "amadeus/vim-xml"
   use "mattn/emmet-vim"
-  use "OmniSharp/omnisharp-vim"
-  use "habamax/vim-godot"
-  use { "vlime/vlime", rtp = "vim/" }
   use 'fatih/vim-go'
 
   -- utility stuff
@@ -61,10 +54,13 @@ require("packer").startup(function()
     'kaicataldo/material.vim',
     branch = "main"
   }
+  use 'rktjmp/lush.nvim'
+  use 'metalelf0/jellybeans-nvim'
 
   -- font icons
   use 'kyazdani42/nvim-web-devicons'
 end)
+local telescope_actions = require("telescope.actions")
 
 -- #settings
 set.exrc = true
@@ -82,9 +78,9 @@ set.tabstop = 2
 set.smarttab = true
 set.shiftwidth = 2
 set.expandtab = true
-set.number = true
-set.relativenumber = true
-set.numberwidth = 2
+--set.number = true
+--set.relativenumber = true
+--set.numberwidth = 2
 set.encoding = "UTF-8"
 set.compatible = false
 set.cmdheight = 2
@@ -124,19 +120,16 @@ cmd([[filetype off]])
 cmd([[syntax enable]])
 cmd([[syntax on]])
 
-g.material_theme_style = 'ocean'
-cmd([[colorscheme material]])
+
+cmd([[colorscheme jellybeans-nvim]])
+
+--cmd([[colorscheme monokai-pro-spectrum]])
+
+--g.material_theme_style = 'ocean'
+--cmd([[colorscheme material]])
 
 --g.gruvbox_contrast_dark = 'hard'
 --cmd([[colorscheme gruvbox]])
-
-
-require("indent_blankline").setup {
-  -- for example, context is off by default, use this to turn it on
-  show_current_context = false,
-  show_current_context_start = false,
-  show_end_of_line = true,
-}
 
 -- write tag + ctrl + z + ,
 g.user_emmet_leader_key = '<C-z>'
@@ -295,10 +288,6 @@ end
 map("n", "<Leader>k", ":call v:lua.show_doc_or_diagnostic()<CR>", { silent = true, noremap = true })
 
 -- #lua utility
-local merge = function(f, s)
-  for k, v in pairs(s) do f[k] = v end
-  return f
-end
 
 local at = function(str, index)
   return string.sub(str, index, index)
@@ -458,36 +447,6 @@ require 'nvim-treesitter.configs'.setup {
   auto_install = true,
 }
 
--- #augroups
-function _G.remove_trailing_ws()
-  local saved_cursor_pos = fn.getpos(".")
-  cmd([[%s/\s\+$//e]])
-  fn.setpos(".", saved_cursor_pos)
-end
-
-cmd([[
-  augroup rm_trailing_ws
-    autocmd!
-    autocmd BufWritePre * call v:lua.remove_trailing_ws()
-  augroup end
-
-  augroup cls_on_complete_done
-    autocmd!
-    autocmd CompleteDone * pclose
-  augroup end
-
-  augroup resize_equally
-    autocmd!
-    autocmd VimResized * wincmd =
-  augroup end
-
-  autocmd BufWritePre *.py execute ':Black'
-]])
-
--- go
-cmd([[au BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4]])
-cmd([[command! -nargs=0 Prettier :CocCommand prettier.formatFile]])
-
 -- #telescope
 require("telescope").setup {
   defaults = {
@@ -513,62 +472,12 @@ require("telescope").setup {
 }
 require('telescope').load_extension('coc')
 
--- #legacy configuration
 
--- #quickfixlist
--- -- reference: https://gist.github.com/romainl/56f0c28ef953ffc157f36cc495947ab3
--- cmd([[
---   set grepprg=rg\ --vimgrep
---
---   function! Grep(...)
---     return system(join([&grepprg] + [expandcmd(join(a:000, ' '))], ' '))
---   endfunction
---
---   command! -nargs=+ -complete=file_in_path -bar Grep  cgetexpr Grep(<f-args>)
---   command! -nargs=+ -complete=file_in_path -bar LGrep lgetexpr Grep(<f-args>)
---
---   cnoreabbrev <expr> grep  (getcmdtype() ==# ':' && getcmdline() ==# 'grep')  ? 'Grep'  : 'grep'
---   cnoreabbrev <expr> lgrep (getcmdtype() ==# ':' && getcmdline() ==# 'lgrep') ? 'LGrep' : 'lgrep'
---
---   augroup quickfix
---     autocmd!
---     autocmd QuickFixCmdPost cgetexpr cwindow
---     autocmd QuickFixCmdPost lgetexpr lwindow
---   augroup END
--- ]])
---
-
--- #fzf
--- -- Use ripgrep for searching
--- -- https://github.com/junegunn/fzf.vim/blob/master/doc/fzf-vim.txt#L355
--- function _G.rgfzf(argv, fullscreen)
---   local command_args = {
---     "--column",
---     "--line-number",
---     "--no-heading",
---     "--color=always",
---     "-g=\"!*-lock.json\"",
---     "--type-not sql",
---     "--smart-case",
---   }
---
---   local extra_commands = {}
---   local query = ''
---   local paramlist = fn.split(argv, " ")
---
---   if paramlist[1] == "--type" then
---     extra_commands = utils.slice_table(paramlist, 1, 3)
---     query = fn.join(utils.slice_table(paramlist, 3, #paramlist + 1), " ")
---   else
---     query = fn.join(paramlist, " ")
---   end
---
---   local command_fmt = 'rg ' .. fn.join(utils.merge(command_args, extra_commands), ' ') .. ' -- %s || true'
---   local initial_command = fn.printf(command_fmt, fn.shellescape(query))
---   local reload_command = fn.printf(command_fmt, '{q}')
---   local spec = {options = { '--phony', '--query', query, '--bind', 'change:reload:' .. reload_command }}
---   fn["fzf#vim#grep"](initial_command, 1, fn["fzf#vim#with_preview"](spec), fullscreen)
--- end
---
--- cmd([[command! -nargs=* -bang RG call v:lua.rgfzf(<q-args>, <bang>0)]])
--- cmd([[nnoremap <Leader>/ :RG<Space>]])
+-- on buffer enter autocmd
+-- to fix neovim's stupid bug
+cmd([[
+  augroup on_buffer_enter
+    autocmd!
+    autocmd BufEnter * set expandtab
+  augroup END
+]])
