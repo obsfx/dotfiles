@@ -35,6 +35,17 @@ require("packer").startup(function()
   }
   use 'fannheyward/telescope-coc.nvim'
 
+  -- vue stuff
+  use {
+    'yaegassy/coc-volar',
+    run = ':! yarn install --frozen-lockfile'
+  }
+
+  use {
+    'yaegassy/coc-volar-tools',
+    run = ':! yarn install --frozen-lockfile'
+  }
+
   -- different programming languages stuff
   use "mattn/emmet-vim"
   use 'fatih/vim-go'
@@ -56,6 +67,7 @@ require("packer").startup(function()
   }
   use 'rktjmp/lush.nvim'
   use 'metalelf0/jellybeans-nvim'
+  use 'savq/melange-nvim'
 
   -- font icons
   use 'kyazdani42/nvim-web-devicons'
@@ -148,12 +160,10 @@ g.coc_global_extensions = {
   'coc-styled-components',
   'coc-snippets',
   'coc-git',
-  'coc-vetur',
   'coc-eslint',
   'coc-json',
   'coc-go',
   'coc-conjure',
-  --'coc-lua',
   'coc-sumneko-lua',
   '@yaegassy/coc-tailwindcss3',
   'coc-svelte',

@@ -9,17 +9,11 @@
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnSave": true,
   "prettier.enable": true,
+  "volar.enable": true,
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
   "svelte.enable-ts-plugin": true,
   "sumneko-lua.enableNvimLuaDev": true,
-  "Lua.diagnostics.globals": ["vim"],
-  "Lua.telemetry.enable": false,
-  "Lua.workspace.library": [
-    "/opt/homebrew/Cellar/neovim/0.7.0/share/nvim/runtime",
-    "/opt/homebrew/Cellar/neovim/0.7.0/share/nvim/runtime/lua",
-    "/opt/homebrew/Cellar/neovim/0.7.0/share/nvim/runtime/lua/vim",
-    "/opt/homebrew/Cellar/neovim/0.7.0/share/nvim/runtime/lua/vim/lsp"
-  ],
-  "eslint.autoFixOnSave": false
+  "eslint.autoFixOnSave": false,
+  "snippets.ultisnips.pythonPrompt": false
 }
