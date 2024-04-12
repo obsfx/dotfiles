@@ -482,12 +482,43 @@ require("telescope").setup {
 }
 require('telescope').load_extension('coc')
 
-
--- on buffer enter autocmd
--- to fix neovim's stupid bug
 cmd([[
-  augroup on_buffer_enter
+  augroup rm_trailing_ws
     autocmd!
-    autocmd BufEnter * set expandtab
-  augroup END
+    autocmd BufWritePre * call v:lua.remove_trailing_ws()
+  augroup end
 ]])
+
+cmd([[
+  augroup cls_on_complete_done
+    autocmd!
+    autocmd CompleteDone * pclose
+  augroup end
+]])
+
+cmd([[
+  augroup resize_equally
+    autocmd!
+    autocmd VimResized * wincmd =
+  augroup end
+]])
+
+-- somehow nvim can't detect correct tab size
+-- so we need to set it manually
+cmd([[
+  augroup set_tab_size_for_go_files
+    autocmd!
+    autocmd BufNewFile,BufRead *.go setlocal noet ts=4 sw=4 sts=4
+  augroup end
+]])
+
+cmd([[
+  augroup set_tab_size_for_js_files
+    autocmd!
+    autocmd BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx setlocal noet ts=2 sw=2 sts=2
+  augroup end
+]])
+
+-- cmd([[
+--   autocmd BufWritePre *.py execute ':Black'
+-- ]])
