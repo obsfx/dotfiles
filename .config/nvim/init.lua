@@ -483,13 +483,6 @@ require("telescope").setup {
 require('telescope').load_extension('coc')
 
 cmd([[
-  augroup rm_trailing_ws
-    autocmd!
-    autocmd BufWritePre * call v:lua.remove_trailing_ws()
-  augroup end
-]])
-
-cmd([[
   augroup cls_on_complete_done
     autocmd!
     autocmd CompleteDone * pclose
