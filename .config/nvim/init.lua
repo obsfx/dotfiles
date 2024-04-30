@@ -35,17 +35,6 @@ require("packer").startup(function()
   }
   use 'fannheyward/telescope-coc.nvim'
 
-  -- vue stuff
-  use {
-    'yaegassy/coc-volar',
-    run = ':! yarn install --frozen-lockfile'
-  }
-
-  use {
-    'yaegassy/coc-volar-tools',
-    run = ':! yarn install --frozen-lockfile'
-  }
-
   -- different programming languages stuff
   use "mattn/emmet-vim"
   use 'fatih/vim-go'
@@ -67,7 +56,6 @@ require("packer").startup(function()
   }
   use 'rktjmp/lush.nvim'
   use 'metalelf0/jellybeans-nvim'
-  use 'savq/melange-nvim'
 
   -- font icons
   use 'kyazdani42/nvim-web-devicons'
@@ -135,13 +123,15 @@ cmd([[syntax on]])
 
 cmd([[colorscheme jellybeans-nvim]])
 
---cmd([[colorscheme monokai-pro-spectrum]])
+-- cmd([[colorscheme monokai-pro-spectrum]])
 
 --g.material_theme_style = 'ocean'
 --cmd([[colorscheme material]])
 
 --g.gruvbox_contrast_dark = 'hard'
 --cmd([[colorscheme gruvbox]])
+
+--cmd([[colorscheme kanagawa]])
 
 -- write tag + ctrl + z + ,
 g.user_emmet_leader_key = '<C-z>'
@@ -160,10 +150,12 @@ g.coc_global_extensions = {
   'coc-styled-components',
   'coc-snippets',
   'coc-git',
+  'coc-vetur',
   'coc-eslint',
   'coc-json',
   'coc-go',
   'coc-conjure',
+  --'coc-lua',
   'coc-sumneko-lua',
   '@yaegassy/coc-tailwindcss3',
   'coc-svelte',
@@ -508,7 +500,7 @@ cmd([[
 cmd([[
   augroup set_tab_size_for_js_files
     autocmd!
-    autocmd BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx setlocal noet ts=2 sw=2 sts=2
+    autocmd BufNewFile,BufRead *.js,*.jsx,*.ts,*.tsx,*.svelte setlocal noet ts=2 sw=2 sts=2 expandtab
   augroup end
 ]])
 
