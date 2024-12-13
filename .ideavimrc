@@ -14,7 +14,6 @@ set smarttab
 set shiftwidth=2
 set expandtab
 set number
-set relativenumber
 set numberwidth=2
 set encoding=UTF-8
 set nocompatible
@@ -28,6 +27,8 @@ set signcolumn=yes
 set autoread
 set exrc
 set secure
+set visualbell
+set noerrorbells
 
 " remap leader to space
 let mapleader = " "
@@ -95,3 +96,11 @@ cnoremap <C-h> <Left>
 cnoremap <C-l> <Right>
 " disable lowercase in visual mode
 vnoremap u <NOP>
+" go to definition
+noremap <Leader>cd gd
+" go to implementation command f12
+noremap gi :action GotoImplementation<CR>
+" show usages (opens popup)
+noremap gr :action ShowUsages<CR>
+" find usages
+noremap gR :action FindUsages<CR>
