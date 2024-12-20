@@ -1,3 +1,4 @@
+" :actionlist to see full list of intellij idea actions
 set exrc
 set guicursor=
 set nowrap
@@ -51,16 +52,6 @@ vnoremap  <A-k> :m '<-2<CR>gv=gv
 nnoremap  <C-z> <NOP>
 " disable ctrl u in insert mode
 inoremap  <C-u> <NOP>
-" Remap H and L (top, bottom of screen to left and right end of line)
-"  https://github.com/fatih/dotfiles/blob/master/vimrc
-nnoremap H ^
-nnoremap L $
-vnoremap H ^
-vnoremap L g_
-nnoremap KK gg
-nnoremap JJ G
-vnoremap KK gg
-vnoremap JJ G
 " jj to exit insert mode
 inoremap  jj <Esc>
 " no more esc
@@ -104,3 +95,8 @@ noremap gi :action GotoImplementation<CR>
 noremap gr :action ShowUsages<CR>
 " find usages
 noremap gR :action FindUsages<CR>
+
+noremap R :action RenameElement<CR>
+
+" ai stuff
+noremap <Leader>ai :action AIAssistant.Editor.AskAiAssistantInEditor<CR>
