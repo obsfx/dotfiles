@@ -24,6 +24,7 @@ set undodir=~/.nvim/undodir
 set undofile
 set cursorline
 set scrolloff=4
+set sidescrolloff=8
 set signcolumn=yes
 set autoread
 set exrc
@@ -59,7 +60,7 @@ inoremap  <Esc> <NOP>
 " no more ctrl-c
 inoremap  <C-c> <NOP>
 " easy save
-nnoremap  <Leader>w :w<cr>
+nnoremap  <Leader>w :action SaveDocument<CR>
 " indentation
 nnoremap  <Tab> >>
 nnoremap  <BS> <<
@@ -95,8 +96,7 @@ noremap gi :action GotoImplementation<CR>
 noremap gr :action ShowUsages<CR>
 " find usages
 noremap gR :action FindUsages<CR>
-
+" rename
 noremap R :action RenameElement<CR>
-
-" ai stuff
-noremap <Leader>ai :action AIAssistant.Editor.AskAiAssistantInEditor<CR>
+" trigger code completion
+noremap <Leader><Leader> :action CodeCompletion<CR>

@@ -1,88 +1,66 @@
-alias vim=nvim
-alias gvim=nvim-qt
-export VISUAL=nvim
-export EDITOR="$VISUAL"
-
+. "$(brew --prefix asdf)/libexec/asdf.sh"
 export ZSH="/Users/omercanbalandi/.oh-my-zsh"
-
-plugins=(git)
-
 source $ZSH/oh-my-zsh.sh
 
-alias kssh="kitty +kitten ssh"
-export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+# alias ls="eza -l --group-directories-first --icons --color=always"
+alias vim=nvim
+export VISUAL=nvim
+export EDITOR="$VISUAL"
 
 HOME_BIN=$HOME/bin
 LOCAL_BIN=$HOME/.local/bin
 USR_LOCAL_GO=/usr/local/go/bin
+MYSQL_BIN=/usr/local/mysql/bin
 export GOPATH=$HOME/go
-export PATH="$PATH:$HOME_BIN:$LOCAL_BIN:$USR_LOCAL_GO:$GOPATH/bin:$(pyenv root)/shims:${PATH}"
-
-export PYTHON=python
-
-export LESSOPEN="| /usr/share/source-highlight/src-hilite-lesspipe.sh %s"
-export LESS=' -R'
+export PATH="$PATH:$HOME_BIN:$LOCAL_BIN:$USR_LOCAL_GO:$GOPATH/bin:$(pyenv root)/shims:$MYSQL_BIN"
+export PATH="/Applications/Docker.app/Contents/Resources/bin:$PATH"
 
 eval "$(starship init zsh)"
 
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
 
-# place this after nvm initialization!
-# https://stackoverflow.com/a/39519460
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
-
-export FZF_DEFAULT_COMMAND="rg --files -g '!/node_modules'"
-
-# https://github.com/wellle/dotfiles/blob/master/fzf.zsh#L152
-# fshow - git commit browser
-fshow() {
-  git log --graph --color=always \
-      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
-  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
-      --bind "ctrl-m:execute:
-                (grep -o '[a-f0-9]\{7\}' | head -1 |
-                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
-                {}
-FZF-EOF"
-}
-
-swbr() {
-  git checkout $(git branch | fzf --ansi --reverse)
-}
-
-switchnvm() {
-  nvm use $(nvm list | fzf --ansi --reverse)
-}
-
-nvmil() {
-  nvm install $(nvm ls-remote | grep -i 'latest' | fzf --ansi --reverse)
-}
-
-nvmiall() {
-  nvm install $(nvm ls-remote | fzf --ansi --reverse)
-}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # keybindings
 bindkey -s '^F' 'cd $(find . -type d | fzf); tmux^M'
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/omercanbalandi/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/omercanbalandi/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/omercanbalandi/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/omercanbalandi/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Added by Antigravity
+export PATH="/Users/omercanbalandi/.antigravity/antigravity/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/omercanbalandi/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# Java Development Kit
+export JAVA_HOME=/opt/homebrew/opt/openjdk@17
+export PATH="$JAVA_HOME/bin:$PATH"
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# bun completions
+[ -s "/Users/omercanbalandi/.bun/_bun" ] && source "/Users/omercanbalandi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

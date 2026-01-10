@@ -1,3 +1,11 @@
 .vimrc
 *.vim
 .DS_Store
+
+*~
+.beads
+AGENTS.md
+.claude
+
+# bv (beads viewer) local config and caches
+.bv/
