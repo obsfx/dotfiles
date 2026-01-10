@@ -13,6 +13,45 @@ return {
   { "roxma/vim-tmux-clipboard" },
   { "nvim-tree/nvim-web-devicons", lazy = true },
 
+  -- git signs in gutter
+  {
+    "lewis6991/gitsigns.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {
+      signs = {
+        add = { text = "│" },
+        change = { text = "│" },
+        delete = { text = "_" },
+        topdelete = { text = "‾" },
+        changedelete = { text = "~" },
+        untracked = { text = "┆" },
+      },
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = bufnr, silent = true, desc = desc })
+        end
+        -- navigation
+        map("n", "]c", function()
+          if vim.wo.diff then return "]c" end
+          vim.schedule(function() gs.next_hunk() end)
+          return "<Ignore>"
+        end, "Next hunk")
+        map("n", "[c", function()
+          if vim.wo.diff then return "[c" end
+          vim.schedule(function() gs.prev_hunk() end)
+          return "<Ignore>"
+        end, "Prev hunk")
+        -- actions
+        map("n", "<Leader>hs", gs.stage_hunk, "Stage hunk")
+        map("n", "<Leader>hr", gs.reset_hunk, "Reset hunk")
+        map("n", "<Leader>hu", gs.undo_stage_hunk, "Undo stage hunk")
+        map("n", "<Leader>hp", gs.preview_hunk, "Preview hunk")
+        map("n", "<Leader>hb", function() gs.blame_line({ full = true }) end, "Blame line")
+      end,
+    },
+  },
+
   -- telescope (keymaps defined immediately, loads on use)
   {
     "nvim-telescope/telescope.nvim",
