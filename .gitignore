@@ -2,3 +2,4 @@
 *.vim
 *.taskpaper
 .DS_Store
+.config/.DS_Store
