@@ -13,6 +13,12 @@
 - Do not generate report or documentation files in .md format unless explicitly requested.
 - Avoid creating any documentation artifacts by default.
 - Only produce .md files when the request clearly asks for them.
+- If you are working on `trekker` projects never delete the original `.trekker` folder while doing tests because we are tracking progress using itself.
+- You will use `trekker` for every `task tracking` work. You can call `trekker quickstart` to learn about you or you can directly use the claude code plugin.
+- Never ever perform git operation by yourself. Committing and managing git operations is not your job.
+- Never ever mention in commit messages like `co-authered by claude`.
+- Use `fallow` cli tool to detect code repetition or dead code. You can call use `npx fallow help` command to see how you can use it. Preventing duplicates and removing dead code is important for us. Of course do not rely on this tools output blindly because it is a statical analysis tool in the end but it can provide good information to where should you check for better code quality.
+
 
 ### Important Evaluation Rules
 
@@ -33,10 +39,3 @@
 - Use bullet points whenever possible.
 - Do not generate documentation or report files unless explicitly requested.
 - Use tokens only for the most important and relevant tasks.
-
-### Rules
-
-- If you are working on `trekker` projects never delete the original `.trekker` folder while doing tests because we are tracking progress using itself.
-- You will use `trekker` for every `task tracking` work. You can call `trekker quickstart` to learn about you or you can directly use the claude code plugin.
-- Never ever perform git operation by yourself. Committing and managing git operations is not your job.
-- Never ever mention in commit messages like `co-authered by claude`.
