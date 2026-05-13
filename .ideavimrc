@@ -100,3 +100,11 @@ noremap gR :action FindUsages<CR>
 noremap R :action RenameElement<CR>
 " trigger code completion
 noremap <Leader><Leader> :action CodeCompletion<CR>
+" insert @feedback comment above visual selection
+function! AddFeedbackComment()
+  let l:s = line("'<")
+  let l:e = line("'>")
+  let @z = "// @feedback [Line " . (l:s + 1) . " to " . (l:e + 1) . "]:"
+  execute (l:s - 1) . "put z"
+endfunction
+vnoremap <Leader>f :<C-u>call AddFeedbackComment()<CR>
