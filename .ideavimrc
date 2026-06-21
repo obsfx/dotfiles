@@ -1,6 +1,9 @@
 " :actionlist to see full list of intellij idea actions
 set exrc
-set guicursor=
+" NOTE: `set guicursor=` (empty) breaks IdeaVim 2.39.0 command-line entry on
+" IDEA 2026.1 -> VIM-4115 'Cannot perform operation. Too complex, sorry' on `:`.
+" Leave disabled, or use an explicit value instead of empty.
+" set guicursor=
 set nowrap
 set sidescroll=1
 set hidden
