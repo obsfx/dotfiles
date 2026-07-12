@@ -18,6 +18,7 @@
 - Never ever perform git operation by yourself. Committing and managing git operations is not your job.
 - Never ever mention in commit messages like `co-authered by claude`.
 - Use `fallow` cli tool to detect code repetition or dead code. You can call use `npx fallow help` command to see how you can use it. Preventing duplicates and removing dead code is important for us. Of course do not rely on this tools output blindly because it is a statical analysis tool in the end but it can provide good information to where should you check for better code quality.
+- Comments must be timeless. Express intent fully through descriptive names and structure. Add a comment only if ten out of ten developers would agree it's necessary, such as for a hack required by an external constraint.
 
 
 ### Important Evaluation Rules
